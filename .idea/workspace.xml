@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Textura/Textura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imagens/brick.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imagens/palosInterrogacao.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objetos/QuadradoSprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Keyboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +46,23 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "TesteTextura",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/pedro/GitHub/A3-Computacao-Grafica/JOGL_Win64",
+    "last_opened_file_path": "C:/Users/bruno/OneDrive/Documentos/repositoriosGit/A3-Computacao-Grafica/src",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica" />
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\imagens" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Renderer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Cena.Renderer" />

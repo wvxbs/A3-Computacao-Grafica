@@ -9,6 +9,10 @@ public class Cena implements GLEventListener {
     private float xMin, xMax, yMin, yMax, zMin, zMax;
     GLU glu;
 
+    // atributos dos quads
+    public float velPalosx, velPalosY;
+    public boolean movendo = false;
+
     // TODO: Insert here values to the figure
     //
     //
@@ -29,30 +33,20 @@ public class Cena implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable drawable) {
+
+    }
+
+    public void teste(GLAutoDrawable drawable){
         GL2 gl = drawable.getGL().getGL2();
         gl.glClearColor(0, 0, 0, 1); // Defines the window color in RGB
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT); // Cleans the window with the color especified
         gl.glLoadIdentity(); // Reads the matrix identity
 
-
-        // SCENE
-        //
-        //
-
-        // Example Scene
-        gl.glBegin(GL2.GL_QUADS);
-        gl.glVertex2f(-.4f, -.5f);
-        gl.glVertex2f(-.4f, .2f);
-        gl.glVertex2f(-.1f, .2f);
-        gl.glVertex2f(-.1f, -.5f);
-        gl.glEnd();
-
+        // cena
 
 
         gl.glFlush();
     }
-
-
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

@@ -16,8 +16,10 @@ public class Keyboard implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
 
-        if(e.getKeyChar() == 'a')
-            System.out.println("Pressionou tecla a");
+        if(e.getKeyChar() == '1')
+            cena.movendo = true;
+
+
     }
 
     @Override
