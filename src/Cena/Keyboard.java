@@ -16,8 +16,11 @@ public class Keyboard implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
 
-        if(e.getKeyChar() == '1')
-            cena.movendo = true;
+        if(e.getKeyChar() == '1'){cena.movendo = !cena.movendo;} // alterna a movimentação da bola palos
+
+        if(e.getKeyChar() == 'a'){cena.q1.mover(-cena.q1.getVelx(), 0);} // mexe a barra pra esquerda
+
+        if(e.getKeyChar() == 'd'){cena.q1.mover(cena.q1.getVelx(), 0);} // mexe a barra pra direita
 
 
     }

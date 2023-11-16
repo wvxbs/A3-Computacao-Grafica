@@ -8,9 +8,10 @@ public class QuadradoSprite {
 
     // atributos
     private float posx, posy, posz; // atr de posicionamento
-    private float[] tamanho = new float[2];
-    private float[] corRGB = new float[3];
-    private String imageSrc;
+    private float velx=0, vely=0, velz=0; // atr de movimentação
+    private float[] tamanho = new float[2]; // tamanho x,y
+    private float[] corRGB = new float[3]; // cores r,g,b
+    private String imageSrc; // url ou path da imagem
     private int imageIndice;
     private Textura textura;
     private int totalTexturas;
@@ -19,6 +20,15 @@ public class QuadradoSprite {
 
 
     // getters e setters
+    public float getVelx() {return velx;}
+    public void setVelx(float velx) {this.velx = velx;}
+
+    public float getVely() {return vely;}
+    public void setVely(float vely) {this.vely = vely;}
+
+    public float getVelz() {return velz;}
+    public void setVelz(float velz) {this.velz = velz;}
+
     public float getPosx() {return posx;}
     public void setPosx(float posx) {this.posx = posx;}
 
@@ -118,6 +128,10 @@ public class QuadradoSprite {
         gl.glPopMatrix();
     }
 
+    public void mover(){
+        posx+=velx;
+        posy+=vely;
+    }
     public void mover(float velx, float vely){
         posx+=velx;
         posy+=vely;

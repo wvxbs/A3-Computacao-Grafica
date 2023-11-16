@@ -24,10 +24,10 @@ public class Renderer {
         //window.setResizable(false);
 
         Cena cena = new Cena();
+        Keyboard keyboard = new Keyboard(cena);
 
         window.addGLEventListener(cena); //adiciona a Cena a Janela
-        //Habilita o teclado : cena
-        window.addKeyListener(new Keyboard(cena));
+        window.addKeyListener(keyboard); //Habilita o teclado : cena
 
         //window.requestFocus();
         FPSAnimator animator = new FPSAnimator(window, 60);
