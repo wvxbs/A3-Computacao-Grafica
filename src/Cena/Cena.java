@@ -16,7 +16,7 @@ public class Cena implements GLEventListener {
     private GLUT glut;
 
     // atributos dos quads
-    public QuadradoSprite q1, q2;
+    public QuadradoSprite q1, q2, q3;
     public float velPalosx, velPalosY;
 
     // atributos textura
@@ -24,8 +24,9 @@ public class Cena implements GLEventListener {
     public int filtro = GL2.GL_LINEAR; ////GL_NEAREST ou GL_LINEAR
     public int wrap = GL2.GL_REPEAT;  //GL.GL_REPEAT ou GL.GL_CLAMP
     public int modo = GL2.GL_DECAL; ////GL.GL_MODULATE ou GL.GL_DECAL ou GL.GL_BLEND
-    public static final String FACE1 = "imagens/bolinha.png";
-    public static final String FACE2 = "imagens/brick.jpg";
+    public static final String FACE2 = "imagens/bolinha2.png";
+    public static final String FACE1 = "imagens/brick.jpg";
+    public static final String FACE3 = "imagens/background.png";
 
 
     @Override
@@ -37,22 +38,28 @@ public class Cena implements GLEventListener {
         limite = 1;
 
         gl.glEnable(GL2.GL_DEPTH_TEST);
+        gl.glEnable(GL.GL_BLEND);
 
         // criação de objetos que entrarão em cena
         float[] tamq1 = {30,5}; // tamanho do quadrado 1
         float[] tamq2 = {10,10}; // tamanho do quadrado 2
-        float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada)
-        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE2);
-        q2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq2,corq1,FACE1);
+        float[] tamq3 = {200,200}; // tamanho do quadrado 2
+        float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
-        // setando vars q1 (barra)
+        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE1,false);
+        q2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq2,corq1,FACE2,false);
+        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false);
+
+        // conigurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
         q1.setPosy(-40);
 
-        // setando vars q2 (bola palos)
+        // conigurando q2 (bola palos)
         q2.setVelx(1);
         q2.setVely(1);
 
+        // conigurando q3 (background)
+        q3.setPosz(-0.1f);
     }
 
     @Override
@@ -63,6 +70,7 @@ public class Cena implements GLEventListener {
     // "telas"
     public void teste(GLAutoDrawable drawable){
         gl = drawable.getGL().getGL2();
+
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity(); // Reads the matrix identity
@@ -72,6 +80,7 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         q1.desenhar(gl);
         q2.desenhar(gl);
+        q3.desenhar(gl);
 
         // movimentar tudo q precisa
         // movimentação q2
@@ -85,7 +94,6 @@ public class Cena implements GLEventListener {
                 "alfa q2: "+q2.getAlfa());
 
         // movimentação q1
-        colisaoQ1bordas();
         if (q1.isMovendo()) {
             switch (q1.getDirecao()){
                 case DIREITA:
@@ -109,6 +117,7 @@ public class Cena implements GLEventListener {
                     q1.setVely(0);
                     break;
             }
+            colisaoQ1bordas();
             q1.mover();
         }
 

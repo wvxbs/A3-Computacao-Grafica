@@ -16,8 +16,58 @@ public class Keyboard implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
 
+        // textura
         if(e.getKeyChar() == '1'){ // alterna a movimentação da bola palos
             cena.q2.setMovendo(!cena.q2.isMovendo());
+        }
+        if(e.getKeyChar() == '2'){ // alterna a movimentação da bola palos
+            cena.q2.setAnimado(!cena.q2.isAnimado());
+        }
+        if(e.getKeyChar() == '3'){
+            float[] novoTamanho = {
+                    (cena.q2.getEscala()[0]),
+                    (cena.q2.getEscala()[1]+0.25f)
+            };
+            cena.q2.setEscala(novoTamanho);
+        }
+        if(e.getKeyChar() == '4'){
+            float[] novoTamanho = {
+                    (cena.q2.getEscala()[0]),
+                    (cena.q2.getEscala()[1]-0.25f)
+            };
+            cena.q2.setEscala(novoTamanho);
+        }
+        if(e.getKeyCode() == 149){ // seta esquerda
+            float[] novoOfsetTextura = {
+                cena.q2.getTexturaOfset()[0]-0.9f,
+                cena.q2.getTexturaOfset()[1]
+            };
+            cena.q2.setTexturaOfset(novoOfsetTextura);
+            System.out.println("textura offset: "+cena.q2.getTexturaOfset()[0]);
+        }
+        if(e.getKeyCode() == 150){ // seta cima
+            float[] novoOfsetTextura = {
+                cena.q2.getTexturaOfset()[0],
+                cena.q2.getTexturaOfset()[1]+0.25f
+            };
+            cena.q2.setTexturaOfset(novoOfsetTextura);
+            System.out.println("textura offset: "+cena.q2.getTexturaOfset()[0]);
+        }
+        if(e.getKeyCode() == 151){ // seta direita
+            float[] novoOfsetTextura = {
+                cena.q2.getTexturaOfset()[0]+0.9f,
+                cena.q2.getTexturaOfset()[1]
+            };
+            cena.q2.setTexturaOfset(novoOfsetTextura);
+            System.out.println("textura offset: "+cena.q2.getTexturaOfset()[0]);
+        }
+        if(e.getKeyCode() == 152){ // seta baixo
+            float[] novoOfsetTextura = {
+                cena.q2.getTexturaOfset()[0],
+                cena.q2.getTexturaOfset()[1]-0.25f
+            };
+            cena.q2.setTexturaOfset(novoOfsetTextura);
+            System.out.println("textura offset: "+cena.q2.getTexturaOfset()[0]);
         }
 
         // TODO MELHORAR MOVIMENTAÇÃO DA BARRA (TA TRAVANDO DPOIS DE ANDAR UM POUCO)
@@ -37,6 +87,8 @@ public class Keyboard implements KeyListener {
         if(e.getKeyChar() == 'x'){
             cena.q2.setAlfa(cena.q2.getAlfa()+1);
         }
+
+
 
     }
 

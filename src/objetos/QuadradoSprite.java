@@ -1,6 +1,7 @@
 package objetos;
 
 import Cena.Direcao;
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import Textura.Textura;
 
@@ -15,18 +16,34 @@ public class QuadradoSprite {
     private float[] tamanho = new float[2]; // tamanho x,y
     private float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda;
     private float[] corRGB = new float[3]; // cores r,g,b
-    private float alfa=0;
+    private float alfa=1;
     private String imageSrc; // url ou path da imagem
-    private int imageIndice;
+    private float imageIndice;
+    private boolean animado = false;
     private boolean invisivel = false;
     private Textura textura;
-    private int totalTexturas;
+    private int totalSprites;
     private int filtro, wrap, modo;
     private float limite;
+    private float[] texturaOfset = {0,0};
+    private float[] escala = {0,0};
+    float contadorImg = 0f;
 
 
     // getters e setters
 
+
+    public boolean isAnimado() {return animado;}
+
+    public void setAnimado(boolean animado) {this.animado = animado;}
+
+    public float[] getEscala() {return escala;}
+
+    public void setEscala(float[] escala) {this.escala = escala;}
+
+    public float[] getTexturaOfset() {return texturaOfset;}
+
+    public void setTexturaOfset(float[] texturaOfset) {this.texturaOfset = texturaOfset;}
 
     public Direcao getDirecao() {return direcao;}
 
@@ -68,14 +85,14 @@ public class QuadradoSprite {
     public String getImageSrc() {return imageSrc;}
     public void setImageSrc(String imageSrc) {this.imageSrc = imageSrc;}
 
-    public int getImageIndice() {return imageIndice;}
-    public void setImageIndice(int imageIndice) {this.imageIndice = imageIndice;}
+    public float getImageIndice() {return imageIndice;}
+    public void setImageIndice(float imageIndice) {this.imageIndice = imageIndice;}
 
     public Textura getTextura() {return textura;}
     public void setTextura(Textura textura) {this.textura = textura;}
 
-    public int getTotalTexturas() {return totalTexturas;}
-    public void setTotalTexturas(int totalTexturas) {this.totalTexturas = totalTexturas;}
+    public int getTotalSprites() {return totalSprites;}
+    public void setTotalSprites(int totalSprites) {this.totalSprites = totalSprites;}
 
     public int getFiltro() {return filtro;}
     public void setFiltro(int filtro) {this.filtro = filtro;}
@@ -112,56 +129,92 @@ public class QuadradoSprite {
         this.tamanho[1] = tamanho[1]/2;
     }
 
-    public QuadradoSprite(int totalTexturas, int filtro, int wrap, int modo, float limite){
-        this.totalTexturas = totalTexturas;
+    public QuadradoSprite(int totalSprites, int filtro, int wrap, int modo, float limite){
+        this.totalSprites = totalSprites;
         this.limite = limite;
         this.filtro = filtro;
         this.wrap = wrap;
         this.modo = modo;
-        this.textura = new Textura(totalTexturas);
+        this.textura = new Textura(totalSprites);
     }
 
-    public QuadradoSprite(int totalTexturas, int filtro,
-                          int wrap, int modo, float limite, float[] tamanho, float[] corRGB, String imageSrc) {
+    public QuadradoSprite(int totalSprites, int filtro,
+                          int wrap, int modo, float limite, float[] tamanho, float[] corRGB, String imageSrc, boolean animado) {
         this.tamanho[0] = tamanho[0]/2;
         this.tamanho[1] = tamanho[1]/2;
         this.corRGB = corRGB;
         this.imageSrc = imageSrc;
-        this.totalTexturas = totalTexturas;
+        this.totalSprites = totalSprites;
         this.filtro = filtro;
         this.wrap = wrap;
         this.modo = modo;
         this.limite = limite;
-        this.textura = new Textura(totalTexturas);
+        this.textura = new Textura(totalSprites);
+        this.animado = animado;
+        if (totalSprites>1){
+            this.escala[0] = 0;
+            this.escala[1] = limite-(limite/ totalSprites);
+        }
     }
 
 
     // métodos
     public void desenhar(GL2 gl){
+        // atualizando sprite
+        atualizarSprite();
+
+        // indo pro desenho
+        //gl.glEnable(gl.GL_BLEND);
+        //gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
+
         gl.glPushMatrix();
-        //gl.glClearColor(0, 0, 0, 0);
+        gl.glClearColor(0, 0, 0, 0);
         gl.glColor4f(corRGB[0], corRGB[1], corRGB[2], alfa);
+
 
         textura.setFiltro(filtro);
         textura.setModo(modo);
         textura.setWrap(wrap);
 
         //cria a textura indicando o local da imagem e o índice
-        textura.gerarTextura(gl, imageSrc, imageIndice);
+        textura.gerarTextura(gl, imageSrc, 0);
 
         // Face FRONTAL
         gl.glBegin (GL2.GL_QUADS);
         //coordenadas da Textura
-        gl.glTexCoord2f(0.0f, limite); gl.glVertex3f(-tamanho[0]+posx, tamanho[1]+posy, posz);
-        gl.glTexCoord2f(limite, limite);  gl.glVertex3f(tamanho[0]+posx, tamanho[1]+posy, posz);
-        gl.glTexCoord2f(limite, 0.0f);  gl.glVertex3f(tamanho[0]+posx, -tamanho[1]+posy, posz);
-        gl.glTexCoord2f(0.0f, 0.0f); gl.glVertex3f(-tamanho[0]+posx, -tamanho[1]+posy, posz);
+        gl.glTexCoord2f(0.0f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
         gl.glVertex3f(-tamanho[0]+posx, tamanho[1]+posy, posz);
+
+        gl.glTexCoord2f(limite+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
+        gl.glVertex3f(tamanho[0]+posx, tamanho[1]+posy, posz);
+
+        gl.glTexCoord2f(limite+texturaOfset[0], 0.0f+texturaOfset[1]);
+        gl.glVertex3f(tamanho[0]+posx, -tamanho[1]+posy, posz);
+
+        gl.glTexCoord2f(0.0f+texturaOfset[0], 0.0f+texturaOfset[1]);
+        gl.glVertex3f(-tamanho[0]+posx, -tamanho[1]+posy, posz);
+
+        //gl.glVertex3f(-tamanho[0]+posx, tamanho[1]+posy, posz);
+
         gl.glEnd();
         //desabilita a textura indicando o índice
-        textura.desabilitarTextura(gl, imageIndice);
+
+        textura.desabilitarTextura(gl, 0);
         gl.glPopMatrix();
+
+        //gl.glDisable(GL.GL_BLEND);
         atualizarIntervalos();
+    }
+
+    private void atualizarSprite(){
+        if (animado){
+
+            contadorImg = (contadorImg >= totalSprites) ? 0 : (contadorImg + 0.15f);
+            imageIndice = (int)contadorImg;
+
+            texturaOfset[1] = imageIndice/totalSprites;
+            //System.out.println(texturaOfset[1]);
+        }
     }
 
     private void atualizarIntervalos(){
