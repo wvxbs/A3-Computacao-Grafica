@@ -1,5 +1,6 @@
 package Cena;
 
+import com.jogamp.newt.event.KeyListener;
 import com.jogamp.newt.event.WindowAdapter;
 import com.jogamp.newt.event.WindowEvent;
 import com.jogamp.newt.opengl.GLWindow;
@@ -21,13 +22,13 @@ public class Renderer {
         GLCapabilities caps = new GLCapabilities(profile);
         window = GLWindow.create(caps);
         window.setSize(screenWidth, screenHeight);
-        //window.setResizable(false);
+        window.setResizable(false);
 
         Cena cena = new Cena();
-        Keyboard keyboard = new Keyboard(cena);
+        Keyboard keyboard = new Keyboard(cena); //<------------------------------
 
         window.addGLEventListener(cena); //adiciona a Cena a Janela
-        window.addKeyListener(keyboard); //Habilita o teclado : cena
+        window.addKeyListener(keyboard); //Habilita o teclado : cena <------------------------------
 
         //window.requestFocus();
         FPSAnimator animator = new FPSAnimator(window, 60);

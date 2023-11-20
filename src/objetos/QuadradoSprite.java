@@ -1,18 +1,24 @@
 package objetos;
 
+import Cena.Direcao;
 import com.jogamp.opengl.GL2;
 import Textura.Textura;
 
-public class QuadradoSprite {
 
+public class QuadradoSprite {
 
     // atributos
     private float posx, posy, posz; // atr de posicionamento
     private float velx=0, vely=0, velz=0; // atr de movimentação
+    private boolean movendo = false;
+    private Direcao direcao;
     private float[] tamanho = new float[2]; // tamanho x,y
+    private float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda;
     private float[] corRGB = new float[3]; // cores r,g,b
+    private float alfa=0;
     private String imageSrc; // url ou path da imagem
     private int imageIndice;
+    private boolean invisivel = false;
     private Textura textura;
     private int totalTexturas;
     private int filtro, wrap, modo;
@@ -20,6 +26,21 @@ public class QuadradoSprite {
 
 
     // getters e setters
+
+
+    public Direcao getDirecao() {return direcao;}
+
+    public void setDirecao(Direcao direcao) {this.direcao = direcao;}
+
+    public float getAlfa() {return alfa;}
+    public void setAlfa(float alfa) {this.alfa = alfa;}
+
+    public boolean isInvisivel() {return invisivel;}
+    public void setInvisivel(boolean invisivel) {this.invisivel = invisivel;}
+
+    public boolean isMovendo() {return movendo;}
+    public void setMovendo(boolean movendo) {this.movendo = movendo;}
+
     public float getVelx() {return velx;}
     public void setVelx(float velx) {this.velx = velx;}
 
@@ -70,13 +91,25 @@ public class QuadradoSprite {
 
     public void setLimite(float limite) {this.limite = limite;}
 
+    public float[][] getIntervaloEsquerda() {return intervaloEsquerda;}
+    public void setIntervaloEsquerda(float[][] intervaloEsquerda) {this.intervaloEsquerda = intervaloEsquerda;}
+
+    public float[][] getIntervaloDireita() {return intervaloDireita;}
+    public void setIntervaloDireita(float[][] intervaloDireita) {this.intervaloDireita = intervaloDireita;}
+
+    public float[][] getIntervaloBaixo() {return intervaloBaixo;}
+    public void setIntervaloBaixo(float[][] intervaloBaixo) {this.intervaloBaixo = intervaloBaixo;}
+
+    public float[][] getIntervaloCima() {return intervaloCima;}
+    public void setIntervaloCima(float[][] intervaloCima) {this.intervaloCima = intervaloCima;}
+
 
     // construtores
     public QuadradoSprite(){}
 
-    public QuadradoSprite(int totalTexturas){
-        this.totalTexturas = totalTexturas;
-        this.textura = new Textura(totalTexturas);
+    public QuadradoSprite(float[] tamanho){
+        this.tamanho[0] = tamanho[0]/2;
+        this.tamanho[1] = tamanho[1]/2;
     }
 
     public QuadradoSprite(int totalTexturas, int filtro, int wrap, int modo, float limite){
@@ -90,7 +123,8 @@ public class QuadradoSprite {
 
     public QuadradoSprite(int totalTexturas, int filtro,
                           int wrap, int modo, float limite, float[] tamanho, float[] corRGB, String imageSrc) {
-        this.tamanho = tamanho;
+        this.tamanho[0] = tamanho[0]/2;
+        this.tamanho[1] = tamanho[1]/2;
         this.corRGB = corRGB;
         this.imageSrc = imageSrc;
         this.totalTexturas = totalTexturas;
@@ -105,7 +139,8 @@ public class QuadradoSprite {
     // métodos
     public void desenhar(GL2 gl){
         gl.glPushMatrix();
-        gl.glColor3f(corRGB[0], corRGB[1], corRGB[2]);
+        //gl.glClearColor(0, 0, 0, 0);
+        gl.glColor4f(corRGB[0], corRGB[1], corRGB[2], alfa);
 
         textura.setFiltro(filtro);
         textura.setModo(modo);
@@ -126,20 +161,44 @@ public class QuadradoSprite {
         //desabilita a textura indicando o índice
         textura.desabilitarTextura(gl, imageIndice);
         gl.glPopMatrix();
+        atualizarIntervalos();
+    }
+
+    private void atualizarIntervalos(){
+        // TODO checar desempenho de re-declarar vs modificar posições do array de intervalo
+        intervaloEsquerda = new float[][]{
+                {-(tamanho[0]) + posx, -(tamanho[0]) + posx}, //(-5+movimentação, -5+movimentação) em X (não muda)
+                {-(tamanho[1]) + posy, (tamanho[1]) + posy} //(-5+movimentação, 5+movimentação) em Y (muda)
+        };
+        intervaloDireita = new float[][]{
+                {(tamanho[0])+posx, (tamanho[0])+posx}, //(5+movimentação, 5+movimentação) em X (não muda)
+                {-(tamanho[1])+posy, (tamanho[1])+posy} //(-5+movimentação, 5+movimentação) em Y (muda)
+        };
+        intervaloBaixo = new float[][]{
+                {-(tamanho[0])+posx, (tamanho[0])+posx}, //(-5+movimentação, 5+movimentação) em X (muda)
+                {-(tamanho[1])+posy, -(tamanho[1])+posy} //(-5+movimentação, -5+movimentação) em Y (não muda)
+        };
+        intervaloCima = new float[][]{
+                {-(tamanho[0])+posx, (tamanho[0])+posx}, //(-5+movimentação, 5+movimentação) em X (muda)
+                {(tamanho[1])+posy, (tamanho[1])+posy} //(5+movimentação, 5+movimentação) em Y (não muda)
+        };
     }
 
     public void mover(){
         posx+=velx;
         posy+=vely;
+        atualizarIntervalos();
     }
+
     public void mover(float velx, float vely){
         posx+=velx;
         posy+=vely;
+        atualizarIntervalos();
     }
 
     public boolean isColiding(float[] intervaloX, float[] intervaloY){
-        float[] intervaloQx = {(-tamanho[0]+posx)/2, (tamanho[0]+posx)/2};
-        float[] intervaloQy = {(-tamanho[1]+posy)/2, (tamanho[1]+posy)/2};
+        float[] intervaloQx = {(-tamanho[0])+posx, (tamanho[0])+posx};
+        float[] intervaloQy = {(-tamanho[1])+posy, (tamanho[1])+posy};
         //System.out.println("intervalo Xquadrado: "+intervaloQx[0]+"|"+intervaloQx[1]);
         //System.out.println("intervalo Yquadrado: "+intervaloQy[0]+"|"+intervaloQy[1]);
 
