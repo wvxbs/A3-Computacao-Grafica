@@ -12,8 +12,8 @@ public class Renderer {
 
     private static GLWindow window = null;
     // TODO: Change the window size
-    public static int screenWidth = 500;  //1280
-    public static int screenHeight = 500; //960
+    public static int screenWidth = 1000;  //1280
+    public static int screenHeight = 1000; //960
 
     //Cria a janela de rendeziração do JOGL
     public static void init(){

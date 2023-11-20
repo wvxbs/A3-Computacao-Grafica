@@ -14,7 +14,7 @@ public class QuadradoSprite {
     private boolean movendo = false;
     private Direcao direcao;
     private float[] tamanho = new float[2]; // tamanho x,y
-    private float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda;
+    private float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda, intervaloTotal;
     private float[] corRGB = new float[3]; // cores r,g,b
     private float alfa=1;
     private String imageSrc; // url ou path da imagem
@@ -32,21 +32,19 @@ public class QuadradoSprite {
 
     // getters e setters
 
+    public float[][] getIntervaloTotal() {return intervaloTotal;}
+    public void setIntervaloTotal(float[][] intervaloTotal) {this.intervaloTotal = intervaloTotal;}
 
     public boolean isAnimado() {return animado;}
-
     public void setAnimado(boolean animado) {this.animado = animado;}
 
     public float[] getEscala() {return escala;}
-
     public void setEscala(float[] escala) {this.escala = escala;}
 
     public float[] getTexturaOfset() {return texturaOfset;}
-
     public void setTexturaOfset(float[] texturaOfset) {this.texturaOfset = texturaOfset;}
 
     public Direcao getDirecao() {return direcao;}
-
     public void setDirecao(Direcao direcao) {this.direcao = direcao;}
 
     public float getAlfa() {return alfa;}
@@ -171,7 +169,6 @@ public class QuadradoSprite {
         gl.glClearColor(0, 0, 0, 0);
         gl.glColor4f(corRGB[0], corRGB[1], corRGB[2], alfa);
 
-
         textura.setFiltro(filtro);
         textura.setModo(modo);
         textura.setWrap(wrap);
@@ -234,6 +231,10 @@ public class QuadradoSprite {
         intervaloCima = new float[][]{
                 {-(tamanho[0])+posx, (tamanho[0])+posx}, //(-5+movimentação, 5+movimentação) em X (muda)
                 {(tamanho[1])+posy, (tamanho[1])+posy} //(5+movimentação, 5+movimentação) em Y (não muda)
+        };
+        intervaloTotal = new float[][]{
+                {-(tamanho[0])+posx, (tamanho[0])+posx},
+                {-(tamanho[1])+posy, (tamanho[1])+posy}
         };
     }
 
