@@ -12,6 +12,7 @@
 # Necessidades
 
 - [ ] Efeitos sonoros - **Ferreira**
+- [ ] Correção da movimentação da barra - **Ferreira**
 - [ ] Verificar se a bola pode ser um quadrado
 - [ ] Iluminação
 - [ ] Animação
