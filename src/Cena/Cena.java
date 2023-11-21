@@ -15,8 +15,10 @@ public class Cena implements GLEventListener {
     private GLU glu;
     private GLUT glut;
 
+    private boolean passou=false;
+    private int pontos=0;
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4;
+    public QuadradoSprite q1, q2, q3, q4, q5;
 
     // atributos textura
     public float limite;
@@ -27,6 +29,7 @@ public class Cena implements GLEventListener {
     public static final String FACE1 = "imagens/brick.jpg";
     public static final String FACE3 = "imagens/background.png";
     public static final String FACE4 = "imagens/ferreira1-1.png";
+    public static final String FACE5 = "imagens/ben_andando.png";
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -41,8 +44,9 @@ public class Cena implements GLEventListener {
 
         // criação de objetos que entrarão em cena
         float[] tamq1 = {30,5}; // tamanho do quadrado 1
-        float[] tamq2 = {10,10}; // tamanho do quadrado 2
+        float[] tamq2 = {50,50}; // tamanho do quadrado 2
         float[] tamq3 = {200,200}; // tamanho do quadrado 2
+        float[] tamq4 = {50,50}; // tamanho do quadrado 2
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
@@ -50,10 +54,12 @@ public class Cena implements GLEventListener {
         q2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq2,corq1,FACE2,false);
         q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false);
         q4 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE4,false);
+        //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
+
 
         // conigurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
-        q1.setPosy(-40);
+        q1.setPosy(-60);
 
         // conigurando q2 (bola palos)
         q2.setVelx(1);
@@ -69,13 +75,51 @@ public class Cena implements GLEventListener {
     @Override
     public void display(GLAutoDrawable drawable) {
         if (pausado){pause(drawable);}
-        else {teste(drawable);}
+        else {
+            switch (pontos){
+                case 0: // fase 1
+                    teste(drawable);
+                    break;
+
+                case 200: // fase 2
+                    teste(drawable);
+                    break;
+
+                default:
+                    menu(drawable);
+            }
+
+
+        }
 
     }
-
     // "telas"
 
     public void pause(GLAutoDrawable drawable){ // TODO fazer pause bunitin
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        q4.desenhar(gl);
+
+        // texto do menu
+        gl.glColor3f(1f, 1f, 1f);
+        desenhaTexto(gl, -5,80, "PAUSADO",24);
+        desenhaTexto(gl, -20,60, "pressione X para continuar",18);
+
+        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
+        desenhaTexto(gl, -10,40, "Pontos: (TBA)",18);
+
+
+        gl.glFlush();
+    }
+
+    public void menu(GLAutoDrawable drawable){ // TODO fazer pause bunitin
         gl = drawable.getGL().getGL2();
 
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
@@ -159,6 +203,7 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
     }
+
 
     // métodos
     public void desenhaTexto(GL2 gl, int x, int y, String frase) {
@@ -259,6 +304,7 @@ public class Cena implements GLEventListener {
         if (colisaoX){q2.setVelx(q2.getVelx()*-1);}
 
     }
+
 
 
     @Override

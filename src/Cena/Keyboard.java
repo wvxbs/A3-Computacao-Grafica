@@ -99,6 +99,7 @@ public class Keyboard implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
         if(e.getKeyChar() == 'a' || e.getKeyChar() == 'd') cena.q1.setMovendo(false);
 
         //if(e.getKeyChar() == 'd') cena.q1.setMovendo(false);

@@ -251,6 +251,7 @@ public class QuadradoSprite {
     }
 
     public boolean isColiding(float[] intervaloX, float[] intervaloY){
+
         float[] intervaloQx = {(-tamanho[0])+posx, (tamanho[0])+posx};
         float[] intervaloQy = {(-tamanho[1])+posy, (tamanho[1])+posy};
         //System.out.println("intervalo Xquadrado: "+intervaloQx[0]+"|"+intervaloQx[1]);

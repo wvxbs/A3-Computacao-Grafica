@@ -27,6 +27,7 @@ public class Renderer {
         Cena cena = new Cena();
         Keyboard keyboard = new Keyboard(cena); //<------------------------------
 
+
         window.addGLEventListener(cena); //adiciona a Cena a Janela
         window.addKeyListener(keyboard); //Habilita o teclado : cena <------------------------------
 

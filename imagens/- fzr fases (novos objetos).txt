@@ -1,0 +1,28 @@
+- fzr fases (novos objetos)
+	-> ticia
+
+
+nomec do jogo
+s de começar
+x de pause
+esc de sair
+(futuramente) leaderboard
+
+- fzr classes de jogo (personagem, ponto)
+
+
+- corrigir colisoes (overlap)
+
+
+- adicionar efeitos sonoros
+	-> Ferreira
+
+
+- corrigir a movimentação (trocar pelo mouse)
+	-> Ferreira
+
+- setar save jogo (.txt) low priority
+	-> Bruno
+
+- arrumar texturas com alfa
+	-> Bruno
