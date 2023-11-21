@@ -23,10 +23,10 @@ public class Cena implements GLEventListener {
     public int filtro = GL2.GL_LINEAR; ////GL_NEAREST ou GL_LINEAR
     public int wrap = GL2.GL_REPEAT;  //GL.GL_REPEAT ou GL.GL_CLAMP
     public int modo = GL2.GL_DECAL; ////GL.GL_MODULATE ou GL.GL_DECAL ou GL.GL_BLEND
-    public static final String FACE2 = "imagens/bolinha2.png";
+    public static final String FACE2 = "imagens/palosInterrogacao1-1.png";
     public static final String FACE1 = "imagens/brick.jpg";
     public static final String FACE3 = "imagens/background.png";
-    public static final String FACE4 = "imagens/palosInterrogacao.png";
+    public static final String FACE4 = "imagens/ferreira1-1.png";
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -88,7 +88,7 @@ public class Cena implements GLEventListener {
         q4.desenhar(gl);
 
         // texto do menu
-        gl.glColor3f(0f, 0f, 0f);
+        gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "PAUSADO",24);
         desenhaTexto(gl, -20,60, "pressione X para continuar",18);
 
