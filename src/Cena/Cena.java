@@ -18,7 +18,7 @@ public class Cena implements GLEventListener {
     private boolean passou=false;
     private int pontos=0;
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4, q5;
+    public QuadradoSprite q1, q2, q3, q4, q5, q6;
 
     // atributos textura
     public float limite;
@@ -30,6 +30,7 @@ public class Cena implements GLEventListener {
     public static final String FACE3 = "imagens/background.png";
     public static final String FACE4 = "imagens/ferreira1-1.png";
     public static final String FACE5 = "imagens/ben_andando.png";
+    public static final String FACE6 = "imagens/objeto_fase2";
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -43,10 +44,11 @@ public class Cena implements GLEventListener {
         gl.glEnable(GL.GL_BLEND);
 
         // criação de objetos que entrarão em cena
-        float[] tamq1 = {30,5}; // tamanho do quadrado 1
-        float[] tamq2 = {50,50}; // tamanho do quadrado 2
-        float[] tamq3 = {200,200}; // tamanho do quadrado 2
+        float[] tamq1 = {30,5}; // tamanho da barra
+        float[] tamq2 = {50,50}; // tamanho da bola
+        float[] tamq3 = {200,200}; // tamanho do background
         float[] tamq4 = {50,50}; // tamanho do quadrado 2
+        float[] tamq6 = {40,40};
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
@@ -55,6 +57,7 @@ public class Cena implements GLEventListener {
         q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false);
         q4 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE4,false);
         //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
+        q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
 
 
         // conigurando q1 (barra)
@@ -78,11 +81,11 @@ public class Cena implements GLEventListener {
         else {
             switch (pontos){
                 case 0: // fase 1
-                    teste(drawable);
+                    fase1(drawable);
                     break;
 
                 case 200: // fase 2
-                    teste(drawable);
+                    fase2(drawable);
                     break;
 
                 default:
@@ -133,8 +136,8 @@ public class Cena implements GLEventListener {
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
-        desenhaTexto(gl, -5,80, "PAUSADO",24);
-        desenhaTexto(gl, -20,60, "pressione X para continuar",18);
+        desenhaTexto(gl, -5,80, "BEM-VINDO!",24);
+        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
 
         desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
         desenhaTexto(gl, -10,40, "Pontos: (TBA)",18);
@@ -144,7 +147,7 @@ public class Cena implements GLEventListener {
     }
 
 
-    public void teste(GLAutoDrawable drawable){
+    public void fase1(GLAutoDrawable drawable){
         gl = drawable.getGL().getGL2();
 
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
@@ -204,6 +207,66 @@ public class Cena implements GLEventListener {
         gl.glFlush();
     }
 
+    public void fase2(GLAutoDrawable drawable){
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        q1.desenhar(gl);
+        q2.desenhar(gl);
+        q3.desenhar(gl);
+        q6.desenhar(gl);
+
+        // movimentar tudo q precisa
+
+        if (!pausado){// TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
+
+            // movimentação q2
+            colisaoQ2bordas(); // detectando colisões
+            colisaoQ2barra();
+            if (q2.isMovendo()) q2.mover(); // chamando o método de movimento
+
+            gl.glColor4f(1.0f, 1.0f, 1.0f, q2.getAlfa());
+            desenhaTexto(gl, (int) (q2.getIntervaloEsquerda()[0][0]),
+                    (int) q2.getIntervaloCima()[1][1] + 10,
+                    "alfa q2: " + q2.getAlfa());
+
+            // movimentação q1
+            if (q1.isMovendo()) {
+                switch (q1.getDirecao()) {
+                    case DIREITA:
+                        q1.setVelx(+1);
+                        break;
+
+                    case ESQUERDA:
+                        q1.setVelx(-1);
+                        break;
+
+                    case CIMA:
+                        q1.setVely(+1);
+                        break;
+
+                    case BAIXO:
+                        q1.setVely(-1);
+                        break;
+
+                    default:
+                        q1.setVelx(0);
+                        q1.setVely(0);
+                        break;
+                }
+                colisaoQ1bordas();
+                q1.mover();
+            }
+        }
+
+        gl.glFlush();
+    }
 
     // métodos
     public void desenhaTexto(GL2 gl, int x, int y, String frase) {
