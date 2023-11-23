@@ -94,6 +94,9 @@ public class Keyboard implements KeyListener {
         if(e.getKeyChar() == 'x'){ // aumenta a transparência
             cena.pausado = !cena.pausado;
         }
+        if(e.getKeyChar() == 'p'){ // aumenta a transparência
+            cena.pontos += 1;
+        }
 
     }
 
