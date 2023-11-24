@@ -9,25 +9,25 @@ import Textura.Textura;
 public class QuadradoSprite {
 
     // atributos
-    private float posx, posy, posz; // atr de posicionamento
-    private float velx=0, vely=0, velz=0; // atr de movimentação
-    private boolean movendo = false;
-    private Direcao direcao;
-    private float[] tamanho = new float[2]; // tamanho x,y
-    private float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda, intervaloTotal;
-    private float[] corRGB = new float[3]; // cores r,g,b
-    private float alfa=1;
-    private String imageSrc; // url ou path da imagem
-    private float imageIndice;
-    private boolean animado = false;
-    private boolean invisivel = false;
-    private Textura textura;
-    private int totalSprites;
-    private int filtro, wrap, modo;
-    private float limite;
-    private float[] texturaOfset = {0,0};
-    private float[] escala = {0,0};
-    float contadorImg = 0f;
+    protected float posx=0, posy=0, posz=0; // atr de posicionamento
+    protected float velx=0, vely=0, velz=0; // atr de movimentação
+    protected boolean movendo = false;
+    protected Direcao direcao;
+    protected float[] tamanho = new float[2]; // tamanho x,y
+    protected float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda, intervaloTotal;
+    protected float[] corRGB = new float[3]; // cores r,g,b
+    protected float alfa=1;
+    protected String imageSrc; // url ou path da imagem
+    protected float imageIndice;
+    protected boolean animado = false;
+    protected boolean invisivel = false;
+    protected Textura textura;
+    protected int totalSprites;
+    protected int filtro, wrap, modo;
+    protected float limite;
+    protected float[] texturaOfset = {0,0};
+    protected float[] escala = {0,0};
+    protected float contadorImg = 0f;
 
 
     // getters e setters
@@ -203,7 +203,7 @@ public class QuadradoSprite {
         atualizarIntervalos();
     }
 
-    private void atualizarSprite(){
+    protected void atualizarSprite(){
         if (animado){
 
             contadorImg = (contadorImg >= totalSprites) ? 0 : (contadorImg + 0.15f);
@@ -214,7 +214,7 @@ public class QuadradoSprite {
         }
     }
 
-    private void atualizarIntervalos(){
+    protected void atualizarIntervalos(){
         // TODO checar desempenho de re-declarar vs modificar posições do array de intervalo
         intervaloEsquerda = new float[][]{
                 {-(tamanho[0]) + posx, -(tamanho[0]) + posx}, //(-5+movimentação, -5+movimentação) em X (não muda)
@@ -252,8 +252,8 @@ public class QuadradoSprite {
 
     public boolean isColiding(float[] intervaloX, float[] intervaloY){
 
-        float[] intervaloQx = {(-tamanho[0])+posx, (tamanho[0])+posx};
-        float[] intervaloQy = {(-tamanho[1])+posy, (tamanho[1])+posy};
+        float[] intervaloQx = {intervaloTotal[0][0], intervaloTotal[0][1]};
+        float[] intervaloQy = {intervaloTotal[1][0], intervaloTotal[1][1]};
         //System.out.println("intervalo Xquadrado: "+intervaloQx[0]+"|"+intervaloQx[1]);
         //System.out.println("intervalo Yquadrado: "+intervaloQy[0]+"|"+intervaloQy[1]);
 

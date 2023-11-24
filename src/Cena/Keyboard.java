@@ -37,6 +37,9 @@ public class Keyboard implements KeyListener {
             };
             cena.q2.setEscala(novoTamanho);
         }
+        if(e.getKeyChar() == '5'){ // alterna a movimentação da bola palos
+            cena.b1.setMovendo(!cena.b1.isMovendo());
+        }
 
         // movimenta a textura
         if(e.getKeyCode() == 149){ // seta esquerda
