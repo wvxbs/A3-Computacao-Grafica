@@ -1,5 +1,6 @@
 package Cena;
 
+import ClassesJogo.*;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
@@ -14,13 +15,14 @@ public class Cena implements GLEventListener {
     private GLUT glut;
 
     //atributos de jogo
-    boolean pausado = false;
-    private boolean passou=false;
     private int pontos=0;
-    private QuadradoSprite bolinha, barra, moeda;
+    //private QuadradoSprite bolinha, barra, moeda;
     // atributos dos quads
     public QuadradoSprite q1, q2, q3, q4;
     public BolinhaSprite b1;
+    public Jogador jogador;
+    public Bolinha bolinha;
+    public Moeda[] moedas;
 
     // atributos textura
     public float limite;
@@ -74,14 +76,17 @@ public class Cena implements GLEventListener {
         // criando círculos
         float[] tamb1 = {3f,3f};
         b1 = new BolinhaSprite(1,filtro,wrap,modo, (float)(2*Math.PI),tamb1,tamb1[0],corq1,FACE5,false);
-        b1.setPosy(0.1f);
-        b1.setVelx(1);
-        b1.setVely(1);
+        b1.setVelx(2);
+        b1.setVely(2);
+
+        // classes de controle
+        jogador = new Jogador("Bruno","12345",5,0,1,q1,FACE1);
+        bolinha = new Bolinha(b1,FACE5);
     }
 
     @Override
     public void display(GLAutoDrawable drawable) {
-        if (pausado){pause(drawable);}
+        if (jogador.isPausado()){pause(drawable);}
         else {teste(drawable);}
 
     }
@@ -136,7 +141,6 @@ public class Cena implements GLEventListener {
         gl.glFlush();
     }
 
-
     public void teste(GLAutoDrawable drawable){
         gl = drawable.getGL().getGL2();
 
@@ -147,50 +151,50 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        q1.desenhar(gl);
-        q2.desenhar(gl);
+        jogador.getObjSprite().desenhar(gl);
+        bolinha.getObjSprite().desenhar(gl);
         q3.desenhar(gl);
 
         // movimentar tudo q precisa
 
-        if (!pausado){// TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
+        if (!jogador.isPausado()){// TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
 
             // movimentação q2
-            colisaoBolinhaBordas(q2); // detectando colisões
-            colisaoBolinhaBarra(q2,q1);
-            if (q2.isMovendo()) q2.mover(); // chamando o método de movimento
+            colisaoBolinhaBordas(bolinha.getObjSprite()); // detectando colisões
+            colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
+            if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
 
-            gl.glColor4f(1.0f, 1.0f, 1.0f, q2.getAlfa());
-            desenhaTexto(gl, (int) (q2.getIntervaloEsquerda()[0][0]),
-                    (int) q2.getIntervaloCima()[1][1] + 10,
-                    "alfa q2: " + q2.getAlfa());
+            gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
+            desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
+                    (int) bolinha.getObjSprite().getIntervaloCima()[1][1] + 10,
+                    "alfa q2: " + bolinha.getObjSprite().getAlfa());
 
             // movimentação q1
-            if (q1.isMovendo()) {
-                switch (q1.getDirecao()) {
+            if (jogador.getObjSprite().isMovendo()) {
+                switch (jogador.getObjSprite().getDirecao()) {
                     case DIREITA:
-                        q1.setVelx(+1);
+                        jogador.getObjSprite().setVelx(+1);
                         break;
 
                     case ESQUERDA:
-                        q1.setVelx(-1);
+                        jogador.getObjSprite().setVelx(-1);
                         break;
 
                     case CIMA:
-                        q1.setVely(+1);
+                        jogador.getObjSprite().setVely(+1);
                         break;
 
                     case BAIXO:
-                        q1.setVely(-1);
+                        jogador.getObjSprite().setVely(-1);
                         break;
 
                     default:
-                        q1.setVelx(0);
-                        q1.setVely(0);
+                        jogador.getObjSprite().setVelx(0);
+                        jogador.getObjSprite().setVely(0);
                         break;
                 }
-                colisaoBarraBordas(q1);
-                q1.mover();
+                colisaoBarraBordas(jogador.getObjSprite());
+                jogador.getObjSprite().mover();
             }
         }
 
@@ -212,7 +216,7 @@ public class Cena implements GLEventListener {
 
         b1.desenhar(gl);
 
-        if (!pausado){
+        if (!jogador.isPausado()){
             // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
             // movimentação q2
 
@@ -265,8 +269,6 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
     }
-
-
 
     // métodos
     public void desenhaTexto(GL2 gl, int x, int y, String frase) {

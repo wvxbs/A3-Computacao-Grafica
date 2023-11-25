@@ -82,6 +82,7 @@ public class Jogador {
         this.fase = fase;
         this.objSprite = objSprite;
         this.skin = skin;
+        this.objSprite.setImageSrc(skin);
     }
 
 
@@ -133,6 +134,9 @@ public class Jogador {
         } else{pontos += qntPontos;}
     }
 
-
+    public void trocarSkin(String novaSkin){
+        skin = novaSkin;
+        objSprite.setImageSrc(skin);
+    }
 
 }
