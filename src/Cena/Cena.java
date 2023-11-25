@@ -18,7 +18,7 @@ public class Cena implements GLEventListener {
     private boolean passou=false;
     public int pontos=0;
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4, q5, q6;
+    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1;
 
     // atributos textura
     public float limite;
@@ -31,6 +31,7 @@ public class Cena implements GLEventListener {
     public static final String FACE4 = "imagens/ferreira1-1.png";
     public static final String FACE5 = "imagens/ben_andando.png";
     public static final String FACE6 = "imagens/palosInterrogacao1-1.png";
+    public static final String FACEBTN1 = "imagens/rosa-claro.jpg";
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -49,6 +50,7 @@ public class Cena implements GLEventListener {
         float[] tamq3 = {200,200}; // tamanho do background
         float[] tamq4 = {50,50}; // tamanho do quadrado 2
         float[] tamq6 = {20,20};
+        float[] tambtn1 = {30,10};
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
@@ -58,6 +60,8 @@ public class Cena implements GLEventListener {
         q4 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE4,false);
         //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
+
+        btn1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
 
 
         // conigurando q1 (barra)
@@ -73,6 +77,9 @@ public class Cena implements GLEventListener {
 
         // configurando q4 ()
         q4.setPosz(-0.1f);
+
+        btn1.setPosx(0);
+        btn1.setPosy(10);
     }
 
     @Override
@@ -129,13 +136,14 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         q4.desenhar(gl);
+        btn1.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "BEM-VINDO!",24);
-        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
+        //desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
 
-        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
+        //desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
         desenhaTexto(gl, -10,40, "Pontos: (TBA)",18);
 
 
