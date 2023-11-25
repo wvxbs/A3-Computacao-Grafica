@@ -6,16 +6,13 @@ public class BolinhaSprite extends QuadradoSprite{
 
     protected float raio;
 
+    //construtor
     public BolinhaSprite(int totalSprites, int filtro, int wrap, int modo,
       float limite, float[] tamanho, float raio, float[] corRGB, String imageSrc, boolean animado) {
 
         super(totalSprites, filtro, wrap, modo, limite, tamanho, corRGB, imageSrc, animado);
         this.raio = raio;
     }
-
-    //construtor
-
-
 
     // métodos
     @Override

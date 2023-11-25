@@ -82,7 +82,7 @@ public class Cena implements GLEventListener {
     @Override
     public void display(GLAutoDrawable drawable) {
         if (pausado){pause(drawable);}
-        else {teste2(drawable);}
+        else {teste(drawable);}
 
     }
     // "telas"
@@ -212,8 +212,8 @@ public class Cena implements GLEventListener {
 
         b1.desenhar(gl);
 
-        if (!pausado){// TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
-
+        if (!pausado){
+            // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
             // movimentação q2
 
             colisaoBolinhaBordas(b1); // detectando colisões
