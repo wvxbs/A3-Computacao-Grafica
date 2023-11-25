@@ -18,7 +18,7 @@ public class Cena implements GLEventListener {
     private boolean passou=false;
     public int pontos=0;
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1, btn2;
+    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1, btn2, cor;
 
     // atributos textura
     public float limite;
@@ -32,6 +32,7 @@ public class Cena implements GLEventListener {
     public static final String FACE5 = "imagens/ben_andando.png";
     public static final String FACE6 = "imagens/palosInterrogacao1-1.png";
     public static final String FACEBTN1 = "imagens/rosa-claro.jpg";
+    public static final String FACECOR = "imagens/coracao.png";
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -63,6 +64,7 @@ public class Cena implements GLEventListener {
 
         btn1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
         btn2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
+        cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACECOR,false);
 
         // conigurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
@@ -85,6 +87,9 @@ public class Cena implements GLEventListener {
         btn2.setPosx(0);
         btn2.setPosy(-20);
         btn2.setPosz(-0.05f);
+
+        cor.setPosx(80);
+        cor.setPosy(-80);
     }
 
     @Override
@@ -145,6 +150,7 @@ public class Cena implements GLEventListener {
         q4.desenhar(gl);
         btn1.desenhar(gl);
         btn2.desenhar(gl);
+        cor.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
