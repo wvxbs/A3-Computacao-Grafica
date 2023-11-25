@@ -23,6 +23,10 @@ public class Cena implements GLEventListener {
     public Jogador jogador;
     public Bolinha bolinha;
     public Moeda[] moedas;
+    public boolean mouseHabilitado = false;
+    public float mouseX=0;
+    public float mouseY=0;
+    public float nPosX=0, nPosX2=0;
 
     // atributos textura
     public float limite;
@@ -157,8 +161,8 @@ public class Cena implements GLEventListener {
 
         // movimentar tudo q precisa
 
-        if (!jogador.isPausado()){// TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
-
+        if (!jogador.isPausado()){
+            // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
             // movimentação q2
             colisaoBolinhaBordas(bolinha.getObjSprite()); // detectando colisões
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
@@ -194,14 +198,34 @@ public class Cena implements GLEventListener {
                         break;
                 }
                 colisaoBarraBordas(jogador.getObjSprite());
-                jogador.getObjSprite().mover();
+
+                if (mouseHabilitado){
+                    float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
+                            (jogador.getObjSprite().getTamanho()[0]/2)-1;
+                    float intervDx2 = jogador.getObjSprite().getIntervaloDireita()[0][1]-
+                            (jogador.getObjSprite().getTamanho()[0]/2)+1;
+                    if (!(mouseX > intervDx1 && mouseX < intervDx2))
+                    {jogador.getObjSprite().mover();}
+                    else {jogador.getObjSprite().setMovendo(false);}
+                }
+                else {
+//                    if (!(nPosX > jogador.getObjSprite().getIntervaloEsquerda()[0][0] &&
+//                            nPosX2 < jogador.getObjSprite().getIntervaloDireita()[0][1] ))
+//                    {jogador.getObjSprite().mover();}
+//                    else {jogador.getObjSprite().setMovendo(false);}
+                    jogador.getObjSprite().mover();
+                }
             }
         }
 
+        // textos de debug
+        gl.glColor3f(1,1,1);
+        desenhaTexto(gl,(int)mouseX,(int)(mouseY+5),"mouse X: "+mouseX,18);
+        desenhaTexto(gl,(int)mouseX,(int)(mouseY),"mouse Y: "+mouseY,18);
         gl.glFlush();
     }
 
-    public void teste2(GLAutoDrawable drawable){ // TODO fazer pause bunitin
+    public void teste2(GLAutoDrawable drawable) { // TODO fazer pause bunitin
         gl = drawable.getGL().getGL2();
 
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
@@ -216,12 +240,12 @@ public class Cena implements GLEventListener {
 
         b1.desenhar(gl);
 
-        if (!jogador.isPausado()){
+        if (!jogador.isPausado()) {
             // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
             // movimentação q2
 
             colisaoBolinhaBordas(b1); // detectando colisões
-            colisaoBolinhaBarra(b1,q1);
+            colisaoBolinhaBarra(b1, q1);
             if (b1.isMovendo()) b1.mover(); // chamando o método de movimento
 
             gl.glColor4f(1.0f, 1.0f, 1.0f, b1.getAlfa());
@@ -258,7 +282,6 @@ public class Cena implements GLEventListener {
 
         }
 
-
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         //desenhaTexto(gl, -5,80, "PAUSADO",24);
@@ -269,7 +292,6 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
     }
-
     // métodos
     public void desenhaTexto(GL2 gl, int x, int y, String frase) {
         glut = new GLUT(); //objeto da biblioteca glut

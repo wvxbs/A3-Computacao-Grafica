@@ -26,10 +26,12 @@ public class Renderer {
 
         Cena cena = new Cena();
         Keyboard keyboard = new Keyboard(cena); //<------------------------------
+        Mouse mouse = new Mouse(cena);
 
 
         window.addGLEventListener(cena); //adiciona a Cena a Janela
         window.addKeyListener(keyboard); //Habilita o teclado : cena <------------------------------
+        window.addMouseListener(mouse); // Habilita o mouse B^)
 
         //window.requestFocus();
         FPSAnimator animator = new FPSAnimator(window, 60);

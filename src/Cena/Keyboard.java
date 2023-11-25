@@ -37,6 +37,9 @@ public class Keyboard implements KeyListener {
             };
             cena.bolinha.getObjSprite().setEscala(novoTamanho);
         }
+        if(e.getKeyChar() == '5'){ // alterna a utilização do mouse
+            cena.mouseHabilitado = !cena.mouseHabilitado;
+        }
 
         // movimenta a textura
         if(e.getKeyCode() == 149){ // seta esquerda
@@ -74,16 +77,21 @@ public class Keyboard implements KeyListener {
 
         // TODO |MELHORAR MOVIMENTAÇÃO DA BARRA (TA TRAVANDO DPOIS DE ANDAR UM POUCO)
         // TODO |possível motivo: o código não é chamado todo frame, ele fica esperando um input do jogador
+        if (!cena.mouseHabilitado) {
+            if (e.getKeyChar() == 'a') { // mexe a barra pra esquerda
+                cena.jogador.getObjSprite().setMovendo(true);
+                cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
 
-        if(e.getKeyChar() == 'a'){ // mexe a barra pra esquerda
-            cena.jogador.getObjSprite().setMovendo(true);
-            cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
-
-        } else if(e.getKeyChar() == 'd'){ // mexe a barra pra direita
-            cena.jogador.getObjSprite().setMovendo(true);
-            cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
-        } //else {cena.q1.setVelx(0);}
-
+            } else if (e.getKeyChar() == 'd') { // mexe a barra pra direita
+                cena.jogador.getObjSprite().setMovendo(true);
+                cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
+            }
+//            cena.nPosX = (cena.jogador.getObjSprite().getIntervaloEsquerda()[0][0])
+//                    +cena.jogador.getObjSprite().getVelx();
+//
+//            cena.nPosX2 = (cena.jogador.getObjSprite().getIntervaloDireita()[0][1])
+//                    +cena.jogador.getObjSprite().getVelx();
+        }
         if(e.getKeyChar() == 'c'){ // diminui a transparência
             cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()-1);
         } // mexe a barra pra direita
@@ -99,9 +107,8 @@ public class Keyboard implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
-        if(e.getKeyChar() == 'a' || e.getKeyChar() == 'd') cena.jogador.getObjSprite().setMovendo(false);
-
-        //if(e.getKeyChar() == 'd') cena.q1.setMovendo(false);
+        if(!cena.mouseHabilitado) {
+            if (e.getKeyChar() == 'a' || e.getKeyChar() == 'd') cena.jogador.getObjSprite().setMovendo(false);
+        }
     }
 }
