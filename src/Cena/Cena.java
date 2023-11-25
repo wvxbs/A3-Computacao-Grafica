@@ -18,7 +18,7 @@ public class Cena implements GLEventListener {
     private boolean passou=false;
     public int pontos=0;
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1;
+    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1, btn2;
 
     // atributos textura
     public float limite;
@@ -62,7 +62,7 @@ public class Cena implements GLEventListener {
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
 
         btn1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
-
+        btn2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
 
         // conigurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
@@ -80,6 +80,11 @@ public class Cena implements GLEventListener {
 
         btn1.setPosx(0);
         btn1.setPosy(10);
+        btn1.setPosz(-0.05f);
+
+        btn2.setPosx(0);
+        btn2.setPosy(-20);
+        btn2.setPosz(-0.05f);
     }
 
     @Override
@@ -112,14 +117,16 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         q4.desenhar(gl);
+        btn1.desenhar(gl);
+        btn2.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "PAUSADO",24);
-        desenhaTexto(gl, -20,60, "pressione X para continuar",18);
-
+        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
+        desenhaTexto(gl, -20,0, "Pressione ??? para voltar ao menu",18);
         desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
-        desenhaTexto(gl, -10,40, "Pontos: (TBA)",18);
+        desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
 
         gl.glFlush();
@@ -137,14 +144,14 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         q4.desenhar(gl);
         btn1.desenhar(gl);
+        btn2.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "BEM-VINDO!",24);
-        //desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
-
-        //desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
-        desenhaTexto(gl, -10,40, "Pontos: (TBA)",18);
+        desenhaTexto(gl, -15,10, "Pressione P para iniciar o jogo",18); //sincronizar o texto com os botões
+        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18); //sincronizar o texto com os botões
+        desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
 
         gl.glFlush();
