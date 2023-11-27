@@ -71,8 +71,8 @@ public class Cena implements GLEventListener {
         //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
 
-        btn1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
-        btn2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
+        btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
+        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
         cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACECOR,false);
 
         // conigurando q1 (barra)
