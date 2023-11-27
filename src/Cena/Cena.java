@@ -66,13 +66,13 @@ public class Cena implements GLEventListener {
 
         q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE1,false);
         q2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq2,corq1,FACE2,false);
-        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false);
+        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false); // background
         q4 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE4,false);
         //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
 
-        btn1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
-        btn2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
+        btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
+        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
         cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACECOR,false);
 
         // conigurando q1 (barra)
@@ -204,6 +204,7 @@ public class Cena implements GLEventListener {
 
         if (!jogador.isPausado()){
             // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
+
             // movimentação q2
             colisaoBolinhaBordas(bolinha.getObjSprite()); // detectando colisões
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
@@ -243,17 +244,15 @@ public class Cena implements GLEventListener {
                 if (mouseHabilitado){
                     float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
                             (jogador.getObjSprite().getTamanho()[0]/2)-1;
+
                     float intervDx2 = jogador.getObjSprite().getIntervaloDireita()[0][1]-
                             (jogador.getObjSprite().getTamanho()[0]/2)+1;
+
                     if (!(mouseX > intervDx1 && mouseX < intervDx2))
                     {jogador.getObjSprite().mover();}
                     else {jogador.getObjSprite().setMovendo(false);}
                 }
                 else {
-//                    if (!(nPosX > jogador.getObjSprite().getIntervaloEsquerda()[0][0] &&
-//                            nPosX2 < jogador.getObjSprite().getIntervaloDireita()[0][1] ))
-//                    {jogador.getObjSprite().mover();}
-//                    else {jogador.getObjSprite().setMovendo(false);}
                     jogador.getObjSprite().mover();
                 }
             }
@@ -342,7 +341,7 @@ public class Cena implements GLEventListener {
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
         q3.desenhar(gl);
-        q6.desenhar(gl);
+        //q6.desenhar(gl); // obstáculo
 
         //isso funciona para aumentar a velocidade da bola?
         //q2.setVelx(2);
@@ -355,7 +354,7 @@ public class Cena implements GLEventListener {
             // movimentação q2
             colisaoBolinhaBordas(bolinha.getObjSprite() ); // detectando colisões
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
-            colisaoBolinhaQ6(bolinha.getObjSprite());
+            //colisaoBolinhaQ6(bolinha.getObjSprite());
             if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
 
             gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
