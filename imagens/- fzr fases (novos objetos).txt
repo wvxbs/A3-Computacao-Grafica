@@ -14,7 +14,7 @@ esc de sair
 
 
 - corrigir colisoes (overlap)
--> bruno
+    -> bruno
 
 - adicionar efeitos sonoros
 	-> Ferreira
@@ -27,6 +27,9 @@ esc de sair
 
 - arrumar proporção
     -> Pedro do nascimento
+
+- criar botaoSprite
+    -> com animação para idle, selecionado, clicado
 
 -> Temática
     -> undertale ++
@@ -48,6 +51,7 @@ esc de sair
 1x tela de perdeu!
 1x tela de passou!
 1x tela de menu
+?x botoes (com texto incluso)
 1x tela de fases
 1x tela de pause (opcional)
 1x jumpscare SpringPalos

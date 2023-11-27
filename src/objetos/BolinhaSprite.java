@@ -74,7 +74,7 @@ public class BolinhaSprite extends QuadradoSprite{
         // TODO arrumar o mapeamento de textura pra ficar bunitin
         for(float i=0 ; i < limite; i+= 0.1f) {
             gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(i)+posx),(float)((tamanho[1]+ raio)*Math.sin(i)+posy),posz);
-            //gl.glTexCoord2f((0.0f*i)+texturaOfset[0], (limite*i)+texturaOfset[1]);
+            gl.glTexCoord2f((float) ((0.0f*Math.cos(i))+texturaOfset[0]), (float) ((limite*Math.sin(i))+texturaOfset[1]));
 //            switch ((int) i){
 //                case 1:
 //                    gl.glTexCoord2f(0.0f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);

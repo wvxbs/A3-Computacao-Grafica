@@ -7,8 +7,7 @@
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imagens/- fzr fases (novos objetos).txt" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/- fzr fases (novos objetos).txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cena/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
