@@ -1,7 +1,6 @@
 - fzr fases (novos objetos)
 	-> ticia
 
-
 nomec do jogo
 s de começar
 x de pause
@@ -9,16 +8,15 @@ esc de sair
 (futuramente) leaderboard
 
 - fzr classes de jogo (personagem, ponto)
+- background
+- obstáculos
+- gerenciador de colisões
 
 
 - corrigir colisoes (overlap)
-
+    -> bruno
 
 - adicionar efeitos sonoros
-	-> Ferreira
-
-
-- corrigir a movimentação (trocar pelo mouse)
 	-> Ferreira
 
 - setar save jogo (.txt) low priority
@@ -26,3 +24,81 @@ esc de sair
 
 - arrumar texturas com alfa
 	-> Bruno
+
+- arrumar proporção
+    -> Pedro do nascimento
+
+- criar botaoSprite
+    -> com animação para idle, selecionado, clicado
+
+-> Temática
+    -> undertale ++
+    -> Doom
+    -> zelda
+    -> fnaf ++
+    -> hollow night
+    -> Stardew valley
+    -> tenis
+    -> plants vs Zombies
+    -> ben 10
+
+-> Lista de Objetos
+3x barras
+3x bolinhas
+3x backgrounds
+5x obstáculos
+1x tela de Ganhou!
+1x tela de perdeu!
+1x tela de passou!
+1x tela de menu
+?x botoes (com texto incluso)
+1x tela de fases
+1x tela de pause (opcional)
+1x jumpscare SpringPalos
+
+regras do jogo
+-> teclas
+
+-> Regras do menu
+
+
+-> regras para a fase 1
+    - cada batida na barra ganha 20
+    - começa com 5 corações
+    - cada bola perdida perde 1 coração e 50 pontos
+    - se perder so 5 corações ele perde o jogo e volta pro menu
+    - se ele voltar pro menu sem ter perdido ele não leva os pontos com ele
+    - se ele chegar em 200 pontos ele recebe a tela de ganhou e tem a opção de continuar ou voltar ao menu
+    - a velocidade da barra é 1
+    - a velocidade da bolinha é 1.5
+
+-> regras pra fase 2
+    - cada batida na barra ganha 10
+    - começar com 3 corações
+    - cada bola perdida perde 1 coração e 75 pontos
+    - se perder so 5 corações ele perde o jogo e volta pro menu
+    - se ele voltar pro menu sem ter perdido ele não leva os pontos com ele
+    - se ele chegar em 200 pontos ele recebe a tela de ganhou e tem a opção de continuar ou voltar ao menu
+    - a velocidade da barra é 1
+    - a velocidade da bolinha é 2.5
+    - vai ter um obstáculo no meio da tela
+
+    -> regras pra fase 3
+        - cada batida na barra ganha 5
+        - começar com 1 coração
+        - caso ele perca a bola ele perde tudo
+        - se perder o coração ele perde o jogo e volta pro menu
+        - se ele voltar pro menu sem ter perdido ele não leva os pontos com ele
+        - se ele chegar em 50 pontos ele recebe a tela de ganhou e tem o vislumbre de um futuro utópico onde ele abraça
+         o bolsonaro e purple guy no trio elétrico invadindo o congresso de brasília, no natal.
+        - a velocidade da barra é 1
+        - a velocidade da bolinha varia a velocidade de 1 a 3
+        - bolinha pisca com o tempo
+        - vai ter 4 cabeças flutuando pela tela, cada uma de um personagem do fnaf
+        - caso ele acerte uma cabeça, terá uma chance de 50% de ter um jumpscare da respectiva cabeça
+        - a tela vai trocar de cor igual uma boate
+        - vai tocar a musica de fnaf de fundo
+
+
+-> ideias
+
