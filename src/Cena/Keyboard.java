@@ -102,9 +102,16 @@ public class Keyboard implements KeyListener {
         if(e.getKeyChar() == 'x'){ // aumenta a transparência
             cena.jogador.setPausado(!cena.jogador.isPausado());
         }
-        if(e.getKeyChar() == 'p'){ // aumenta a transparência
-            cena.pontos += 1;
+        if(e.getKeyChar() == 'p'){ // inicia o jogo
+            cena.jogador.setFase(1);
+            cena.iter_telas = cena.jogador.getFase();
         }
+        if(e.getKeyChar() == 's'){ // aumenta a transparência
+            cena.jogador.setFase(cena.jogador.getFase()+1);
+            cena.iter_telas = cena.jogador.getFase();
+        }
+
+
 
     }
 

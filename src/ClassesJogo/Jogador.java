@@ -16,6 +16,7 @@ public class Jogador {
 
     // vars de controle
     protected boolean jogando=false, pausado=false, morto=false, cursed=false, ganhou=false;
+    protected boolean ganhouFase1=false, ganhouFase2=false,ganhouFase3=false;
     Direcao direcaoAtual;
 
     // getters e setters

@@ -11,24 +11,24 @@ import objetos.*;
 public class Cena implements GLEventListener {
 
     // atributos gerais
-    private float xMin, xMax, yMin, yMax, zMin, zMax;
     private GL2 gl;
     private GLU glu;
     private GLUT glut;
 
     //atributos de jogo
     public int pontos=0;
-    //private QuadradoSprite bolinha, barra, moeda;
+    public int iter_telas = 0;
+
     // atributos dos quads
-    public QuadradoSprite q1, q2, q3, q4, q5, q6, btn1, btn2, cor;
+    public QuadradoSprite q1, q3, q6, btn1, btn2, cor;
     public BolinhaSprite b1;
     public Jogador jogador;
     public Bolinha bolinha;
-    //public Moeda[] moedas;
+    public Background background;
+    public Obstaculo obstaculo;
     public boolean mouseHabilitado = false;
     public float mouseX=0;
     public float mouseY=0;
-    //public float nPosX=0, nPosX2=0;
 
     // atributos textura
     public float limite;
@@ -60,58 +60,57 @@ public class Cena implements GLEventListener {
         // criação de objetos que entrarão em cena
 
         float[] tamq1 = {30,5}; // tamanho da barra
-        float[] tamq2 = {10,10}; // tamanho da bola
+        float[] tamb1 = {3f,3f}; // tamanho do raio da bolinha
         float[] tamq3 = {200,200}; // tamanho do background
         float[] tamq4 = {50,50}; // tamanho do quadrado 2
-        float[] tamq6 = {20,20};
-        float[] tambtn1 = {30,10};
+        float[] tamq6 = {20,20}; // tamanho do obstáculo da fase 2
+        float[] tambtn1 = {30,10}; // tamanho do botão 1
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
-        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE1,false);
-        q2 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq2,corq1,FACE2,false);
+        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE1,false); // barra
+        b1 = new BolinhaSprite(1,filtro,wrap,modo, limite,tamb1,tamb1[0],corq1,FACE5,false); // bolinha
         q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false); // background
-        q4 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE4,false);
-        //q5 = new QuadradoSprite(4,filtro,wrap,modo,limite,tamq4,corq1,FACE5,true);
-        q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false);
+        q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false); // obstáculo
 
         btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
         btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
         cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACECOR,false);
 
-        // conigurando q1 (barra)
+        // configurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
         q1.setPosy(-60);
 
-        // conigurando q2 (bola palos)
-        q2.setVelx(1);
-        q2.setVely(1);
+        // configurando q2 (bola palos)
 
-        // conigurando q3 (background)
+        // configurando q3 (background)
         q3.setPosz(-0.1f);
 
-        // configurando q4 ()
-        q4.setPosz(-0.1f);
+        // configurando q6 (obstáculo)
+        q6.setPosx(0);
+        q6.setPosy(20);
 
-
-        // criando círculos
-        float[] tamb1 = {3f,3f};
-        b1 = new BolinhaSprite(1,filtro,wrap,modo, (float)(2*Math.PI),tamb1,tamb1[0],corq1,FACE5,false);
+        // configurando b1 (bolinha)
         b1.setVelx(2);
         b1.setVely(2);
 
         // classes de controle
         jogador = new Jogador("Bruno","12345",5,0,1,q1,FACE1);
         bolinha = new Bolinha(b1,FACE5);
+        background = new Background(q3,FACE3);
+        obstaculo = new Obstaculo(q6,FACE1);
 
+        // configurando btn 1
         btn1.setPosx(0);
         btn1.setPosy(10);
         btn1.setPosz(-0.05f);
 
+        // configurando btn 2
         btn2.setPosx(0);
         btn2.setPosy(-20);
         btn2.setPosz(-0.05f);
 
+        // configurando btn cor?
         cor.setPosx(80);
         cor.setPosy(-80);
 
@@ -121,21 +120,39 @@ public class Cena implements GLEventListener {
     @Override
     public void display(GLAutoDrawable drawable) {
 
-        if (jogador.isPausado()){pause(drawable);}
-        else {
-
-            if(pontos>0 && pontos<200){
-                fase1(drawable);
-            } else if (pontos>200) {
-                fase2(drawable);
-            } else{
+        // 0-menu, 1-fase1, 2-fase2, 3-fase3, 4-pause, 5-Ganhou, 6-Perdeu
+        switch (iter_telas){
+            case 0: // menu
                 menu(drawable);
-            }
+                break;
+            case 1: // fase 1
+                fase1(drawable);
+                break;
+            case 2: // fase 2
+                fase2(drawable);
+                break;
+            case 3: // fase 3
+                fase3(drawable);
+                break;
+            case 4: // pause
+                pause(drawable);
+                break;
+            case 5: // ganhou
+                ganhou(drawable);
+                break;
+            case 6: // perdeu
+                perdeu(drawable);
+                break;
+            case 7: // passou
+                passou(drawable);
+                break;
+
+            default:
+                break;
         }
 
 
     }
-    // "telas"
 
     public void pause(GLAutoDrawable drawable){ // TODO fazer pause bunitin
         gl = drawable.getGL().getGL2();
@@ -147,11 +164,15 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        q4.desenhar(gl);
+
+        // background
+        background.getObjSprite().desenhar(gl);
+
+        // botões
         btn1.desenhar(gl);
         btn2.desenhar(gl);
 
-        // texto do menu
+        // textos do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "PAUSADO",24);
         desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
@@ -163,7 +184,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
     }
 
-    public void menu(GLAutoDrawable drawable){ // TODO fazer pause bunitin
+    public void menu(GLAutoDrawable drawable){ // TODO fazer mouse bunitin
         gl = drawable.getGL().getGL2();
 
 
@@ -174,7 +195,7 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        q4.desenhar(gl);
+        background.getObjSprite().desenhar(gl);
         btn1.desenhar(gl);
         btn2.desenhar(gl);
         cor.desenhar(gl);
@@ -190,6 +211,82 @@ public class Cena implements GLEventListener {
         gl.glFlush();
     }
 
+    public void ganhou(GLAutoDrawable drawable){ // TODO ganhou todo bunitin
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        background.getObjSprite().desenhar(gl);
+        btn1.desenhar(gl);
+        btn2.desenhar(gl);
+
+        // texto do menu
+        gl.glColor3f(1f, 1f, 1f);
+        desenhaTexto(gl, -5,80, "PAUSADO",24);
+        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
+        desenhaTexto(gl, -20,0, "Pressione ??? para voltar ao menu",18);
+        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
+        desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
+
+
+        gl.glFlush();
+    }
+
+    public void perdeu(GLAutoDrawable drawable){ // TODO perdeu pause bunitin
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        background.getObjSprite().desenhar(gl);
+        btn1.desenhar(gl);
+        btn2.desenhar(gl);
+
+        // texto do menu
+        gl.glColor3f(0f, 1f, 0f);
+        desenhaTexto(gl, -5,70, "VOCE PERDEU KKKK",24);
+        desenhaTexto(gl, -20,60, "Pressione ??? para voltar ao menu",18);
+        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
+        desenhaTexto(gl, -10,40, "Pontos Finais: " + pontos,18);
+
+
+        gl.glFlush();
+    }
+
+    public void passou(GLAutoDrawable drawable){ // TODO fazer passou bunitin
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        background.getObjSprite().desenhar(gl);
+        btn1.desenhar(gl);
+        btn2.desenhar(gl);
+
+        // texto do menu
+        gl.glColor3f(1f, 1f, 1f);
+        desenhaTexto(gl, -5,80, "VOCÊ PASSOU A FASE "+jogador.getFase(),24);
+        desenhaTexto(gl, -20,60, "(S) CONTINUAR?",18);
+        desenhaTexto(gl, -20,0, "(N) VOLTAR AO MENU",18);
+        desenhaTexto(gl, -20,-90, "(ESC) SAIR",18);
+        desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
+
+
+        gl.glFlush();
+    }
 
     public void fase1(GLAutoDrawable drawable){
         gl = drawable.getGL().getGL2();
@@ -203,7 +300,7 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-        q3.desenhar(gl);
+        background.getObjSprite().desenhar(gl);
 
         // movimentar tudo q precisa
 
@@ -268,69 +365,13 @@ public class Cena implements GLEventListener {
         gl.glColor3f(1,1,1);
         desenhaTexto(gl,(int)mouseX,(int)(mouseY+5),"mouse X: "+mouseX,18);
         desenhaTexto(gl,(int)mouseX,(int)(mouseY),"mouse Y: "+mouseY,18);
+        desenhaTexto(gl,0,90,"FASE: "+jogador.getFase());
+
         gl.glFlush();
-    }
 
-    public void teste2(GLAutoDrawable drawable) { // TODO fazer pause bunitin
-        gl = drawable.getGL().getGL2();
-
-        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
-        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
-        gl.glLoadIdentity(); // Reads the matrix identity
-
-        // cena
-
-        // desenhar tudo
-        q1.desenhar(gl);
-        q4.desenhar(gl);
-
-        b1.desenhar(gl);
-
-        if (!jogador.isPausado()) {
-            // TODO adicionar uma classe para manipular eventos do jogo (colisão, pontos, etc)
-            // movimentação q2
-
-            colisaoBolinhaBordas(b1); // detectando colisões
-            colisaoBolinhaBarra(b1, q1);
-            if (b1.isMovendo()) b1.mover(); // chamando o método de movimento
-
-            gl.glColor4f(1.0f, 1.0f, 1.0f, b1.getAlfa());
-            desenhaTexto(gl, (int) (b1.getIntervaloEsquerda()[0][0]),
-                    (int) b1.getIntervaloCima()[1][1] + 2,
-                    "alfa q2: " + b1.getAlfa());
-
-            if (q1.isMovendo()) {
-                switch (q1.getDirecao()) {
-                    case DIREITA:
-                        q1.setVelx(+1);
-                        break;
-
-                    case ESQUERDA:
-                        q1.setVelx(-1);
-                        break;
-
-                    case CIMA:
-                        q1.setVely(+1);
-                        break;
-
-                    case BAIXO:
-                        q1.setVely(-1);
-                        break;
-
-                    default:
-                        q1.setVelx(0);
-                        q1.setVely(0);
-                        break;
-                }
-                colisaoBarraBordas(q1);
-                q1.mover();
-            }
-
+        if (jogador.getPontos() >= 100){
+            iter_telas = 7;
         }
-        gl.glColor3f(1, 0, 0);
-        desenhaTexto(gl, 0, 90, "Pontos: " + pontos);
-
-        gl.glFlush();
     }
 
     public void fase2(GLAutoDrawable drawable){
@@ -345,12 +386,96 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-        q3.desenhar(gl);
-        //q6.desenhar(gl); // obstáculo
+        background.getObjSprite().desenhar(gl);
+        obstaculo.getObjSprite().desenhar(gl);
 
-        //isso funciona para aumentar a velocidade da bola?
-        //q2.setVelx(2);
-        //q2.setVely(2);
+        // movimentar tudo q precisa
+
+        if (!jogador.isPausado()){
+
+            // movimentação q2
+
+            colisaoBolinhaBordas(bolinha.getObjSprite() ); // detectando colisões
+            colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obstaculo.getObjSprite());
+
+            if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
+
+            gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
+            desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
+                    (int) bolinha.getObjSprite().getIntervaloCima()[1][1] + 10,
+                    "alfa bolinha: " + bolinha.getObjSprite().getAlfa());
+
+            // movimentação q1
+            if (jogador.getObjSprite().isMovendo()) {
+                switch (jogador.getObjSprite().getDirecao()) {
+                    case DIREITA:
+                        jogador.getObjSprite().setVelx(+1);
+                        break;
+
+                    case ESQUERDA:
+                        jogador.getObjSprite().setVelx(-1);
+                        break;
+
+                    case CIMA:
+                        jogador.getObjSprite().setVely(+1);
+                        break;
+
+                    case BAIXO:
+                        jogador.getObjSprite().setVely(-1);
+                        break;
+
+                    default:
+                        jogador.getObjSprite().setVelx(0);
+                        jogador.getObjSprite().setVely(0);
+                        break;
+                }
+                colisaoBarraBordas(jogador.getObjSprite());
+
+                if (mouseHabilitado){
+                    float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
+                            (jogador.getObjSprite().getTamanho()[0]/2)-1;
+                    float intervDx2 = jogador.getObjSprite().getIntervaloDireita()[0][1]-
+                            (jogador.getObjSprite().getTamanho()[0]/2)+1;
+                    if (!(mouseX > intervDx1 && mouseX < intervDx2))
+                    {jogador.getObjSprite().mover();}
+                    else {jogador.getObjSprite().setMovendo(false);}
+                }
+                else {
+//                    if (!(nPosX > jogador.getObjSprite().getIntervaloEsquerda()[0][0] &&
+//                            nPosX2 < jogador.getObjSprite().getIntervaloDireita()[0][1] ))
+//                    {jogador.getObjSprite().mover();}
+//                    else {jogador.getObjSprite().setMovendo(false);}
+                    jogador.getObjSprite().mover();
+                }
+            }
+
+        }
+
+        gl.glColor3f(1, 0, 0);
+        desenhaTexto(gl, 0, 90, "Pontos: " + pontos);
+        desenhaTexto(gl,0,90,"FASE: "+jogador.getFase());
+
+        gl.glFlush();
+
+        if (jogador.getPontos() >= 200){
+            iter_telas = 7;
+        }
+    }
+
+    public void fase3(GLAutoDrawable drawable){
+        gl = drawable.getGL().getGL2();
+
+        gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity(); // Reads the matrix identity
+
+        // cena
+
+        // desenhar tudo
+        jogador.getObjSprite().desenhar(gl);
+        bolinha.getObjSprite().desenhar(gl);
+        q3.desenhar(gl);
 
         // movimentar tudo q precisa
 
@@ -519,32 +644,31 @@ public class Cena implements GLEventListener {
         // definindo interações
         if (colisaoY){
           bolinha.setVely(bolinha.getVely()*-1);
-          pontos += 100;
+          jogador.ganharPontos(50);
         }
-        if (colisaoX){bolinha.setVelx(bolinha.getVelx()*-1);}
-
+        if (colisaoX){
+            bolinha.setVelx(bolinha.getVelx()*-1);
+            barra.setVelx(0);
+        }
 
 
     }
 
-    public void colisaoBolinhaQ6(QuadradoSprite bolinha){
+    public void colisaoBolinhaObstaculo(QuadradoSprite bolinha, QuadradoSprite obstaculo){
 
         // obtendo feedback e armazenando
         boolean colisaoY,colisaoX;
 
 
-        colisaoY = bolinha.isColiding(q6.getIntervaloCima()[0],q6.getIntervaloCima()[1]) ||
-                bolinha.isColiding(q6.getIntervaloBaixo()[0],q6.getIntervaloBaixo()[1]);
+        colisaoY = bolinha.isColiding(obstaculo.getIntervaloCima()[0],obstaculo.getIntervaloCima()[1]) ||
+                bolinha.isColiding(obstaculo.getIntervaloBaixo()[0],obstaculo.getIntervaloBaixo()[1]);
 
-        colisaoX = bolinha.isColiding(q6.getIntervaloDireita()[0],q6.getIntervaloDireita()[1]) ||
-                bolinha.isColiding(q6.getIntervaloEsquerda()[0],q6.getIntervaloEsquerda()[1]);
+        colisaoX = bolinha.isColiding(obstaculo.getIntervaloDireita()[0],obstaculo.getIntervaloDireita()[1]) ||
+                bolinha.isColiding(obstaculo.getIntervaloEsquerda()[0],obstaculo.getIntervaloEsquerda()[1]);
 
         // definindo interações
-        if (colisaoY){
-            bolinha.setVely(bolinha.getVely()*-1);
-            pontos += 100;
-        }
-        if (colisaoX){bolinha.setVelx(bolinha.getVelx()*-1);}
+        if (colisaoY){bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);}
+        if (colisaoX){bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);}
 
 
     }
