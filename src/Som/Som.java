@@ -1,29 +1,30 @@
 package Som;
 
 import java.net.URL;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Som {
     
-    Clip clip;
-    URL soundURL[] = new URL[30];
+    private Clip clip;
+    private URL[] soundURL = new URL[10];
 
     public Som (){
-        soundURL[0] = getClass().getResource("/sons/faz-o-l-vinheta");
+        soundURL[0] = getClass().getResource("/sons/faz-o-l-vinheta.wav");
     }
 
-    private void SetFile(int i) {
+    public void DefinirArquivo(int i) {
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
-    public void Play() {
+    public void Reproduzir() {
         clip.start();
     }
 
@@ -31,7 +32,8 @@ public class Som {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
-    public void Stop() {
+    public void Pausar() {
         clip.stop();
+        clip.close();
     }
 }

@@ -1,6 +1,8 @@
 package Cena;
 
 import ClassesJogo.*;
+import Som.*;
+
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
@@ -47,6 +49,8 @@ public class Cena implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
         glu = new GLU();
+
+        Som som = new Som();
 
         limite = 1;
 
@@ -111,6 +115,7 @@ public class Cena implements GLEventListener {
         cor.setPosx(80);
         cor.setPosy(-80);
 
+        // ReproduzirEfeitoSonoro(som, 0);
     }
 
     @Override
@@ -568,6 +573,20 @@ public class Cena implements GLEventListener {
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         //gl.glLoadIdentity(); //lê a matriz identidade
         System.out.println("Reshape: " + width + ", " + height);
+    }
+
+    public void ReproduzirMusica(Som som, int i) {
+        som.DefinirArquivo(i);
+        som.Reproduzir();
+        som.Loop();
+    }
+
+    public void ReproduzirEfeitoSonoro(Som som, int i) {
+        som.DefinirArquivo(i);
+        som.Reproduzir();
+    }
+    public void PausarSom(Som som, int i) {
+        som.Pausar();
     }
 
     @Override
