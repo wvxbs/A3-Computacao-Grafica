@@ -115,7 +115,7 @@ public class Cena implements GLEventListener {
         cor.setPosx(80);
         cor.setPosy(-80);
 
-        // ReproduzirEfeitoSonoro(som, 0);
+        ReproduzirEfeitoSonoro(som, 0);
     }
 
     @Override
