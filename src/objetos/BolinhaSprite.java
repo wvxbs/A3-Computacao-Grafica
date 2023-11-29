@@ -39,63 +39,28 @@ public class BolinhaSprite extends QuadradoSprite{
         gl.glBegin (GL2.GL_POLYGON);
         //coordenadas da Textura
 
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(0)+posx),(float)((tamanho[1]+ raio)*Math.sin(0)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(30)+posx),(float)((tamanho[1]+ raio)*Math.sin(30)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(45)+posx),(float)((tamanho[1]+ raio)*Math.sin(45)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(60)+posx),(float)((tamanho[1]+ raio)*Math.sin(60)+posy),posz);
-//
-//        //gl.glVertex3f(-tamanho[0]+posx, tamanho[1]+posy, posz);
-//
-//
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(90)+posx),(float)((tamanho[1]+ raio)*Math.sin(90)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(120)+posx),(float)((tamanho[1]+ raio)*Math.sin(120)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(135)+posx),(float)((tamanho[1]+ raio)*Math.sin(135)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(150)+posx),(float)((tamanho[1]+ raio)*Math.sin(150)+posy),posz);
-//
-//        //gl.glVertex3f(tamanho[0]+posx, tamanho[1]+posy, posz);
-//
-//
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(180)+posx),(float)((tamanho[1]+ raio)*Math.sin(180)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(210)+posx),(float)((tamanho[1]+ raio)*Math.sin(210)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(225)+posx),(float)((tamanho[1]+ raio)*Math.sin(225)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(240)+posx),(float)((tamanho[1]+ raio)*Math.sin(240)+posy),posz);
-//
-//        //gl.glVertex3f(tamanho[0]+posx, -tamanho[1]+posy, posz);
-//
-//
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(270)+posx),(float)((tamanho[1]+ raio)*Math.sin(270)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(300)+posx),(float)((tamanho[1]+ raio)*Math.sin(300)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(315)+posx),(float)((tamanho[1]+ raio)*Math.sin(315)+posy),posz);
-//        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(330)+posx),(float)((tamanho[1]+ raio)*Math.sin(330)+posy),posz);
-//
-//        //gl.glVertex3f(-tamanho[0]+posx, -tamanho[1]+posy, posz);
-//        //gl.glVertex3f(-tamanho[0]+posx, tamanho[1]+posy, posz);
-
         // TODO arrumar o mapeamento de textura pra ficar bunitin
-        for(float i=0 ; i < limite; i+= 0.1f) {
+        for(float i=0 ; i < Math.PI*2; i+= 0.01f) {
             gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(i)+posx),(float)((tamanho[1]+ raio)*Math.sin(i)+posy),posz);
-            gl.glTexCoord2f((float) ((0.0f*Math.cos(i))+texturaOfset[0]), (float) ((limite*Math.sin(i))+texturaOfset[1]));
-//            switch ((int) i){
-//                case 1:
-//                    gl.glTexCoord2f(0.0f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
-//                    break;
-//
-//                case 2:
-//                    gl.glTexCoord2f(limite+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
-//                    break;
-//
-//                case 3:
-//                    gl.glTexCoord2f(limite+texturaOfset[0], 0.0f+texturaOfset[1]);
-//                    break;
-//
-//                case 4:
-//                    gl.glTexCoord2f(0.0f+texturaOfset[0], 0.0f+texturaOfset[1]);
-//                    break;
-//
-//                default:
-//                    break;
-//            }
-//
+            //System.out.println(i);
+            if (i >= 3.19f && i<=3.20f) {
+                //System.out.println("check 3.14");
+                gl.glTexCoord2f(0.f+texturaOfset[0]+escala[0],(limite/2)+texturaOfset[1]+escala[1]);
+            }
+            if (i >= 0.78f && i<=0.79f) {
+                //System.out.println("check 0.78");
+                gl.glTexCoord2f(0.5f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
+            }
+            if (i >= 6.27f && i<=6.28f){
+                //System.out.println("check 6.28");
+                gl.glTexCoord2f(limite+texturaOfset[0], (limite/2)+texturaOfset[1]);
+            }
+            if (i >= 2.38f && i<=2.39f){
+                //System.out.println("check 2.35");
+                gl.glTexCoord2f((limite/2)+texturaOfset[0], 0.0f+texturaOfset[1]);
+            }
+
+
         }
 
 
