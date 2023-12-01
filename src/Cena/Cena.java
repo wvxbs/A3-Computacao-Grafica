@@ -26,7 +26,7 @@ public class Cena implements GLEventListener {
     public Bolinha bolinha;
     public Background background;
     public Obstaculo obstaculo;
-    public boolean mouseHabilitado = false;
+    public boolean mouseHabilitado = true;
     public float mouseX=0;
     public float mouseY=0;
 
@@ -48,9 +48,9 @@ public class Cena implements GLEventListener {
 
     @Override
     public void init(GLAutoDrawable drawable) {
+        // coisas opengl
         GL2 gl = drawable.getGL().getGL2();
         glu = new GLU();
-        som = new Som();
 
         limite = 1;
 
@@ -114,6 +114,9 @@ public class Cena implements GLEventListener {
         cor.setPosx(80);
         cor.setPosy(-80);
 
+        // configurando som
+        String[] playlist = {"sons/faz-o-l-vinheta.wav"};
+        som = new Som(playlist);
         ReproduzirMusica(0);
     }
 
@@ -709,8 +712,11 @@ public class Cena implements GLEventListener {
         som.DefinirArquivo(i);
         som.Reproduzir();
     }
-    public void PausarSom(int i) {
-        som.Pausar();
+
+    public void alternarSom() {
+        if(som.isTocando()){som.Pausar();}
+        else {ReproduzirMusica(0);}
+
     }
 
     @Override

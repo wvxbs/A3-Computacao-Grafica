@@ -93,11 +93,11 @@ public class Keyboard implements KeyListener {
 //                    +cena.jogador.getObjSprite().getVelx();
         }
         if(e.getKeyChar() == 'c'){ // diminui a transparência
-            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()-1);
+            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()-01f);
         } // mexe a barra pra direita
 
         if(e.getKeyChar() == 'v'){ // aumenta a transparência
-            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()+1);
+            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()+0.1f);
         }
         if(e.getKeyChar() == 'x'){ // aumenta a transparência
             cena.jogador.setPausado(!cena.jogador.isPausado());
@@ -110,7 +110,9 @@ public class Keyboard implements KeyListener {
             cena.jogador.setFase(cena.jogador.getFase()+1);
             cena.iter_telas = cena.jogador.getFase();
         }
-
+        if(e.getKeyChar() == 'm'){
+            cena.alternarSom();
+        }
 
 
     }

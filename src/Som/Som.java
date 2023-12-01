@@ -9,10 +9,24 @@ import javax.sound.sampled.Clip;
 public class Som {
     
     private Clip clip;
+    private boolean tocando=false;
     private String[] sons = new String[10];
 
+    //geters e setters
+
+
+    public boolean isTocando() {return tocando;}
+    public void setTocando(boolean tocando) {this.tocando = tocando;}
+
+    // construtores
     public Som() {
         sons[0] = "sons/faz-o-l-vinheta.wav";
+    }
+
+    // construtor pra passar as músicas
+    public Som(String[] playlist) {
+        // loop pra passar até 10 efeitos sonoros
+        for (int i=0; (i<playlist.length && i <10); i++) {sons[i] = playlist[i];}
     }
 
     public void DefinirArquivo (int i){
@@ -27,6 +41,7 @@ public class Som {
 
     public void Reproduzir() {
         clip.start();
+        tocando = true;
     }
 
     public void Loop() {
@@ -36,5 +51,6 @@ public class Som {
     public void Pausar() {
         clip.stop();
         clip.close();
+        tocando = false;
     }
 }
