@@ -9,16 +9,17 @@ import javax.sound.sampled.Clip;
 public class Som {
     
     private Clip clip;
-    // private URL[] soundURL = new URL[10];
+    private String[] sons = new String[10];
 
-    public Som (){
-        File soundURL = new File("/sons/faz-o-l-vinheta.wav");
-        Clip _clip;
+    public Som() {
+        sons[0] = "sons/faz-o-l-vinheta.wav";
+    }
 
+    public void DefinirArquivo (int i){
         try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL);
-            _clip = AudioSystem.getClip();
-            _clip.open(ais);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File(sons[i]));
+            clip = AudioSystem.getClip();
+            clip.open(ais);
         } catch(Exception e) {
             e.getStackTrace();
         }

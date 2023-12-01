@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/JavaFX_Win64.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2023_22_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2023_22_15__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Som/Som.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Som/Som.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "TrilhaSonora",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/bruno/OneDrive/Documentos/repositoriosGit/A3-Computacao-Grafica/imagens",
     "project.structure.last.edited": "Project",

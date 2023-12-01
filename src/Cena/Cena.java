@@ -43,14 +43,14 @@ public class Cena implements GLEventListener {
     public static final String FACE6 = "imagens/palosInterrogacao1-1.png";
     public static final String FACEBTN1 = "imagens/rosa-claro.jpg";
     public static final String FACECOR = "imagens/coracao.png";
+    public static Som som;
 
 
     @Override
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
         glu = new GLU();
-
-        Som som = new Som();
+        som = new Som();
 
         limite = 1;
 
@@ -114,7 +114,7 @@ public class Cena implements GLEventListener {
         cor.setPosx(80);
         cor.setPosy(-80);
 
-//        ReproduzirEfeitoSonoro(som, 0);
+        ReproduzirMusica(0);
     }
 
     @Override
@@ -699,19 +699,19 @@ public class Cena implements GLEventListener {
         System.out.println("Reshape: " + width + ", " + height);
     }
 
-//    public void ReproduzirMusica(Som som, int i) {
-//        som.DefinirArquivo(i);
-//        som.Reproduzir();
-//        som.Loop();
-//    }
-//
-//    public void ReproduzirEfeitoSonoro(Som som, int i) {
-//        som.DefinirArquivo(i);
-//        som.Reproduzir();
-//    }
-//    public void PausarSom(Som som, int i) {
-//        som.Pausar();
-//    }
+    public void ReproduzirMusica(int i) {
+        som.DefinirArquivo(i);
+        som.Reproduzir();
+        som.Loop();
+    }
+
+    public void ReproduzirEfeitoSonoro(int i) {
+        som.DefinirArquivo(i);
+        som.Reproduzir();
+    }
+    public void PausarSom(int i) {
+        som.Pausar();
+    }
 
     @Override
     public void dispose(GLAutoDrawable drawable) {}
