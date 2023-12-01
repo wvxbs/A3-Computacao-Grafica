@@ -43,7 +43,7 @@ public class Cena implements GLEventListener {
     public static final String FACE6 = "imagens/palosInterrogacao1-1.png";
     public static final String FACEBTN1 = "imagens/rosa-claro.jpg";
     public static final String FACECOR = "imagens/coracao.png";
-    public static Som som;
+    public static ReproduzirEfeitoSonoro reproduzirEfeitoSonoro;
 
 
     @Override
@@ -116,7 +116,7 @@ public class Cena implements GLEventListener {
 
         // configurando som
         String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
-        som = new Som(playlist);
+        reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro(playlist);
         ReproduzirMusica(0);
         mouseHabilitado = true;
     }
@@ -704,22 +704,23 @@ public class Cena implements GLEventListener {
     }
 
     public void ReproduzirMusica(int i) {
-        som.DefinirArquivo(i);
-        som.Reproduzir();
-        som.Loop();
+        reproduzirEfeitoSonoro.DefinirArquivo(i);
+        reproduzirEfeitoSonoro.Reproduzir();
+        reproduzirEfeitoSonoro.Loop();
     }
 
     public void ReproduzirEfeitoSonoro(int i) {
-        som.DefinirArquivo(i);
-        som.Reproduzir();
+        reproduzirEfeitoSonoro.DefinirArquivo(i);
+        reproduzirEfeitoSonoro.Reproduzir();
     }
 
     public void PausarSom() {
-        som.Pausar();
+        reproduzirEfeitoSonoro.Pausar();
     }
 
     public void AlternarSom() {
-        if(som.isTocando()){som.Pausar();}
+        if(reproduzirEfeitoSonoro.isTocando()){
+            reproduzirEfeitoSonoro.Pausar();}
         else {ReproduzirMusica(1);}
 
     }

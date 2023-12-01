@@ -1,12 +1,11 @@
 package Som;
 
 import java.io.File;
-import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Som {
+public class ReproduzirEfeitoSonoro {
     
     private Clip clip;
     private boolean tocando=false;
@@ -19,7 +18,7 @@ public class Som {
     public void setTocando(boolean tocando) {this.tocando = tocando;}
 
     // construtores
-    public Som() {
+    public ReproduzirEfeitoSonoro() {
         sons[0] = "sons/faz-o-l-vinheta.wav";
         sons[1] = "sons/blizzard-elimination.wav";
         sons[2] = "sons/brazil.wav";
@@ -36,7 +35,7 @@ public class Som {
     }
 
     // construtor pra passar as músicas
-    public Som(String[] playlist) {
+    public ReproduzirEfeitoSonoro(String[] playlist) {
         // loop pra passar até 10 efeitos sonoros
         for (int i=0; (i<playlist.length && i <10); i++) {sons[i] = playlist[i];}
     }
