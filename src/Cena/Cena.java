@@ -713,7 +713,11 @@ public class Cena implements GLEventListener {
         som.Reproduzir();
     }
 
-    public void alternarSom() {
+    public void PausarSom() {
+        som.Pausar();
+    }
+
+    public void AlternarSom() {
         if(som.isTocando()){som.Pausar();}
         else {ReproduzirMusica(0);}
 
