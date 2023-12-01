@@ -114,7 +114,7 @@ public class Cena implements GLEventListener {
         cor.setPosx(80);
         cor.setPosy(-80);
 
-        ReproduzirEfeitoSonoro(som, 0);
+//        ReproduzirEfeitoSonoro(som, 0);
     }
 
     @Override
@@ -699,19 +699,19 @@ public class Cena implements GLEventListener {
         System.out.println("Reshape: " + width + ", " + height);
     }
 
-    public void ReproduzirMusica(Som som, int i) {
-        som.DefinirArquivo(i);
-        som.Reproduzir();
-        som.Loop();
-    }
-
-    public void ReproduzirEfeitoSonoro(Som som, int i) {
-        som.DefinirArquivo(i);
-        som.Reproduzir();
-    }
-    public void PausarSom(Som som, int i) {
-        som.Pausar();
-    }
+//    public void ReproduzirMusica(Som som, int i) {
+//        som.DefinirArquivo(i);
+//        som.Reproduzir();
+//        som.Loop();
+//    }
+//
+//    public void ReproduzirEfeitoSonoro(Som som, int i) {
+//        som.DefinirArquivo(i);
+//        som.Reproduzir();
+//    }
+//    public void PausarSom(Som som, int i) {
+//        som.Pausar();
+//    }
 
     @Override
     public void dispose(GLAutoDrawable drawable) {}
