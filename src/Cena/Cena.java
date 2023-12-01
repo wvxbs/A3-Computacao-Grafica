@@ -26,7 +26,7 @@ public class Cena implements GLEventListener {
     public Bolinha bolinha;
     public Background background;
     public Obstaculo obstaculo;
-    public boolean mouseHabilitado = true;
+    public boolean mouseHabilitado = false;
     public float mouseX=0;
     public float mouseY=0;
 
@@ -118,7 +118,7 @@ public class Cena implements GLEventListener {
         String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         som = new Som(playlist);
         ReproduzirMusica(0);
-
+        mouseHabilitado = true;
     }
 
     @Override
