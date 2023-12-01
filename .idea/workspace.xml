@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando play/pause pro som pela tecla &quot;M&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Som/Som.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Som/Som.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/bruno/OneDrive/Documentos/repositoriosGit/A3-Computacao-Grafica/imagens",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bruno/OneDrive/Documentos/repositoriosGit/A3-Computacao-Grafica/imagens&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\imagens" />
@@ -134,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701053439381</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adicionando play/pause pro som pela tecla &quot;M&quot;">
+      <option name="closed" value="true" />
+      <created>1701468927926</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701468927926</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +161,8 @@
     <MESSAGE value="Adicionando contagem de pontos e colisão com o objeto fase 2" />
     <MESSAGE value="Criando um botão" />
     <MESSAGE value="Adicionando o segundo botão e mais textos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando o segundo botão e mais textos" />
+    <MESSAGE value="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -161,6 +170,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.jogamp.opengl.GLException" package="com.jogamp.opengl" />
           <option name="timeStamp" value="9" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="10" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -19,6 +19,7 @@ public class Keyboard implements KeyListener {
         // textura
         if(e.getKeyChar() == '1'){ // alterna a movimentação da bola palos
             cena.bolinha.getObjSprite().setMovendo(!cena.bolinha.getObjSprite().isMovendo());
+            cena.jogador.setJogando(true);
         }
         if(e.getKeyChar() == '2'){ // alterna a animação da bola palos
             cena.bolinha.getObjSprite().setAnimado(!cena.bolinha.getObjSprite().isAnimado());

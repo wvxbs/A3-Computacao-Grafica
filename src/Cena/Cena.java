@@ -115,9 +115,10 @@ public class Cena implements GLEventListener {
         cor.setPosy(-80);
 
         // configurando som
-        String[] playlist = {"sons/faz-o-l-vinheta.wav"};
+        String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         som = new Som(playlist);
         ReproduzirMusica(0);
+
     }
 
     @Override
@@ -719,7 +720,7 @@ public class Cena implements GLEventListener {
 
     public void AlternarSom() {
         if(som.isTocando()){som.Pausar();}
-        else {ReproduzirMusica(0);}
+        else {ReproduzirMusica(1);}
 
     }
 

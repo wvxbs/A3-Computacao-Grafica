@@ -60,25 +60,28 @@ public class Mouse implements MouseListener {
     @Override
     public void mouseMoved(MouseEvent e) {
         if (cena.mouseHabilitado) {
-        cena.mouseX = (float)((e.getX()/5)-100);
-        cena.mouseY = (float)((e.getY()/5)-100)*-1;
+            cena.mouseX = (float) ((e.getX() / 5) - 100);
+            cena.mouseY = (float) ((e.getY() / 5) - 100) * -1;
 
-            //System.out.println("mouse X: "+(float)((e.getX()/5)-100)+" | mouse Y: "+(float)e.getY());
+            if (cena.jogador.isJogando()) {
 
-            //mouse pra direita
-            if ((float)((e.getX()/5)-100) > cena.jogador.getObjSprite().getIntervaloDireita()[0][0]) {
-                cena.jogador.getObjSprite().setMovendo(true);
-                cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
-            }
-            // mouse pra esquerda
-            if ((float)((e.getX()/5)-100) < cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
-                cena.jogador.getObjSprite().setMovendo(true);
-                cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
-            }
-            // mouse em cima da barra
-            if ((float)((e.getX()/5)-100) >= cena.jogador.getObjSprite().getIntervaloDireita()[0][0] &&
-                    e.getX() <= cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
-                cena.jogador.getObjSprite().setMovendo(false);
+                //System.out.println("mouse X: "+(float)((e.getX()/5)-100)+" | mouse Y: "+(float)e.getY());
+
+                //mouse pra direita
+                if ((float) ((e.getX() / 5) - 100) > cena.jogador.getObjSprite().getIntervaloDireita()[0][0]) {
+                    cena.jogador.getObjSprite().setMovendo(true);
+                    cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
+                }
+                // mouse pra esquerda
+                if ((float) ((e.getX() / 5) - 100) < cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
+                    cena.jogador.getObjSprite().setMovendo(true);
+                    cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
+                }
+                // mouse em cima da barra
+                if ((float) ((e.getX() / 5) - 100) >= cena.jogador.getObjSprite().getIntervaloDireita()[0][0] &&
+                        e.getX() <= cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
+                    cena.jogador.getObjSprite().setMovendo(false);
+                }
             }
         }
     }

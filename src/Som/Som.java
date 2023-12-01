@@ -36,6 +36,7 @@ public class Som {
             clip.open(ais);
         } catch(Exception e) {
             e.getStackTrace();
+            System.out.println("----------> erro na definição de arquivo de audio <----------");
         }
     }
 
