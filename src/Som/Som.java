@@ -10,7 +10,7 @@ public class Som {
     
     private Clip clip;
     private boolean tocando=false;
-    private String[] sons = new String[10];
+    private String[] sons = new String[50];
 
     //geters e setters
 
@@ -21,6 +21,18 @@ public class Som {
     // construtores
     public Som() {
         sons[0] = "sons/faz-o-l-vinheta.wav";
+        sons[1] = "sons/blizzard-elimination.wav";
+        sons[2] = "sons/brazil.wav";
+        sons[3] = "sons/coin_1.wav";
+        sons[4] = "sons/keep-on.wav";
+        sons[5] = "sons/health.wav";
+        sons[6] = "sons/ihu-bolsonaro.wav";
+        sons[7] = "sons/jet-set-radio-cancel.wav";
+        sons[8] = "sons/jet-set-radio-success.wav";
+        sons[9] = "sons/faz-o-l-vinheta.wav";
+        sons[10] = "sons/the-doom-slayer.wav";
+        sons[11] = "sons/web_whatsapp.wav";
+        sons[12] = "sons/whatsapp.wav";
     }
 
     // construtor pra passar as músicas
