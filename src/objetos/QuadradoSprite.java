@@ -28,9 +28,14 @@ public class QuadradoSprite {
     protected float[] texturaOfset = {0,0};
     protected float[] escala = {0,0};
     protected float contadorImg = 0f;
+    protected float timerColisao=0;
 
 
     // getters e setters
+
+    public float getTimerColisao() {return timerColisao;}
+
+    public void setTimerColisao(float timerColisao) {this.timerColisao = timerColisao;}
 
     public float[][] getIntervaloTotal() {return intervaloTotal;}
     public void setIntervaloTotal(float[][] intervaloTotal) {this.intervaloTotal = intervaloTotal;}
@@ -282,6 +287,13 @@ public class QuadradoSprite {
 
         if (toqueX && toqueY){return true;}
         return false;
+
+    }
+
+    public boolean checkTimerColisao(Float tickAtual){
+        // 0.1 0.11
+        if (timerColisao - tickAtual<=0) {return true;}
+        else {return false;}
 
     }
 }

@@ -7,6 +7,7 @@ import com.jogamp.opengl.*;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
 import objetos.*;
+import java.util.Random;
 
 public class Cena implements GLEventListener {
 
@@ -22,29 +23,23 @@ public class Cena implements GLEventListener {
     public int iter_telas = 0;
 
     // atributos dos quads
-    public QuadradoSprite q1, q3, q6, btn1, btn2, cor;
+    public QuadradoSprite q1, q3, q6, q7, q8, q9, q10, btn1, btn2, cor;
     public BolinhaSprite b1;
+    public float ticksAtuais;
     public Jogador jogador;
     public Bolinha bolinha;
     public Background background;
-    public Obstaculo obstaculo;
+    public Obstaculo obstaculo1, obsFredy, obsFox, obsChica, obsBunny;
     public boolean mouseHabilitado = false;
     public float mouseX=0;
     public float mouseY=0;
+    Random rand = new Random();
 
     // atributos textura
     public float limite;
     public int filtro = GL2.GL_LINEAR; ////GL_NEAREST ou GL_LINEAR
     public int wrap = GL2.GL_REPEAT;  //GL.GL_REPEAT ou GL.GL_CLAMP
     public int modo = GL2.GL_DECAL; ////GL.GL_MODULATE ou GL.GL_DECAL ou GL.GL_BLEND
-    public static final String FACE2 = "imagens/palosInterrogacao1-1.png";
-    public static final String FACE1 = "imagens/brick.jpg";
-    public static final String FACE3 = "imagens/background.png";
-    public static final String FACE4 = "imagens/ferreira1-1.png";
-    public static final String FACE5 = "imagens/bolinha2.png";
-    public static final String FACE6 = "imagens/palosInterrogacao1-1.png";
-    public static final String FACEBTN1 = "imagens/rosa-claro.jpg";
-    public static final String FACECOR = "imagens/coracao.png";
     public static ReproduzirEfeitoSonoro reproduzirEfeitoSonoro;
 
 
@@ -60,24 +55,42 @@ public class Cena implements GLEventListener {
         //gl.glEnable(GL.GL_BLEND);
 
         // criação de objetos que entrarão em cena
+        String face1 = "imagens/brick.jpg";
+        String face3 = "imagens/background.png";
+        String face5 = "imagens/bolinha2.png";
+        String face6 = "imagens/brick.jpg";
+
+        String face7 = "imagens/brick.jpg";
+        String face8 = "imagens/brick.jpg";
+        String face9 = "imagens/brick.jpg";
+        String face10 = "imagens/brick.jpg";
+
+
+        String faceBtn1 = "imagens/rosa-claro.jpg";
+        String faceBtn2 = "imagens/coracao.png";
 
         float[] tamq1 = {30,5}; // tamanho da barra
         float[] tamb1 = {3f,3f}; // tamanho do raio da bolinha
         float[] tamq3 = {200,200}; // tamanho do background
-        float[] tamq4 = {50,50}; // tamanho do quadrado 2
         float[] tamq6 = {20,20}; // tamanho do obstáculo da fase 2
+        float[] tamq7 = {10,10}; // tamanho do obstáculo da fase 2
         float[] tambtn1 = {30,10}; // tamanho do botão 1
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
-        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,FACE1,false); // barra
-        b1 = new BolinhaSprite(1,filtro,wrap,modo, limite,tamb1,tamb1[0],corq1,FACE5,false); // bolinha
-        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,FACE3,false); // background
-        q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACE6,false); // obstáculo
+        q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,face1,false); // barra
+        b1 = new BolinhaSprite(1,filtro,wrap,modo, limite,tamb1,tamb1[0],corq1,face5,false); // bolinha
+        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,face3,false); // background
+        q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,face6,false); // obstáculo 1
 
-        btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
-        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,FACEBTN1,false);
-        cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,FACECOR,false);
+        q7 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
+        q8 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
+        q9 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
+        q10 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
+
+        btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn1,false);
+        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn1,false);
+        cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,faceBtn2,false);
 
         // configurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
@@ -90,17 +103,45 @@ public class Cena implements GLEventListener {
 
         // configurando q6 (obstáculo)
         q6.setPosx(0);
-        q6.setPosy(20);
+        q6.setPosy(15);
+
+        // configurando q7 (obstáculo)
+        q7.setPosx(0);
+        q7.setPosy(15);
+        q7.setVelx(rand.nextFloat(0.8f,1.2f));
+
+        // configurando q8 (obstáculo)
+        q8.setPosx(-20);
+        q8.setPosy(30);
+        q8.setVelx(rand.nextFloat(0.8f,1.2f));
+
+        // configurando q9 (obstáculo)
+        q9.setPosx(20);
+        q9.setPosy(45);
+        q9.setVelx(rand.nextFloat(0.8f,1.2f));
+
+        // configurando q10 (obstáculo)
+        q10.setPosx(40);
+        q10.setPosy(60);
+        q10.setVelx(rand.nextFloat(0.8f,1.2f));
 
         // configurando b1 (bolinha)
         b1.setVelx(2);
         b1.setVely(2);
 
         // classes de controle
-        jogador = new Jogador("Bruno","12345",5,0,1,q1,FACE1);
-        bolinha = new Bolinha(b1,FACE5);
-        background = new Background(q3,FACE3);
-        obstaculo = new Obstaculo(q6,FACE1);
+        jogador = new Jogador("Bruno","12345",5,0,1,q1,face1);
+        bolinha = new Bolinha(b1,face5);
+        background = new Background(q3,face3);
+
+        // obstáculo fase 2
+        obstaculo1 = new Obstaculo(q6,face1);
+
+        // obstáculos fase 3
+        obsBunny = new Obstaculo(q7,face7);
+        obsChica = new Obstaculo(q8,face8);
+        obsFredy = new Obstaculo(q9,face9);
+        obsFox = new Obstaculo(q10,face10);
 
         // configurando btn 1
         btn1.setPosx(0);
@@ -117,7 +158,6 @@ public class Cena implements GLEventListener {
         cor.setPosy(-80);
 
         // configurando som
-//        String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro();
         ReproduzirEfeitoSonoroEmLoop("Royal Days");
 
@@ -126,7 +166,7 @@ public class Cena implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable drawable) {
-
+        ticksAtuais += 0.01f;
         // 0-menu, 1-fase1, 2-fase2, 3-fase3, 4-pause, 5-Ganhou, 6-Perdeu
         switch (iter_telas){
             case 0: // menu
@@ -396,7 +436,7 @@ public class Cena implements GLEventListener {
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
         background.getObjSprite().desenhar(gl);
-        obstaculo.getObjSprite().desenhar(gl);
+        obstaculo1.getObjSprite().desenhar(gl);
 
         // movimentar tudo q precisa
 
@@ -406,7 +446,7 @@ public class Cena implements GLEventListener {
 
             colisaoBolinhaBordas(bolinha.getObjSprite() ); // detectando colisões
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
-            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obstaculo.getObjSprite());
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(), obstaculo1.getObjSprite());
 
             if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
 
@@ -484,7 +524,11 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-        q3.desenhar(gl);
+
+        obsFox.getObjSprite().desenhar(gl);
+        obsFredy.getObjSprite().desenhar(gl);
+        obsChica.getObjSprite().desenhar(gl);
+        obsBunny.getObjSprite().desenhar(gl);
 
         // movimentar tudo q precisa
 
@@ -493,8 +537,25 @@ public class Cena implements GLEventListener {
             // movimentação q2
             colisaoBolinhaBordas(bolinha.getObjSprite() ); // detectando colisões
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
-            //colisaoBolinhaQ6(bolinha.getObjSprite());
+
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obsBunny.getObjSprite());
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obsFredy.getObjSprite());
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obsChica.getObjSprite());
+            colisaoBolinhaObstaculo(bolinha.getObjSprite(),obsFox.getObjSprite());
+
             if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
+
+            // movimentação obstáculos
+            colisaoObstaculosBordas(obsBunny.getObjSprite());
+            colisaoObstaculosBordas(obsFredy.getObjSprite());
+            colisaoObstaculosBordas(obsChica.getObjSprite());
+            colisaoObstaculosBordas(obsFox.getObjSprite());
+
+            obsBunny.getObjSprite().mover();
+            obsFredy.getObjSprite().mover();
+            obsChica.getObjSprite().mover();
+            obsFox.getObjSprite().mover();
+
 
             gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
             desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
@@ -652,15 +713,15 @@ public class Cena implements GLEventListener {
                 bolinha.isColiding(barra.getIntervaloEsquerda()[0],barra.getIntervaloEsquerda()[1]);
 
         // definindo interações
-        if (colisaoY){
-          bolinha.setVely(bolinha.getVely()*-1);
-          jogador.ganharPontos(50);
+        if (colisaoY ){
+            bolinha.setVely((rand.nextFloat(0.9f,1.7f))*-1);
+            jogador.ganharPontos(20);
+            //bolinha.setTimerColisao(ticksAtuais+0.1f); // 0.11+0.02
         }
         if (colisaoX){
-            bolinha.setVelx(bolinha.getVelx()*-1);
-            barra.setVelx(0);
+            bolinha.setVelx((rand.nextFloat(0.9f,1.7f))*-1);
+            //bolinha.setTimerColisao(ticksAtuais+0.1f);
         }
-
 
     }
 
@@ -677,11 +738,42 @@ public class Cena implements GLEventListener {
                 bolinha.isColiding(obstaculo.getIntervaloEsquerda()[0],obstaculo.getIntervaloEsquerda()[1]);
 
         // definindo interações
-        if (colisaoY){bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);}
-        if (colisaoX){bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);}
+        if (colisaoY){
+            bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
+            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
+        }
+        if (colisaoX){
+            bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
+            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
+        }
 
 
     }
+
+    public void colisaoObstaculosBordas(QuadradoSprite obstaculo){
+        // definindo as bordas que interagirão com o quadrado q2
+        float[][][] bordas = {
+                {{largura, largura}, {-altura, altura}}, // bordas direita ((x0-x1), (y0-y1))
+                {{-largura, -largura}, {-altura, altura}} // bordas esquerda ((x0-x1), (y0-y1))
+
+        };
+
+        // criando vars de controle que receberão a resposta do teste de colisão
+        boolean colisaoDireita, colisaoEsquerda;
+
+        // obtendo resposta se houve colisão ou não
+        colisaoDireita = obstaculo.isColiding(bordas[0][0], bordas[0][1]);
+        colisaoEsquerda = obstaculo.isColiding(bordas[1][0], bordas[1][1]);
+
+        //feedback
+
+        // definindo interação caso às condições sejam atendidas
+        if (colisaoDireita && obstaculo.getVelx() >0)
+            obstaculo.setVelx(-rand.nextFloat(0.6f, 1.4f));
+        if (colisaoEsquerda && obstaculo.getVelx() <0)
+            obstaculo.setVelx(rand.nextFloat(0.6f, 1.4f));
+    }
+
 
     // audio
     public void ReproduzirEfeitoSonoroEmLoop(String nome) {
