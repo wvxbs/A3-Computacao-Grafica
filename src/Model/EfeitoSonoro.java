@@ -1,4 +1,4 @@
-package EfeitosSonoros;
+package Model;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package ClassesJogo;
+package Model;
 
 import Cena.Direcao;
 import objetos.QuadradoSprite;

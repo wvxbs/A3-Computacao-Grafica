@@ -1,5 +1,7 @@
 package EfeitosSonoros;
 
+import Model.EfeitoSonoro;
+
 import java.io.File;
 import java.util.ArrayList;
 

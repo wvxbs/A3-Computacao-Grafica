@@ -1,4 +1,4 @@
-package ClassesJogo;
+package Model;
 
 public class Moeda {
 }

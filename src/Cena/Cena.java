@@ -1,6 +1,6 @@
 package Cena;
 
-import ClassesJogo.*;
+import Model.*;
 import EfeitosSonoros.*;
 
 import com.jogamp.opengl.*;
