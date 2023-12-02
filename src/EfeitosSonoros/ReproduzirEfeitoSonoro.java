@@ -17,7 +17,6 @@ public class ReproduzirEfeitoSonoro {
     public ReproduzirEfeitoSonoro() {
 
         GerarListaDeEfeitosSonoros listaDeEfeitosSonoros = new GerarListaDeEfeitosSonoros();
-        listaDeEfeitosSonoros.ExibirListaDeEfeitosSonoros();
         efeitosSonoros = listaDeEfeitosSonoros.getEfeitosSonoros();
     }
 
