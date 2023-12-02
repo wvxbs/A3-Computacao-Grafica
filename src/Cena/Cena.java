@@ -117,7 +117,7 @@ public class Cena implements GLEventListener {
         // configurando som
 //        String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro();
-        ReproduzirMusica("faz-o-l-vinheta");
+        ReproduzirMusica("Royal Days");
 
         mouseHabilitado = true;
     }
