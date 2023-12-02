@@ -14,8 +14,6 @@ public class GerarListaDeEfeitosSonoros {
         try {
             for (File file : arquivos) {
                 if (file.isFile()) {
-                    System.out.println(file.getName());
-                    System.out.println(file.getAbsolutePath());
                     EfeitoSonoro efeitoSonoro = new EfeitoSonoro(file.getName(), file.getAbsolutePath(), file);
                     efeitosSonoros.add(efeitoSonoro);
                 }
