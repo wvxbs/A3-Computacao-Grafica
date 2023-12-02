@@ -9,7 +9,7 @@ public class ReproduzirEfeitoSonoro {
     
     private Clip clip;
     private boolean tocando=false;
-    private ArrayList<EfeitoSonoro> sons;
+    private ArrayList<EfeitoSonoro> efeitosSonoros;
     private EfeitoSonoro arquivoSelecionado;
     public void setTocando(boolean tocando) {this.tocando = tocando;}
 
@@ -18,7 +18,7 @@ public class ReproduzirEfeitoSonoro {
 
         GerarListaDeEfeitosSonoros listaDeEfeitosSonoros = new GerarListaDeEfeitosSonoros();
         listaDeEfeitosSonoros.ExibirListaDeEfeitosSonoros();
-        sons = listaDeEfeitosSonoros.getEfeitosSonoros();
+        efeitosSonoros = listaDeEfeitosSonoros.getEfeitosSonoros();
     }
 
     //geters e setters
@@ -30,7 +30,7 @@ public class ReproduzirEfeitoSonoro {
     public void DefinirArquivo (String nome){
         String NomeAnalisado = nome.toLowerCase();
         NomeAnalisado = nome.concat(".wav");
-        for (EfeitoSonoro efeitoSonoro : sons) {
+        for (EfeitoSonoro efeitoSonoro : efeitosSonoros) {
             if (NomeAnalisado.equals(efeitoSonoro.getNome())) {
                 arquivoSelecionado = efeitoSonoro;
                 try {

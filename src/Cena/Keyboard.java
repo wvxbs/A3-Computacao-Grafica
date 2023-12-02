@@ -112,7 +112,7 @@ public class Keyboard implements KeyListener {
             cena.iter_telas = cena.jogador.getFase();
         }
         if(e.getKeyChar() == 'm'){
-            cena.AlternarSom();
+            cena.AlternarEfeitoSonoroEmLoop();
         }
 
 

@@ -117,7 +117,7 @@ public class Cena implements GLEventListener {
         // configurando som
 //        String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro();
-        ReproduzirMusica("Royal Days");
+        ReproduzirEfeitoSonoroEmLoop("Royal Days");
 
         mouseHabilitado = true;
     }
@@ -704,7 +704,7 @@ public class Cena implements GLEventListener {
         System.out.println("Reshape: " + width + ", " + height);
     }
 
-    public void ReproduzirMusica(String nome) {
+    public void ReproduzirEfeitoSonoroEmLoop(String nome) {
         reproduzirEfeitoSonoro.DefinirArquivo(nome);
         reproduzirEfeitoSonoro.Reproduzir();
         reproduzirEfeitoSonoro.Loop();
@@ -715,14 +715,15 @@ public class Cena implements GLEventListener {
         reproduzirEfeitoSonoro.Reproduzir();
     }
 
-    public void PausarSom() {
+    public void PausarEfeitoSonoro() {
         reproduzirEfeitoSonoro.Pausar();
     }
 
-    public void AlternarSom() {
+    public void AlternarEfeitoSonoroEmLoop() {
         if(reproduzirEfeitoSonoro.isTocando()){
             reproduzirEfeitoSonoro.Pausar();}
-        else {ReproduzirMusica(reproduzirEfeitoSonoro.getNomeDoArquivoSelecionado());}
+        else {
+            ReproduzirEfeitoSonoroEmLoop(reproduzirEfeitoSonoro.getNomeDoArquivoSelecionado());}
 
     }
 
