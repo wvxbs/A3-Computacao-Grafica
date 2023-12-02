@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/src/EfeitosSonoros/GerarListaDeEfeitosSonoros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Som/ReproduzirEfeitoSonoro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EfeitosSonoros/ReproduzirEfeitoSonoro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Som/Som.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EfeitosSonoros/Som.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +142,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701468927926</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Som renomeado em ReproduzirEfeitoSonoro">
+      <option name="closed" value="true" />
+      <created>1701472001914</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701472001914</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Objeto Som adiciconado">
+      <option name="closed" value="true" />
+      <created>1701472122249</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701472122249</updated>
+    </task>
+    <task id="LOCAL-00009" summary=".">
+      <option name="closed" value="true" />
+      <created>1701472331794</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701472331794</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,7 +186,10 @@
     <MESSAGE value="Criando um botão" />
     <MESSAGE value="Adicionando o segundo botão e mais textos" />
     <MESSAGE value="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
+    <MESSAGE value="Som renomeado em ReproduzirEfeitoSonoro" />
+    <MESSAGE value="Objeto Som adiciconado" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

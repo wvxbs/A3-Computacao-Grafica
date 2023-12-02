@@ -1,7 +1,7 @@
 package Cena;
 
 import ClassesJogo.*;
-import Som.*;
+import EfeitosSonoros.*;
 
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.glu.GLU;
@@ -117,7 +117,7 @@ public class Cena implements GLEventListener {
         // configurando som
 //        String[] playlist = {"sons/faz-o-l-vinheta.wav", "sons/health.wav"};
         reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro();
-        ReproduzirMusica(8);
+        ReproduzirMusica("faz-o-l-vinheta");
 
         mouseHabilitado = true;
     }
@@ -704,14 +704,14 @@ public class Cena implements GLEventListener {
         System.out.println("Reshape: " + width + ", " + height);
     }
 
-    public void ReproduzirMusica(int i) {
-        reproduzirEfeitoSonoro.DefinirArquivo(i);
+    public void ReproduzirMusica(String nome) {
+        reproduzirEfeitoSonoro.DefinirArquivo(nome);
         reproduzirEfeitoSonoro.Reproduzir();
         reproduzirEfeitoSonoro.Loop();
     }
 
-    public void ReproduzirEfeitoSonoro(int i) {
-        reproduzirEfeitoSonoro.DefinirArquivo(i);
+    public void ReproduzirEfeitoSonoro(String nome) {
+        reproduzirEfeitoSonoro.DefinirArquivo(nome);
         reproduzirEfeitoSonoro.Reproduzir();
     }
 
@@ -722,7 +722,7 @@ public class Cena implements GLEventListener {
     public void AlternarSom() {
         if(reproduzirEfeitoSonoro.isTocando()){
             reproduzirEfeitoSonoro.Pausar();}
-        else {ReproduzirMusica(1);}
+        else {ReproduzirMusica(reproduzirEfeitoSonoro.getNomeDoArquivoSelecionado());}
 
     }
 
