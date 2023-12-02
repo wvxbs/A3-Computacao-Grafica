@@ -18,16 +18,16 @@ public class Keyboard implements KeyListener {
 
         // textura
         if(e.getKeyChar() == '1'){ // alterna a movimentação da bola palos
-            cena.ReproduzirEfeitoSonoro("coin");
+            //cena.ReproduzirEfeitoSonoro("coin");
             cena.bolinha.getObjSprite().setMovendo(!cena.bolinha.getObjSprite().isMovendo());
             cena.jogador.setJogando(true);
         }
         if(e.getKeyChar() == '2'){ // alterna a animação da bola palos
-            cena.ReproduzirEfeitoSonoro("coin");
+            //cena.ReproduzirEfeitoSonoro("coin");
             cena.bolinha.getObjSprite().setAnimado(!cena.bolinha.getObjSprite().isAnimado());
         }
         if(e.getKeyChar() == '3'){ // diminui a escala vertical da imagem
-            cena.ReproduzirEfeitoSonoro("coin");
+            //cena.ReproduzirEfeitoSonoro("coin");
             float[] novoTamanho = {
                     (cena.bolinha.getObjSprite().getEscala()[0]),
                     (cena.bolinha.getObjSprite().getEscala()[1]+0.25f)
@@ -35,7 +35,7 @@ public class Keyboard implements KeyListener {
             cena.bolinha.getObjSprite().setEscala(novoTamanho);
         }
         if(e.getKeyChar() == '4'){ // aumenta a escala vertical da imagem
-            cena.ReproduzirEfeitoSonoro("coin");
+            //cena.ReproduzirEfeitoSonoro("coin");
             float[] novoTamanho = {
                     (cena.bolinha.getObjSprite().getEscala()[0]),
                     (cena.bolinha.getObjSprite().getEscala()[1]-0.25f)
@@ -43,7 +43,7 @@ public class Keyboard implements KeyListener {
             cena.bolinha.getObjSprite().setEscala(novoTamanho);
         }
         if(e.getKeyChar() == '5'){ // alterna a utilização do mouse
-            cena.ReproduzirEfeitoSonoro("coin");
+            //cena.ReproduzirEfeitoSonoro("coin");
             cena.mouseHabilitado = !cena.mouseHabilitado;
         }
 

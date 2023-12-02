@@ -15,6 +15,8 @@ public class Cena implements GLEventListener {
     private GLU glu;
     private GLUT glut;
 
+    int largura=128, altura=72;
+
     //atributos de jogo
     public int pontos=0;
     public int iter_telas = 0;
@@ -159,6 +161,7 @@ public class Cena implements GLEventListener {
 
     }
 
+    // telas
     public void pause(GLAutoDrawable drawable){ // TODO fazer pause bunitin
         gl = drawable.getGL().getGL2();
 
@@ -293,6 +296,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
     }
 
+    // fases
     public void fase1(GLAutoDrawable drawable){
         gl = drawable.getGL().getGL2();
 
@@ -574,13 +578,14 @@ public class Cena implements GLEventListener {
         }
     }
 
+    // colisões
     public void colisaoBolinhaBordas(QuadradoSprite bolinha){
         // definindo as bordas que interagirão com o quadrado q2
         float[][][] bordas = {
-                {{-100, 100}, {100, 100}}, // bordas cima ((x0-x1), (y0-y1))
-                {{-100, 100}, {-100, -100}}, // bordas baixo ((x0-x1), (y0-y1))
-                {{100, 100}, {-100, 100}}, // bordas direita ((x0-x1), (y0-y1))
-                {{-100, -100}, {-100, 100}} // bordas esquerda ((x0-x1), (y0-y1))
+                {{-largura, largura}, {altura, altura}}, // bordas cima ((x0-x1), (y0-y1))
+                {{-largura, largura}, {-altura, -altura}}, // bordas baixo ((x0-x1), (y0-y1))
+                {{largura, largura}, {-altura, altura}}, // bordas direita ((x0-x1), (y0-y1))
+                {{-largura, -largura}, {-altura, altura}} // bordas esquerda ((x0-x1), (y0-y1))
 
         };
 
@@ -610,8 +615,8 @@ public class Cena implements GLEventListener {
     public void colisaoBarraBordas(QuadradoSprite barra){
         // definindo as bordas que interagirão com o quadrado q2
         float[][][] bordas = {
-                {{100, 100}, {-100, 100}}, // bordas direita ((x0-x1), (y0-y1))
-                {{-100, -100}, {-100, 100}} // bordas esquerda ((x0-x1), (y0-y1))
+                {{largura, largura}, {-altura, altura}}, // bordas direita ((x0-x1), (y0-y1))
+                {{-largura, -largura}, {-altura, altura}} // bordas esquerda ((x0-x1), (y0-y1))
 
         };
 
@@ -678,32 +683,7 @@ public class Cena implements GLEventListener {
 
     }
 
-    @Override
-    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        //obtem o contexto grafico Opengl
-        gl = drawable.getGL().getGL2();
-
-        //evita a divisão por zero
-        //if(height == 0) height = 1;
-        //calcula a proporção da janela (aspect ratio) da nova janela
-        //float aspect = (float) width / height;
-
-        //seta o viewport para abranger a janela inteira
-        //gl.glViewport(0, 0, width, height);
-
-        //ativa a matriz de projeção
-        gl.glMatrixMode(GL2.GL_PROJECTION);
-        gl.glLoadIdentity(); //lê a matriz identidade
-
-        //Projeção ortogonal
-        gl.glOrtho(-100, 100, -100, 100, -100, 100);
-
-        //ativa a matriz de modelagem
-        gl.glMatrixMode(GL2.GL_MODELVIEW);
-        //gl.glLoadIdentity(); //lê a matriz identidade
-        System.out.println("Reshape: " + width + ", " + height);
-    }
-
+    // audio
     public void ReproduzirEfeitoSonoroEmLoop(String nome) {
         reproduzirEfeitoSonoro.DefinirArquivo(nome);
         reproduzirEfeitoSonoro.Reproduzir();
@@ -725,6 +705,32 @@ public class Cena implements GLEventListener {
         else {
             ReproduzirEfeitoSonoroEmLoop(reproduzirEfeitoSonoro.getNomeDoArquivoSelecionado());}
 
+    }
+
+    @Override
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+        //obtem o contexto grafico Opengl
+        gl = drawable.getGL().getGL2();
+
+        //evita a divisão por zero
+        //if(height == 0) height = 1;
+        //calcula a proporção da janela (aspect ratio) da nova janela
+        //float aspect = (float) width / height;
+
+        //seta o viewport para abranger a janela inteira
+        //gl.glViewport(0, 0, width, height);
+
+        //ativa a matriz de projeção
+        gl.glMatrixMode(GL2.GL_PROJECTION);
+        gl.glLoadIdentity(); //lê a matriz identidade
+
+        //Projeção ortogonal
+        gl.glOrtho(-largura, largura, -altura, altura, -100, 100);
+
+        //ativa a matriz de modelagem
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
+        //gl.glLoadIdentity(); //lê a matriz identidade
+        System.out.println("Reshape: " + width + ", " + height);
     }
 
     @Override
