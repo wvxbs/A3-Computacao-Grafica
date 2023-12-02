@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class GerarListaDeEfeitosSonoros {
-    private ArrayList<Som> efeitosSonoros;
+    private ArrayList<EfeitoSonoro> efeitosSonoros;
 
     public GerarListaDeEfeitosSonoros() {
-        efeitosSonoros = new ArrayList<Som>();
+        efeitosSonoros = new ArrayList<EfeitoSonoro>();
         File pasta = new File("sons/");
         File[] arquivos = pasta.listFiles();
 
@@ -16,8 +16,8 @@ public class GerarListaDeEfeitosSonoros {
                 if (file.isFile()) {
                     System.out.println(file.getName());
                     System.out.println(file.getAbsolutePath());
-                    Som som = new Som(file.getName(), file.getAbsolutePath(), file);
-                    efeitosSonoros.add(som);
+                    EfeitoSonoro efeitoSonoro = new EfeitoSonoro(file.getName(), file.getAbsolutePath(), file);
+                    efeitosSonoros.add(efeitoSonoro);
                 }
             }
         }
@@ -26,13 +26,13 @@ public class GerarListaDeEfeitosSonoros {
         }
     }
     
-    public ArrayList<Som> getEfeitosSonoros () {
+    public ArrayList<EfeitoSonoro> getEfeitosSonoros () {
         return efeitosSonoros;
     }
 
     public void ExibirListaDeEfeitosSonoros() {
-        for (Som som : efeitosSonoros) {
-            System.out.println(som.getNome());
+        for (EfeitoSonoro efeitoSonoro : efeitosSonoros) {
+            System.out.println(efeitoSonoro.getNome());
         }
     }
 }

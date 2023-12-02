@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Mudança na lógica de seleção de efeito sonoro">
-      <change afterPath="$PROJECT_DIR$/sons/02. Royal Days.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
-    </list>
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Música teste do menu adicionada" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701475422052</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Música teste do menu adicionada">
+      <option name="closed" value="true" />
+      <created>1701475882318</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701475882318</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +200,8 @@
     <MESSAGE value="Objeto Som adiciconado" />
     <MESSAGE value="." />
     <MESSAGE value="Mudança na lógica de seleção de efeito sonoro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mudança na lógica de seleção de efeito sonoro" />
+    <MESSAGE value="Música teste do menu adicionada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Música teste do menu adicionada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

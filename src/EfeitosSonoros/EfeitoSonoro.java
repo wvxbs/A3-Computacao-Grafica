@@ -2,18 +2,18 @@ package EfeitosSonoros;
 
 import java.io.File;
 
-public class Som {
+public class EfeitoSonoro {
     private String Nome;
     private String Caminho;
     private File Arquivo;
 
-    public Som(String nome, String caminho, File arquivo) {
+    public EfeitoSonoro(String nome, String caminho, File arquivo) {
         Nome = nome;
         Caminho = caminho;
         Arquivo = arquivo;
     }
 
-    public Som(String nome, String caminho) {
+    public EfeitoSonoro(String nome, String caminho) {
         Nome = nome;
         Caminho = caminho;
     }
