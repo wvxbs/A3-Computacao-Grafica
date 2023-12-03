@@ -123,6 +123,9 @@ public class Keyboard implements KeyListener {
             if(cena.iter_telas == 7){
                 cena.jogador.setFase(cena.jogador.getFase()+1);
                 cena.iter_telas = cena.jogador.getFase();
+                cena.b1.setPosx(0);
+                cena.b1.setPosy(1);
+                cena.jogador.recomecar();
             }
         }
         if(e.getKeyChar() == '1'){ // fase 1
@@ -140,6 +143,7 @@ public class Keyboard implements KeyListener {
         if(e.getKeyChar() == 'k'){ // voltar ao menu
             cena.jogador.setFase(0);
             cena.iter_telas = cena.jogador.getFase();
+            cena.jogador.recomecar();
         }
         if(e.getKeyChar() == 'm'){
             cena.AlternarEfeitoSonoroEmLoop();
@@ -149,7 +153,7 @@ public class Keyboard implements KeyListener {
         //2 fase 2
         //3 fase 3
         //4 pause
-        //5 ?? ganhou
+        //5 ganhou
         //6 perdeu
         //7 passou
 
