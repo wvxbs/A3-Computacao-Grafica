@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
+      <change afterPath="$PROJECT_DIR$/imagens/BackgorundMenu_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2023_22_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2023_22_15__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagens/BackgorundMenu.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/BackgroundMenu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Jogador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;arrumando-pontas-soltas&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/letma/Desktop/facul/Sem_5/CG e RV/A3-Computacao-Grafica&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
@@ -58,6 +64,7 @@
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\letma\Desktop\facul\Sem_5\CG e RV\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
     </key>
