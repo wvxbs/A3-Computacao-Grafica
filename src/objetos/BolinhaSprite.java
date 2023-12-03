@@ -21,8 +21,8 @@ public class BolinhaSprite extends QuadradoSprite{
         atualizarSprite();
 
         // indo pro desenho
-        //gl.glEnable(gl.GL_BLEND);
-        //gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
+        gl.glEnable(gl.GL_BLEND);
+        gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
 
         gl.glPushMatrix();
         gl.glClearColor(0, 0, 0, 0);
@@ -42,23 +42,23 @@ public class BolinhaSprite extends QuadradoSprite{
         // TODO arrumar o mapeamento de textura pra ficar bunitin
         for(float i=0 ; i < Math.PI*2; i+= 0.01f) {
             gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(i)+posx),(float)((tamanho[1]+ raio)*Math.sin(i)+posy),posz);
-            //System.out.println(i);
-            if (i >= 3.19f && i<=3.20f) {
-                //System.out.println("check 3.14");
-                gl.glTexCoord2f(0.f+texturaOfset[0]+escala[0],(limite/2)+texturaOfset[1]+escala[1]);
-            }
-            if (i >= 0.78f && i<=0.79f) {
-                //System.out.println("check 0.78");
-                gl.glTexCoord2f(0.5f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
-            }
-            if (i >= 6.27f && i<=6.28f){
-                //System.out.println("check 6.28");
-                gl.glTexCoord2f(limite+texturaOfset[0], (limite/2)+texturaOfset[1]);
-            }
-            if (i >= 2.38f && i<=2.39f){
-                //System.out.println("check 2.35");
-                gl.glTexCoord2f((limite/2)+texturaOfset[0], 0.0f+texturaOfset[1]);
-            }
+
+//            if (i >= 3.19f && i<=3.20f) {
+//                //System.out.println("check 3.14");
+//                gl.glTexCoord2f(0.f+texturaOfset[0]+escala[0],(limite/2)+texturaOfset[1]+escala[1]);
+//            }
+//            if (i >= 0.78f && i<=0.79f) {
+//                //System.out.println("check 0.78");
+//                gl.glTexCoord2f(0.5f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
+//            }
+//            if (i >= 6.27f && i<=6.28f){
+//                //System.out.println("check 6.28");
+//                gl.glTexCoord2f(limite+texturaOfset[0], (limite/2)+texturaOfset[1]);
+//            }
+//            if (i >= 2.38f && i<=2.39f){
+//                //System.out.println("check 2.35");
+//                gl.glTexCoord2f((limite/2)+texturaOfset[0], 0.0f+texturaOfset[1]);
+//            }
 
 
         }
@@ -70,7 +70,7 @@ public class BolinhaSprite extends QuadradoSprite{
         textura.desabilitarTextura(gl, 0);
         gl.glPopMatrix();
 
-        //gl.glDisable(GL.GL_BLEND);
+        gl.glDisable(gl.GL_BLEND);
         atualizarIntervalos();
     }
 

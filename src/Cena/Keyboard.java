@@ -46,9 +46,8 @@ public class Keyboard implements KeyListener {
                 break;
 
             case 4:
-                if(e.getKeyChar() == 'x'){ // pause
-                    cena.jogador.setPausado(false);
-                }
+                if(e.getKeyChar() == 'x'){ cena.jogador.setPausado(false);}
+
                 break;
 
             case 5:

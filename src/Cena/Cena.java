@@ -61,7 +61,7 @@ public class Cena implements GLEventListener {
         String face5 = "imagens/bolinha2.png";
         String face6 = "imagens/brick.jpg";
 
-        String face7 = "imagens/bunny.png";
+        String face7 = "imagens/bonnie.png";
         String face8 = "imagens/chica.png";
         String face9 = "imagens/freddy.png";
         String face10 = "imagens/foxy.png";
@@ -108,9 +108,7 @@ public class Cena implements GLEventListener {
 
         // configurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
-        q1.setPosy(-80);
-
-        // configurando q2 (bola palos)
+        q1.setPosy(-90);
 
         // configurando q3 (background)
         q3.setPosz(-0.1f);
@@ -380,11 +378,11 @@ public class Cena implements GLEventListener {
             if (jogador.getObjSprite().isMovendo()) {
                 switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
-                        jogador.getObjSprite().setVelx(+1);
+                        jogador.getObjSprite().setVelx(+1.5f);
                         break;
 
                     case ESQUERDA:
-                        jogador.getObjSprite().setVelx(-1);
+                        jogador.getObjSprite().setVelx(-1.5f);
                         break;
 
                     default:
@@ -533,12 +531,11 @@ public class Cena implements GLEventListener {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity(); // Reads the matrix identity
 
-        // cena
-
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-
+        bolinha.mudarTransparencia();
+        background.getObjSprite().desenhar(gl);
         obsFox.getObjSprite().desenhar(gl);
         obsFredy.getObjSprite().desenhar(gl);
         obsChica.getObjSprite().desenhar(gl);
