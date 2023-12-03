@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Música teste do menu adicionada">
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +28,8 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 1
-    }</component>
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2Xnp6TVO2XRvuDlInM0jkYq43Dk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,11 +43,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bruno/OneDrive/Documentos/repositoriosGit/A3-Computacao-Grafica/imagens&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/letma/Desktop/facul/Sem_5/CG e RV/A3-Computacao-Grafica&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -56,7 +57,6 @@
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Gabriel Ferreira\repos\A3-Computacao-Grafica\sons" />
       <recent name="C:\Users\letma\Desktop\facul\Sem_5\CG e RV\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
     </key>
@@ -122,63 +122,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700928327047</updated>
     </task>
-    <task id="LOCAL-00005" summary="Adicionando o segundo botão e mais textos">
-      <option name="closed" value="true" />
-      <created>1701053439381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1701053439381</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Adicionando play/pause pro som pela tecla &quot;M&quot;">
-      <option name="closed" value="true" />
-      <created>1701468927926</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1701468927926</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Som renomeado em ReproduzirEfeitoSonoro">
-      <option name="closed" value="true" />
-      <created>1701472001914</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1701472001914</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Objeto Som adiciconado">
-      <option name="closed" value="true" />
-      <created>1701472122249</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1701472122249</updated>
-    </task>
-    <task id="LOCAL-00009" summary=".">
-      <option name="closed" value="true" />
-      <created>1701472331794</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1701472331794</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Mudança na lógica de seleção de efeito sonoro">
-      <option name="closed" value="true" />
-      <created>1701475422052</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1701475422052</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Música teste do menu adicionada">
-      <option name="closed" value="true" />
-      <created>1701475882318</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1701475882318</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,13 +141,7 @@
     <MESSAGE value="Adicionando contagem de pontos e colisão com o objeto fase 2" />
     <MESSAGE value="Criando um botão" />
     <MESSAGE value="Adicionando o segundo botão e mais textos" />
-    <MESSAGE value="Adicionando play/pause pro som pela tecla &quot;M&quot;" />
-    <MESSAGE value="Som renomeado em ReproduzirEfeitoSonoro" />
-    <MESSAGE value="Objeto Som adiciconado" />
-    <MESSAGE value="." />
-    <MESSAGE value="Mudança na lógica de seleção de efeito sonoro" />
-    <MESSAGE value="Música teste do menu adicionada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Música teste do menu adicionada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando o segundo botão e mais textos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -212,15 +150,7 @@
           <properties class="com.jogamp.opengl.GLException" package="com.jogamp.opengl" />
           <option name="timeStamp" value="9" />
         </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="10" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

@@ -23,7 +23,7 @@ public class Cena implements GLEventListener {
     public int iter_telas = 0;
 
     // atributos dos quads
-    public QuadradoSprite q1, q3, q6, q7, q8, q9, q10, btn1, btn2, cor;
+    public QuadradoSprite q1, q3, q6, q7, q8, q9, q10, btn1, btn2, btn3, btn4, btn5, cor;
     public BolinhaSprite b1;
     public float ticksAtuais;
     public Jogador jogador;
@@ -66,15 +66,18 @@ public class Cena implements GLEventListener {
         String face10 = "imagens/brick.jpg";
 
 
-        String faceBtn1 = "imagens/rosa-claro.jpg";
-        String faceBtn2 = "imagens/coracao.png";
+        String faceBtn1 = "imagens/btnPlay.png";
+        String faceBtn2 = "imagens/btnContinue.png";
+        String faceBtn3 = "imagens/btnExit.png";
+        String faceBtn4 = "imagens/btnResume.png";
+        String faceBtn5 = "imagens/btnLevel1.png";
 
         float[] tamq1 = {30,5}; // tamanho da barra
         float[] tamb1 = {3f,3f}; // tamanho do raio da bolinha
         float[] tamq3 = {200,200}; // tamanho do background
         float[] tamq6 = {20,20}; // tamanho do obstáculo da fase 2
         float[] tamq7 = {10,10}; // tamanho do obstáculo da fase 2
-        float[] tambtn1 = {30,10}; // tamanho do botão 1
+        float[] tambtn1 = {25,15}; // tamanho do botão 1
 
         float[] corq1 = {0,0,0}; // cor do quadrado 1(tnt faz se tiver textura aplicada(aparentemente faz ss))
 
@@ -89,7 +92,12 @@ public class Cena implements GLEventListener {
         q10 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
 
         btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn1,false);
-        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn1,false);
+        btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn2,false);
+        btn3 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn3,false);
+        btn4 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn4,false);
+        btn5 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn5,false);
+        //btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn6,false);
+
         cor = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,faceBtn2,false);
 
         // configurando q1 (barra)
@@ -152,6 +160,10 @@ public class Cena implements GLEventListener {
         btn2.setPosx(0);
         btn2.setPosy(-20);
         btn2.setPosz(-0.05f);
+
+        btn3.setPosx(0);
+        btn3.setPosy(-30);
+        btn3.setPosz(-0.05f);
 
         // configurando btn cor?
         cor.setPosx(80);
@@ -217,8 +229,8 @@ public class Cena implements GLEventListener {
         background.getObjSprite().desenhar(gl);
 
         // botões
-        btn1.desenhar(gl);
         btn2.desenhar(gl);
+        btn3.desenhar(gl);
 
         // textos do menu
         gl.glColor3f(1f, 1f, 1f);
@@ -245,13 +257,13 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
         btn1.desenhar(gl);
-        btn2.desenhar(gl);
+        //btn2.desenhar(gl);
         cor.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "BEM-VINDO!",24);
-        desenhaTexto(gl, -15,10, "Pressione P para iniciar o jogo",18); //sincronizar o texto com os botões
+        //desenhaTexto(gl, -15,10, "Pressione P para iniciar o jogo",18); //sincronizar o texto com os botões
         desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18); //sincronizar o texto com os botões
         desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
@@ -270,8 +282,7 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
-        btn1.desenhar(gl);
-        btn2.desenhar(gl);
+        btn3.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
@@ -296,8 +307,7 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
-        btn1.desenhar(gl);
-        btn2.desenhar(gl);
+        btn3.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(0f, 1f, 0f);
@@ -321,8 +331,7 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
-        btn1.desenhar(gl);
-        btn2.desenhar(gl);
+        btn3.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
