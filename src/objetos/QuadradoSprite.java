@@ -5,7 +5,7 @@ import com.jogamp.opengl.GL2;
 import Textura.Textura;
 
 
-public class \QuadradoSprite {
+public class QuadradoSprite {
 
     // atributos
     protected float posx=0, posy=0, posz=0; // atr de posicionamento
