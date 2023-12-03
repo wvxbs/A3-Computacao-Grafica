@@ -70,12 +70,12 @@ public class Mouse implements MouseListener {
                 //mouse pra direita
                 if (cena.mouseX > cena.jogador.getObjSprite().getIntervaloDireita()[0][0]) {
                     cena.jogador.getObjSprite().setMovendo(true);
-                    cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
+                    cena.jogador.getObjSprite().setDirecaoX(Direcao.DIREITA);
                 }
                 // mouse pra esquerda
                 if (cena.mouseX < cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
                     cena.jogador.getObjSprite().setMovendo(true);
-                    cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
+                    cena.jogador.getObjSprite().setDirecaoX(Direcao.ESQUERDA);
                 }
                 // mouse em cima da barra
                 if ( cena.mouseX >= cena.jogador.getObjSprite().getIntervaloDireita()[0][0] &&

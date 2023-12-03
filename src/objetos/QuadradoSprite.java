@@ -1,7 +1,6 @@
 package objetos;
 
 import Cena.Direcao;
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import Textura.Textura;
 
@@ -12,7 +11,7 @@ public class QuadradoSprite {
     protected float posx=0, posy=0, posz=0; // atr de posicionamento
     protected float velx=0, vely=0, velz=0; // atr de movimentação
     protected boolean movendo = false;
-    protected Direcao direcao;
+    protected Direcao direcaoX=Direcao.DIREITA, direcaoY=Direcao.CIMA;
     protected float[] tamanho = new float[2]; // tamanho x,y
     protected float[][] intervaloCima, intervaloBaixo, intervaloDireita, intervaloEsquerda, intervaloTotal;
     protected float[] corRGB = new float[3]; // cores r,g,b
@@ -49,8 +48,11 @@ public class QuadradoSprite {
     public float[] getTexturaOfset() {return texturaOfset;}
     public void setTexturaOfset(float[] texturaOfset) {this.texturaOfset = texturaOfset;}
 
-    public Direcao getDirecao() {return direcao;}
-    public void setDirecao(Direcao direcao) {this.direcao = direcao;}
+    public Direcao getDirecaoX() {return direcaoX;}
+    public void setDirecaoX(Direcao direcaoX) {this.direcaoX = direcaoX;}
+
+    public Direcao getDirecaoY() {return direcaoY;}
+    public void setDirecaoY(Direcao direcaoY) {this.direcaoY = direcaoY;}
 
     public float getAlfa() {return alfa;}
     public void setAlfa(float alfa) {this.alfa = alfa;}
@@ -220,7 +222,6 @@ public class QuadradoSprite {
     }
 
     protected void atualizarIntervalos(){
-        // TODO checar desempenho de re-declarar vs modificar posições do array de intervalo
         intervaloEsquerda = new float[][]{
                 {-(tamanho[0]) + posx, -(tamanho[0]) + posx}, //(-5+movimentação, -5+movimentação) em X (não muda)
                 {-(tamanho[1]) + posy, (tamanho[1]) + posy} //(-5+movimentação, 5+movimentação) em Y (muda)
@@ -243,15 +244,23 @@ public class QuadradoSprite {
         };
     }
 
+    protected void atualizarDirecao(){
+        direcaoX = (velx > 0)? Direcao.DIREITA: Direcao.ESQUERDA;
+        direcaoY = (vely > 0)? Direcao.CIMA: Direcao.BAIXO;
+    }
+
     public void mover(){
         posx+=velx;
         posy+=vely;
+        atualizarDirecao();
         atualizarIntervalos();
+
     }
 
     public void mover(float velx, float vely){
         posx+=velx;
         posy+=vely;
+        atualizarDirecao();
         atualizarIntervalos();
     }
 

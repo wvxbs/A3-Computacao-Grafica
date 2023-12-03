@@ -377,7 +377,7 @@ public class Cena implements GLEventListener {
 
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
-                switch (jogador.getObjSprite().getDirecao()) {
+                switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
                         jogador.getObjSprite().setVelx(+1);
                         break;
@@ -386,19 +386,23 @@ public class Cena implements GLEventListener {
                         jogador.getObjSprite().setVelx(-1);
                         break;
 
-                    case CIMA:
-                        jogador.getObjSprite().setVely(+1);
-                        break;
-
-                    case BAIXO:
-                        jogador.getObjSprite().setVely(-1);
-                        break;
-
                     default:
                         jogador.getObjSprite().setVelx(0);
-                        jogador.getObjSprite().setVely(0);
                         break;
                 }
+//                switch (jogador.getObjSprite().getDirecaoY()) {
+//                    case CIMA:
+//                        jogador.getObjSprite().setVely(+1);
+//                        break;
+//
+//                    case BAIXO:
+//                        jogador.getObjSprite().setVely(-1);
+//                        break;
+//
+//                    default:
+//                        jogador.getObjSprite().setVely(0);
+//                        break;
+//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -423,7 +427,8 @@ public class Cena implements GLEventListener {
         gl.glColor3f(1,1,1);
         desenhaTexto(gl,(int)mouseX,(int)(mouseY+5),"mouse X: "+mouseX,18);
         desenhaTexto(gl,(int)mouseX,(int)(mouseY),"mouse Y: "+mouseY,18);
-        desenhaTexto(gl,0,90,"FASE: "+jogador.getFase());
+        desenhaTexto(gl,0,70,"FASE: "+jogador.getFase());
+        desenhaTexto(gl,-127,20,"direção bolinha: "+bolinha.getObjSprite().getDirecaoX());
 
         gl.glFlush();
 
@@ -466,7 +471,7 @@ public class Cena implements GLEventListener {
 
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
-                switch (jogador.getObjSprite().getDirecao()) {
+                switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
                         jogador.getObjSprite().setVelx(+1);
                         break;
@@ -475,19 +480,23 @@ public class Cena implements GLEventListener {
                         jogador.getObjSprite().setVelx(-1);
                         break;
 
-                    case CIMA:
-                        jogador.getObjSprite().setVely(+1);
-                        break;
-
-                    case BAIXO:
-                        jogador.getObjSprite().setVely(-1);
-                        break;
-
                     default:
                         jogador.getObjSprite().setVelx(0);
-                        jogador.getObjSprite().setVely(0);
                         break;
                 }
+//                switch (jogador.getObjSprite().getDirecaoY()) {
+//                    case CIMA:
+//                        jogador.getObjSprite().setVely(+1);
+//                        break;
+//
+//                    case BAIXO:
+//                        jogador.getObjSprite().setVely(-1);
+//                        break;
+//
+//                    default:
+//                        jogador.getObjSprite().setVely(0);
+//                        break;
+//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -573,7 +582,7 @@ public class Cena implements GLEventListener {
 
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
-                switch (jogador.getObjSprite().getDirecao()) {
+                switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
                         jogador.getObjSprite().setVelx(+1);
                         break;
@@ -582,19 +591,23 @@ public class Cena implements GLEventListener {
                         jogador.getObjSprite().setVelx(-1);
                         break;
 
-                    case CIMA:
-                        jogador.getObjSprite().setVely(+1);
-                        break;
-
-                    case BAIXO:
-                        jogador.getObjSprite().setVely(-1);
-                        break;
-
                     default:
                         jogador.getObjSprite().setVelx(0);
-                        jogador.getObjSprite().setVely(0);
                         break;
                 }
+//                switch (jogador.getObjSprite().getDirecaoY()) {
+//                    case CIMA:
+//                        jogador.getObjSprite().setVely(+1);
+//                        break;
+//
+//                    case BAIXO:
+//                        jogador.getObjSprite().setVely(-1);
+//                        break;
+//
+//                    default:
+//                        jogador.getObjSprite().setVely(0);
+//                        break;
+//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -697,13 +710,6 @@ public class Cena implements GLEventListener {
         colisaoQ1direita = barra.isColiding(bordas[0][0], bordas[0][1]);
         colisaoQ1esquerda = barra.isColiding(bordas[1][0], bordas[1][1]);
 
-        //feedback
-        desenhaTexto(gl, (int) barra.getIntervaloBaixo()[0][0],
-                (int) (barra.getIntervaloBaixo()[1][0]-5),"q1 colidiu direita: "+colisaoQ1direita,18);
-
-        desenhaTexto(gl, (int) barra.getIntervaloBaixo()[0][0],
-                (int) (barra.getIntervaloBaixo()[1][0]-10),"q1 colidiu esquerda: "+colisaoQ1esquerda,18);
-
         // definindo interação caso às condições sejam atendidas
         if (colisaoQ1direita && barra.getVelx() == 1) barra.setVelx(0);
         if (colisaoQ1esquerda && barra.getVelx() == -1) barra.setVelx(0);
@@ -713,23 +719,25 @@ public class Cena implements GLEventListener {
 
 
         // obtendo feedback e armazenando
-        boolean colisaoY,colisaoX;
+        boolean colisaoYcima,colisaoXdireita, colisaoXesquerda;
+        colisaoYcima = bolinha.isColiding(barra.getIntervaloCima()[0],barra.getIntervaloCima()[1]);
+        //|| bolinha.isColiding(barra.getIntervaloBaixo()[0],barra.getIntervaloBaixo()[1]);
 
-        colisaoY = bolinha.isColiding(barra.getIntervaloCima()[0],barra.getIntervaloCima()[1]) ||
-                bolinha.isColiding(barra.getIntervaloBaixo()[0],barra.getIntervaloBaixo()[1]);
-
-        colisaoX = bolinha.isColiding(barra.getIntervaloDireita()[0],barra.getIntervaloDireita()[1]) ||
-                bolinha.isColiding(barra.getIntervaloEsquerda()[0],barra.getIntervaloEsquerda()[1]);
+        colisaoXdireita = bolinha.isColiding(barra.getIntervaloDireita()[0],barra.getIntervaloDireita()[1]);
+        colisaoXesquerda = bolinha.isColiding(barra.getIntervaloEsquerda()[0],barra.getIntervaloEsquerda()[1]);
 
         // definindo interações
-        if (colisaoY ){
-            bolinha.setVely((rand.nextFloat(0.9f,1.7f))*-1);
+        if (colisaoYcima && bolinha.getDirecaoY() == Direcao.BAIXO){
+            bolinha.setVely(rand.nextFloat(0.9f, 1.7f));
             jogador.ganharPontos(20);
-            //bolinha.setTimerColisao(ticksAtuais+0.1f); // 0.11+0.02
         }
-        if (colisaoX){
-            bolinha.setVelx((rand.nextFloat(0.9f,1.7f))*-1);
-            //bolinha.setTimerColisao(ticksAtuais+0.1f);
+
+        if (colisaoXdireita && bolinha.getDirecaoX() == Direcao.ESQUERDA){
+            bolinha.setVelx(bolinha.getVelx()*-1);
+        }
+
+        if (colisaoXesquerda && bolinha.getDirecaoX() == Direcao.DIREITA){
+            bolinha.setVelx(bolinha.getVelx()*-1);
         }
 
     }
@@ -737,21 +745,29 @@ public class Cena implements GLEventListener {
     public void colisaoBolinhaObstaculo(QuadradoSprite bolinha, QuadradoSprite obstaculo){
 
         // obtendo feedback e armazenando
-        boolean colisaoY,colisaoX;
+        boolean colisaoYcima, colisaoYbaixo,colisaoXdireita,colisaoXesquerda;
 
 
-        colisaoY = bolinha.isColiding(obstaculo.getIntervaloCima()[0],obstaculo.getIntervaloCima()[1]) ||
-                bolinha.isColiding(obstaculo.getIntervaloBaixo()[0],obstaculo.getIntervaloBaixo()[1]);
+        colisaoYcima = bolinha.isColiding(obstaculo.getIntervaloCima()[0],obstaculo.getIntervaloCima()[1]);
+        colisaoYbaixo = bolinha.isColiding(obstaculo.getIntervaloBaixo()[0],obstaculo.getIntervaloBaixo()[1]);
 
-        colisaoX = bolinha.isColiding(obstaculo.getIntervaloDireita()[0],obstaculo.getIntervaloDireita()[1]) ||
-                bolinha.isColiding(obstaculo.getIntervaloEsquerda()[0],obstaculo.getIntervaloEsquerda()[1]);
+        colisaoXdireita = bolinha.isColiding(obstaculo.getIntervaloDireita()[0],obstaculo.getIntervaloDireita()[1]);
+        colisaoXesquerda = bolinha.isColiding(obstaculo.getIntervaloEsquerda()[0],obstaculo.getIntervaloEsquerda()[1]);
 
         // definindo interações
-        if (colisaoY){
+        if (colisaoYcima && bolinha.getDirecaoY() == Direcao.BAIXO){
             bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
             //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
-        if (colisaoX){
+        if (colisaoYbaixo && bolinha.getDirecaoY() == Direcao.CIMA){
+            bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
+            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
+        }
+        if (colisaoXdireita && bolinha.getDirecaoX() == Direcao.ESQUERDA){
+            bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
+            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
+        }
+        if (colisaoXesquerda && bolinha.getDirecaoX() == Direcao.DIREITA){
             bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
             //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
@@ -782,7 +798,6 @@ public class Cena implements GLEventListener {
         if (colisaoEsquerda && obstaculo.getVelx() <0)
             obstaculo.setVelx(rand.nextFloat(0.6f, 1.4f));
     }
-
 
     // audio
     public void ReproduzirEfeitoSonoroEmLoop(String nome) {
