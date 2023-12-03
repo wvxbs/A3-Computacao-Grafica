@@ -16,7 +16,7 @@ public class Cena implements GLEventListener {
     private GLU glu;
     private GLUT glut;
 
-    int largura=128, altura=72;
+    int largura, altura;
 
     //atributos de jogo
     public int pontos=0;
@@ -832,6 +832,8 @@ public class Cena implements GLEventListener {
         //if(height == 0) height = 1;
         //calcula a proporção da janela (aspect ratio) da nova janela
         //float aspect = (float) width / height;
+        largura = width / 10;
+        altura = height / 10;
 
         //seta o viewport para abranger a janela inteira
         //gl.glViewport(0, 0, width, height);
