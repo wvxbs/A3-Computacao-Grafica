@@ -229,16 +229,15 @@ public class Cena implements GLEventListener {
         background.getObjSprite().desenhar(gl);
 
         // botões
-        btn2.desenhar(gl);
+        //btn2.desenhar(gl);
         btn3.desenhar(gl);
 
         // textos do menu
         gl.glColor3f(1f, 1f, 1f);
-        desenhaTexto(gl, -5,80, "PAUSADO",24);
-        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
-        desenhaTexto(gl, -20,0, "Pressione ??? para voltar ao menu",18);
-        desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
-        desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
+        desenhaTexto(gl, 0,60, "PAUSADO",24);
+        desenhaTexto(gl, -20,40, "Pressione X para continuar",18);
+        desenhaTexto(gl, -20,-90, "Pressione ?? para sair",18);
+        desenhaTexto(gl, -10,20, "Pontos: " + pontos,18);
 
 
         gl.glFlush();
@@ -262,8 +261,7 @@ public class Cena implements GLEventListener {
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
-        desenhaTexto(gl, -5,80, "BEM-VINDO!",24);
-        //desenhaTexto(gl, -15,10, "Pressione P para iniciar o jogo",18); //sincronizar o texto com os botões
+        desenhaTexto(gl, 0,60, "BEM-VINDO!",24);
         desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18); //sincronizar o texto com os botões
         desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
@@ -286,9 +284,7 @@ public class Cena implements GLEventListener {
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
-        desenhaTexto(gl, -5,80, "PAUSADO",24);
-        desenhaTexto(gl, -20,60, "Pressione X para continuar",18);
-        desenhaTexto(gl, -20,0, "Pressione ??? para voltar ao menu",18);
+        desenhaTexto(gl, 0,60, "GANHOU!!",24);
         desenhaTexto(gl, -20,-90, "Pressione ESC para sair",18);
         desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
@@ -307,6 +303,8 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
+
+        btn2.desenhar(gl);
         btn3.desenhar(gl);
 
         // texto do menu
@@ -331,13 +329,13 @@ public class Cena implements GLEventListener {
 
         // desenhar tudo
         background.getObjSprite().desenhar(gl);
+        btn2.desenhar(gl);
         btn3.desenhar(gl);
 
         // texto do menu
         gl.glColor3f(1f, 1f, 1f);
         desenhaTexto(gl, -5,80, "VOCÊ PASSOU A FASE "+jogador.getFase(),24);
         desenhaTexto(gl, -20,60, "(S) CONTINUAR?",18);
-        desenhaTexto(gl, -20,0, "(N) VOLTAR AO MENU",18);
         desenhaTexto(gl, -20,-90, "(ESC) SAIR",18);
         desenhaTexto(gl, -10,40, "Pontos: " + pontos,18);
 
@@ -634,6 +632,10 @@ public class Cena implements GLEventListener {
         desenhaTexto(gl, 0, 90, "Pontos: " + pontos);
 
         gl.glFlush();
+
+        if (jogador.getPontos() >= 300){
+            iter_telas = 5;
+        }
     }
 
     // métodos
@@ -729,7 +731,7 @@ public class Cena implements GLEventListener {
         // definindo interações
         if (colisaoYcima && bolinha.getDirecaoY() == Direcao.BAIXO){
             bolinha.setVely(rand.nextFloat(0.9f, 1.7f));
-            jogador.ganharPontos(20);
+            jogador.ganharPontos(100);
         }
 
         if (colisaoXdireita && bolinha.getDirecaoX() == Direcao.ESQUERDA){
