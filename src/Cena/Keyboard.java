@@ -17,7 +17,7 @@ public class Keyboard implements KeyListener {
             System.exit(0);
 
         // textura
-        if(e.getKeyChar() == 'b'){ // alterna a movimentação da bola palos
+        if(e.getKeyChar() == '1'){ // alterna a movimentação da bola palos
             //cena.ReproduzirEfeitoSonoro("coin");
             cena.bolinha.getObjSprite().setMovendo(!cena.bolinha.getObjSprite().isMovendo());
             cena.jogador.setJogando(true);
@@ -104,58 +104,21 @@ public class Keyboard implements KeyListener {
 //            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()+0.1f);
 //        }
 
-        if(e.getKeyChar() == 'x'){ // pause
-            cena.iter_telas = cena.jogador.getFase();
-            if (!cena.jogador.isPausado()){
-                cena.jogador.setPausado(true);
-                cena.iter_telas = 4; //se a tela não estiver pausada, chamamos a tela de pause
-            } else {
-                cena.jogador.setPausado(false);
-                //cena.jogador.setFase(faseAtual); //se a tela estiver pausada, voltamos pra fase ?? n consigo fazer voltar
-                cena.iter_telas = cena.jogador.getFase();
-            }
+        if(e.getKeyChar() == 'x'){ // aumenta a transparência
+            cena.jogador.setPausado(!cena.jogador.isPausado());
         }
-        if(e.getKeyChar() == 'p'){ // play
+        if(e.getKeyChar() == 'p'){ // inicia o jogo
             cena.jogador.setFase(1);
             cena.iter_telas = cena.jogador.getFase();
         }
-        if(e.getKeyChar() == 'c'){ // continue
-            if(cena.iter_telas == 7){
-                cena.jogador.setFase(cena.jogador.getFase()+1);
-                cena.iter_telas = cena.jogador.getFase();
-                cena.b1.setPosx(0);
-                cena.b1.setPosy(1);
-                cena.jogador.recomecar();
-            }
-        }
-        if(e.getKeyChar() == '1'){ // fase 1
-            cena.jogador.setFase(1);
+        if(e.getKeyChar() == 's'){ // próxima fase
+            cena.jogador.setFase(cena.jogador.getFase()+1);
             cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == '2'){ // fase 2
-            cena.jogador.setFase(2);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == '3'){ // fase 3
-            cena.jogador.setFase(3);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == 'k'){ // voltar ao menu
-            cena.jogador.setFase(0);
-            cena.iter_telas = cena.jogador.getFase();
-            cena.jogador.recomecar();
         }
         if(e.getKeyChar() == 'm'){
             cena.AlternarEfeitoSonoroEmLoop();
         }
-        //0 menu
-        //1 fase 1
-        //2 fase 2
-        //3 fase 3
-        //4 pause
-        //5 ganhou
-        //6 perdeu
-        //7 passou
+
 
     }
 

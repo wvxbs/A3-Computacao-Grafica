@@ -15,10 +15,7 @@ public class Mouse implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        //if(cena.mouseHabilitado){
-        //    cena.mouseX = (float) ((e.getX() / 5) - cena.largura);
-        //    cena.mouseY = (float) ((e.getY() / 5) - cena.altura) * -1;
-        //}
+
     }
 
     @Override
