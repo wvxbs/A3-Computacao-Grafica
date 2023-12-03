@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="oops kk">
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Fazendo as vidas, textos e pontuação das fases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sons/02. Royal Days.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701637385939</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fazendo as vidas, textos e pontuação das fases">
+      <option name="closed" value="true" />
+      <created>1701635981737</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701635981737</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,8 +166,10 @@
     <MESSAGE value="Adicionando contagem de pontos e colisão com o objeto fase 2" />
     <MESSAGE value="Criando um botão" />
     <MESSAGE value="Adicionando o segundo botão e mais textos" />
-    <MESSAGE value="oops kk" />
-    <option name="LAST_COMMIT_MESSAGE" value="oops kk" />
+    <MESSAGE value="Upando as texturas" />
+    <MESSAGE value="Fazendo a lógica entre as fases com os botões" />
+    <MESSAGE value="Fazendo as vidas, textos e pontuação das fases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fazendo as vidas, textos e pontuação das fases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
