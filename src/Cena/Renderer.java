@@ -23,6 +23,7 @@ public class Renderer {
         window = GLWindow.create(caps);
         window.setSize(screenWidth, screenHeight);
         window.setResizable(false);
+        window.setFullscreen(true);
 
         Cena cena = new Cena();
         Keyboard keyboard = new Keyboard(cena); //<------------------------------
