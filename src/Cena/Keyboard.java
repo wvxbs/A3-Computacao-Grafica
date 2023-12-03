@@ -35,6 +35,10 @@ public class Keyboard implements KeyListener {
                     cena.jogador.setFase(1);
                     cena.iter_telas = cena.jogador.getFase();
                 }
+                if(e.getKeyChar() == '3'){ // inicia o jogo
+                    cena.jogador.setFase(3);
+                    cena.iter_telas = cena.jogador.getFase();
+                }
                 break;
 
             case 1:

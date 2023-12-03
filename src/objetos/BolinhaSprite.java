@@ -21,10 +21,10 @@ public class BolinhaSprite extends QuadradoSprite{
         atualizarSprite();
 
         // indo pro desenho
-        gl.glEnable(gl.GL_BLEND);
-        gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
 
         gl.glPushMatrix();
+
+
         gl.glClearColor(0, 0, 0, 0);
         gl.glColor4f(corRGB[0], corRGB[1], corRGB[2], alfa);
 
@@ -40,37 +40,45 @@ public class BolinhaSprite extends QuadradoSprite{
         //coordenadas da Textura
 
         // TODO arrumar o mapeamento de textura pra ficar bunitin
-        for(float i=0 ; i < Math.PI*2; i+= 0.01f) {
-            gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(i)+posx),(float)((tamanho[1]+ raio)*Math.sin(i)+posy),posz);
-
-//            if (i >= 3.19f && i<=3.20f) {
+//        for(float i=0 ; i < Math.PI*2; i+= 0.01f) {
+//            gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(i)+posx),(float)((tamanho[1]+ raio)*Math.sin(i)+posy),posz);
+//
+//            if (i >= (float)Math.PI && i<=(float)Math.PI+0.01f) {
 //                //System.out.println("check 3.14");
 //                gl.glTexCoord2f(0.f+texturaOfset[0]+escala[0],(limite/2)+texturaOfset[1]+escala[1]);
 //            }
-//            if (i >= 0.78f && i<=0.79f) {
+//            if (i >=(float)Math.PI/2 && i<=(float)(Math.PI/2)+0.01f) {
 //                //System.out.println("check 0.78");
 //                gl.glTexCoord2f(0.5f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
 //            }
-//            if (i >= 6.27f && i<=6.28f){
+//            if (i >= (float)Math.PI*2 && i<=(float)(Math.PI*2+0.01f)){
 //                //System.out.println("check 6.28");
 //                gl.glTexCoord2f(limite+texturaOfset[0], (limite/2)+texturaOfset[1]);
 //            }
-//            if (i >= 2.38f && i<=2.39f){
+//            if (i >=(float)Math.PI*3/2 && i<=(float)(Math.PI*3/2)+0.01f){
 //                //System.out.println("check 2.35");
 //                gl.glTexCoord2f((limite/2)+texturaOfset[0], 0.0f+texturaOfset[1]);
 //            }
+//        }
+        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(90)+posx),(float)((tamanho[1]+ raio)*Math.sin(90)+posy),posz);
+        gl.glTexCoord2f(0.f+texturaOfset[0]+escala[0],(limite/2)+texturaOfset[1]+escala[1]);
 
+        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(180)+posx),(float)((tamanho[1]+ raio)*Math.sin(180)+posy),posz);
+        gl.glTexCoord2f(0.5f+texturaOfset[0]+escala[0], limite+texturaOfset[1]+escala[1]);
 
-        }
+        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(270)+posx),(float)((tamanho[1]+ raio)*Math.sin(270)+posy),posz);
+        gl.glTexCoord2f(limite+texturaOfset[0], (limite/2)+texturaOfset[1]);
+
+        gl.glVertex3f((float)((tamanho[0]+ raio)*Math.cos(360)+posx),(float)((tamanho[1]+ raio)*Math.sin(360)+posy),posz);
+        gl.glTexCoord2f((limite/2)+texturaOfset[0], 0.0f+texturaOfset[1]);
 
 
         gl.glEnd();
         //desabilita a textura indicando o índice
-
         textura.desabilitarTextura(gl, 0);
         gl.glPopMatrix();
 
-        gl.glDisable(gl.GL_BLEND);
+
         atualizarIntervalos();
     }
 

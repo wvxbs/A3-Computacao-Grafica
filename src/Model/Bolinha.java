@@ -30,9 +30,16 @@ public class Bolinha {
 
     public void mudarTransparencia(){
         if (add){
-        alfa = (alfa >= 1)? 0 : alfa+0.01f;}
+            if (alfa >= 1) {
+                add = false;
+            }
+            else alfa += 0.01f;
+        }
         else {
-            alfa = (alfa <= 0)? 1 : alfa-0.01f;
+            if (alfa <= 0) {
+                add = true;
+            }
+            else alfa -= 0.01f;
         }
         objSprite.setAlfa(alfa);
 

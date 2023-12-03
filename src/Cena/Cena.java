@@ -58,7 +58,7 @@ public class Cena implements GLEventListener {
         // criação de objetos que entrarão em cena
         String face1 = "imagens/brick.jpg";
         String face3 = "imagens/background.png";
-        String face5 = "imagens/bolinha2.png";
+        String face5 = "imagens/BolaCupcake.png";
         String face6 = "imagens/brick.jpg";
 
         String face7 = "imagens/bonnie.png";
@@ -529,6 +529,8 @@ public class Cena implements GLEventListener {
 
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glEnable(gl.GL_BLEND);
+        gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
         gl.glLoadIdentity(); // Reads the matrix identity
 
         // desenhar tudo
@@ -624,6 +626,7 @@ public class Cena implements GLEventListener {
         }
 
         gl.glFlush();
+        gl.glDisable(gl.GL_BLEND);
         checkStatus();
     }
 

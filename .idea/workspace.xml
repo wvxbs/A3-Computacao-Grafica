@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
+      <change afterPath="$PROJECT_DIR$/imagens/BackgorundMenuFrederico.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cena/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Bolinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Bolinha.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" afterDir="false" />
     </list>
