@@ -21,11 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -45,7 +41,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sla&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;arrumando-pontas-soltas&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/letma/Desktop/facul/Sem_5/CG e RV/A3-Computacao-Grafica&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
@@ -61,6 +57,7 @@
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\letma\Desktop\facul\Sem_5\CG e RV\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
     </key>
@@ -81,7 +78,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Renderer" />
         <item itemvalue="Application.Renderer" />
       </list>
     </recent_temporary>
@@ -127,21 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1700928327047</updated>
     </task>
-    <task id="LOCAL-00005" summary="Upando as texturas">
+    <task id="LOCAL-00005" summary="oops kk">
       <option name="closed" value="true" />
-      <created>1701617834917</created>
+      <created>1701637261503</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1701617834917</updated>
+      <updated>1701637261503</updated>
     </task>
-    <task id="LOCAL-00006" summary="Fazendo a lógica entre as fases com os botões">
+    <task id="LOCAL-00006" summary="oops kk">
       <option name="closed" value="true" />
-      <created>1701627869928</created>
+      <created>1701637385939</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1701627869928</updated>
+      <updated>1701637385939</updated>
     </task>
     <task id="LOCAL-00007" summary="Fazendo as vidas, textos e pontuação das fases">
       <option name="closed" value="true" />
