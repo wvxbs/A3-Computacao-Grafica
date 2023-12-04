@@ -26,8 +26,6 @@ public class Renderer {
         window.setFullscreen(true);
 
         Cena cena = new Cena();
-        cena.largura = screenWidth;
-        cena.altura = screenHeight;
         Keyboard keyboard = new Keyboard(cena); //<------------------------------
         Mouse mouse = new Mouse(cena);
 
