@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Fazendo as vidas, textos e pontuação das fases">
-      <change afterPath="$PROJECT_DIR$/imagens/BackgorundMenuFrederico.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imagens/barra_guarda.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/- fzr fases (novos objetos).txt" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/- fzr fases (novos objetos).txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/BackgorundMenu.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/BackgroundFase.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/BackgroundFase2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/BackgroundFase3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/bolinha.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/bolinha2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/ferreira1-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/palosInterrogacao1-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/play feio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/rosa-claro.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cena/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Keyboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

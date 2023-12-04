@@ -110,9 +110,7 @@ public class Cena implements GLEventListener {
 
         // configurando q1 (barra)
         q1.setVelx(1.5f); // definindo a velocidade x do quadrado 1
-        q1.setPosy(-60);
-
-        // configurando q2 (bola palos)
+        q1.setPosy(-80);
 
         // configurando q3 (background)
         q3.setPosz(-0.1f);
@@ -264,9 +262,7 @@ public class Cena implements GLEventListener {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity(); // Reads the matrix identity
 
-        // cena
-
-        // desenhar tudo
+        backgroundMenu.trocarSkin("imagens/BackgorundMenuFrederico.png");
         backgroundMenu.getObjSprite().desenhar(gl);
         //btn1.desenhar(gl);
         //btn2.desenhar(gl);
@@ -312,8 +308,6 @@ public class Cena implements GLEventListener {
         gl.glClearColor(0, 0, 0, 0); // Defines the window color in RGB
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity(); // Reads the matrix identity
-
-        // cena
 
         // desenhar tudo
         backgroundMenu.getObjSprite().desenhar(gl);
@@ -426,9 +420,8 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
 
-        if (jogador.getPontos() >= 100){
-            iter_telas = 7;
-        }
+        if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
+        if (jogador.getPontos() >= 100){iter_telas = 7;}
     }
 
     public void fase2(GLAutoDrawable drawable){
@@ -464,39 +457,21 @@ public class Cena implements GLEventListener {
 
             if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
 
-            gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
-            desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
-                    (int) bolinha.getObjSprite().getIntervaloCima()[1][1] + 10,
-                    "alfa bolinha: " + bolinha.getObjSprite().getAlfa());
-
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
                 switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
-                        jogador.getObjSprite().setVelx(+1);
+                        jogador.getObjSprite().setVelx(+1.35f);
                         break;
 
                     case ESQUERDA:
-                        jogador.getObjSprite().setVelx(-1);
+                        jogador.getObjSprite().setVelx(-1.35f);
                         break;
 
                     default:
                         jogador.getObjSprite().setVelx(0);
                         break;
                 }
-//                switch (jogador.getObjSprite().getDirecaoY()) {
-//                    case CIMA:
-//                        jogador.getObjSprite().setVely(+1);
-//                        break;
-//
-//                    case BAIXO:
-//                        jogador.getObjSprite().setVely(-1);
-//                        break;
-//
-//                    default:
-//                        jogador.getObjSprite().setVely(0);
-//                        break;
-//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -509,18 +484,17 @@ public class Cena implements GLEventListener {
                     else {jogador.getObjSprite().setMovendo(false);}
                 }
                 else {
-//                    if (!(nPosX > jogador.getObjSprite().getIntervaloEsquerda()[0][0] &&
-//                            nPosX2 < jogador.getObjSprite().getIntervaloDireita()[0][1] ))
-//                    {jogador.getObjSprite().mover();}
-//                    else {jogador.getObjSprite().setMovendo(false);}
                     jogador.getObjSprite().mover();
                 }
             }
 
         }
 
-        gl.glFlush();
+        gl.glColor3f(1, 0, 0);
+        desenhaTexto(gl, 0, 90, "Pontos: " + jogador.getPontos());
 
+        gl.glFlush();
+        if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
         if (jogador.getPontos() >= 200){
             iter_telas = 7;
         }
@@ -610,10 +584,10 @@ public class Cena implements GLEventListener {
         }
 
         gl.glColor3f(1, 0, 0);
-        desenhaTexto(gl, 0, 90, "Pontos: " + pontos);
+        desenhaTexto(gl, 0, 90, "Pontos: " + jogador.getPontos());
 
         gl.glFlush();
-
+        if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
         if (jogador.getPontos() >= 300){
             iter_telas = 5;
         }

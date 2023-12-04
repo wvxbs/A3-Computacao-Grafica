@@ -19,72 +19,96 @@ public class Keyboard implements KeyListener {
         // textura
         if(e.getKeyChar() == 'b'){ // alterna a movimentação da bola palos
             //cena.ReproduzirEfeitoSonoro("coin");
-            cena.bolinha.getObjSprite().setMovendo(!cena.bolinha.getObjSprite().isMovendo());
+            cena.bolinha.getObjSprite().setMovendo(true);
             cena.jogador.setJogando(true);
         }
-//        if(e.getKeyChar() == '2'){ // alterna a animação da bola palos
-//            //cena.ReproduzirEfeitoSonoro("coin");
-//            cena.bolinha.getObjSprite().setAnimado(!cena.bolinha.getObjSprite().isAnimado());
-//        }
-//        if(e.getKeyChar() == '3'){ // diminui a escala vertical da imagem
-//            //cena.ReproduzirEfeitoSonoro("coin");
-//            float[] novoTamanho = {
-//                    (cena.bolinha.getObjSprite().getEscala()[0]),
-//                    (cena.bolinha.getObjSprite().getEscala()[1]+0.25f)
-//            };
-//            cena.bolinha.getObjSprite().setEscala(novoTamanho);
-//        }
-//        if(e.getKeyChar() == '4'){ // aumenta a escala vertical da imagem
-//            //cena.ReproduzirEfeitoSonoro("coin");
-//            float[] novoTamanho = {
-//                    (cena.bolinha.getObjSprite().getEscala()[0]),
-//                    (cena.bolinha.getObjSprite().getEscala()[1]-0.25f)
-//            };
-//            cena.bolinha.getObjSprite().setEscala(novoTamanho);
-//        }
 
-        if(e.getKeyChar() == '5'){ // alterna a utilização do mouse
-            //cena.ReproduzirEfeitoSonoro("coin");
-            cena.mouseHabilitado = !cena.mouseHabilitado;
+        switch (cena.iter_telas){
+            case 0: // menu
+                if(e.getKeyChar() == 'p'){ // play
+                    cena.jogador.setFase(1);
+                    cena.iter_telas = cena.jogador.getFase();
+                }
+                if(e.getKeyChar() == '1'){ // fase 1
+                    cena.jogador.setFase(1);
+                    cena.iter_telas = cena.jogador.getFase();
+                }
+                if(e.getKeyChar() == '2'){ // fase 2
+                    cena.jogador.setFase(2);
+                    cena.iter_telas = cena.jogador.getFase();
+                }
+                if(e.getKeyChar() == '3'){ // fase 3
+                    cena.jogador.setFase(3);
+                    cena.iter_telas = cena.jogador.getFase();
+                }
+                break;
+
+            case 1: // fase 1
+            case 2: // fase 2
+            case 3: // fase 3
+                if(e.getKeyChar() == 'x'){ // pause
+                    cena.iter_telas = cena.jogador.getFase();
+                    if (!cena.jogador.isPausado()){
+                        cena.jogador.setPausado(true);
+                        cena.iter_telas = 4; //se a tela não estiver pausada, chamamos a tela de pause
+                    } else {
+                        cena.jogador.setPausado(false);
+                        //cena.jogador.setFase(faseAtual); //se a tela estiver pausada, voltamos pra fase ?? n consigo fazer voltar
+                        cena.iter_telas = cena.jogador.getFase();
+                    }
+                }
+                break;
+            case 4: // pause
+                if(e.getKeyChar() == 'x'){ // pause
+                    cena.iter_telas = cena.jogador.getFase();
+                    if (!cena.jogador.isPausado()){
+                        cena.jogador.setPausado(true);
+                        cena.iter_telas = 4; //se a tela não estiver pausada, chamamos a tela de pause
+                    } else {
+                        cena.jogador.setPausado(false);
+                        //cena.jogador.setFase(faseAtual); //se a tela estiver pausada, voltamos pra fase ?? n consigo fazer voltar
+                        cena.iter_telas = cena.jogador.getFase();
+                    }
+                }
+                if(e.getKeyChar() == 'k'){ // voltar ao menu
+                    cena.jogador.setFase(0);
+                    cena.iter_telas = cena.jogador.getFase();
+                    cena.jogador.recomecar();
+                }
+
+                break;
+            case 5: // ganhou
+            case 6: // perdeu
+                if(e.getKeyChar() == 'k'){ // voltar ao menu
+                    cena.jogador.setFase(0);
+                    cena.iter_telas = cena.jogador.getFase();
+                    cena.jogador.recomecar();
+                }
+
+                break;
+            case 7: // passou
+                if(e.getKeyChar() == 'c'){ // continue
+                    if(cena.iter_telas == 7){
+                        cena.jogador.setFase(cena.jogador.getFase()+1);
+                        cena.iter_telas = cena.jogador.getFase();
+                        cena.b1.setPosx(0);
+                        cena.b1.setPosy(1);
+                        cena.jogador.recomecar();
+                    }
+                }
+                if(e.getKeyChar() == 'k'){ // voltar ao menu
+                    cena.jogador.setFase(0);
+                    cena.iter_telas = cena.jogador.getFase();
+                    cena.jogador.recomecar();
+                }
+
+                break;
+
+            default:
+                break;
         }
 
-        // movimenta a textura
-//        if(e.getKeyCode() == 149){ // seta esquerda
-//            cena.ReproduzirEfeitoSonoro("coin");
-//            float[] novoOfsetTextura = {
-//                cena.bolinha.getObjSprite().getTexturaOfset()[0]-0.9f,
-//                cena.bolinha.getObjSprite().getTexturaOfset()[1]
-//            };
-//            cena.bolinha.getObjSprite().setTexturaOfset(novoOfsetTextura);
-//            System.out.println("textura offset: "+cena.bolinha.getObjSprite().getTexturaOfset()[0]);
-//        }
-//        if(e.getKeyCode() == 150){ // seta cima
-//            float[] novoOfsetTextura = {
-//                cena.bolinha.getObjSprite().getTexturaOfset()[0],
-//                cena.bolinha.getObjSprite().getTexturaOfset()[1]+0.25f
-//            };
-//            cena.bolinha.getObjSprite().setTexturaOfset(novoOfsetTextura);
-//            System.out.println("textura offset: "+cena.bolinha.getObjSprite().getTexturaOfset()[0]);
-//        }
-//        if(e.getKeyCode() == 151){ // seta direita
-//            float[] novoOfsetTextura = {
-//                cena.bolinha.getObjSprite().getTexturaOfset()[0]+0.9f,
-//                cena.bolinha.getObjSprite().getTexturaOfset()[1]
-//            };
-//            cena.bolinha.getObjSprite().setTexturaOfset(novoOfsetTextura);
-//            System.out.println("textura offset: "+cena.bolinha.getObjSprite().getTexturaOfset()[0]);
-//        }
-//        if(e.getKeyCode() == 152){ // seta baixo
-//            float[] novoOfsetTextura = {
-//                cena.bolinha.getObjSprite().getTexturaOfset()[0],
-//                cena.bolinha.getObjSprite().getTexturaOfset()[1]-0.25f
-//            };
-//            cena.bolinha.getObjSprite().setTexturaOfset(novoOfsetTextura);
-//            System.out.println("textura offset: "+cena.bolinha.getObjSprite().getTexturaOfset()[0]);
-//        }
 
-        // TODO |MELHORAR MOVIMENTAÇÃO DA BARRA (TA TRAVANDO DPOIS DE ANDAR UM POUCO)
-        // TODO |possível motivo: o código não é chamado todo frame, ele fica esperando um input do jogador
         if (!cena.mouseHabilitado) {
             if (e.getKeyChar() == 'a') { // mexe a barra pra esquerda
                 cena.jogador.getObjSprite().setMovendo(true);
@@ -96,55 +120,6 @@ public class Keyboard implements KeyListener {
             }
         }
 
-//        if(e.getKeyChar() == 'c'){ // diminui a transparência
-//            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()-01f);
-//        } // mexe a barra pra direita
-//
-//        if(e.getKeyChar() == 'v'){ // aumenta a transparência
-//            cena.bolinha.getObjSprite().setAlfa(cena.bolinha.getObjSprite().getAlfa()+0.1f);
-//        }
-
-        if(e.getKeyChar() == 'x'){ // pause
-            cena.iter_telas = cena.jogador.getFase();
-            if (!cena.jogador.isPausado()){
-                cena.jogador.setPausado(true);
-                cena.iter_telas = 4; //se a tela não estiver pausada, chamamos a tela de pause
-            } else {
-                cena.jogador.setPausado(false);
-                //cena.jogador.setFase(faseAtual); //se a tela estiver pausada, voltamos pra fase ?? n consigo fazer voltar
-                cena.iter_telas = cena.jogador.getFase();
-            }
-        }
-        if(e.getKeyChar() == 'p'){ // play
-            cena.jogador.setFase(1);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == 'c'){ // continue
-            if(cena.iter_telas == 7){
-                cena.jogador.setFase(cena.jogador.getFase()+1);
-                cena.iter_telas = cena.jogador.getFase();
-                cena.b1.setPosx(0);
-                cena.b1.setPosy(1);
-                cena.jogador.recomecar();
-            }
-        }
-        if(e.getKeyChar() == '1'){ // fase 1
-            cena.jogador.setFase(1);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == '2'){ // fase 2
-            cena.jogador.setFase(2);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == '3'){ // fase 3
-            cena.jogador.setFase(3);
-            cena.iter_telas = cena.jogador.getFase();
-        }
-        if(e.getKeyChar() == 'k'){ // voltar ao menu
-            cena.jogador.setFase(0);
-            cena.iter_telas = cena.jogador.getFase();
-            cena.jogador.recomecar();
-        }
         if(e.getKeyChar() == 'm'){
             cena.AlternarEfeitoSonoroEmLoop();
         }

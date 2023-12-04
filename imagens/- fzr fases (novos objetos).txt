@@ -102,8 +102,6 @@ regras do jogo
 
 ------------------------------------------
 todo
-arrumar textos na tela
-fazer o personagem morrer
 música e efeitos sonoros
 
 
