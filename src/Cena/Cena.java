@@ -56,16 +56,17 @@ public class Cena implements GLEventListener {
         //gl.glEnable(GL.GL_BLEND);
 
         // criação de objetos que entrarão em cena
-        String face1 = "imagens/brick.jpg";
-        String face3 = "imagens/background.png";
-        String face5 = "imagens/bolinha2.png";
-        String face6 = "imagens/brick.jpg";
+        String face1 = "imagens/rosa-claro.jpg";
+        String face5 = "imagens/BolaCupcake.png";
+        String face6 = "imagens/BolaCupcake.png";
+
 
         String face7 = "imagens/bonnie.png";
         String face8 = "imagens/chica.png";
         String face9 = "imagens/freddy.png";
         String face10 = "imagens/foxy.png";
 
+        String facebkg1 = "imagens/BackgorundMenuFrederico.png";
 
         String faceBtn1 = "imagens/btnPlay.png";
         String faceBtn2 = "imagens/btnContinue.png";
