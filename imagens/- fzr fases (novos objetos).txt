@@ -101,7 +101,4 @@ regras do jogo
 
 
 ------------------------------------------
-todo
-música e efeitos sonoros
-
 
