@@ -30,43 +30,26 @@ public class Mouse implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        cena.mouseX = (float) ((e.getX() / 5) - cena.largura);
-        cena.mouseY = (float) ((e.getY() / 5) - cena.altura) * -1;
-        if (cena.mouseHabilitado) {
-            switch (cena.iter_telas){
-                case 0:
-
-                    break;
-
-                case 1:
-                    break;
-
-                case 2:
-                    break;
-
-                case 3:
-                    break;
-
-                case 4:
-                    break;
-
-                case 5:
-                    break;
-
-                case 6:
-                    break;
-
-                case 7:
-                    break;
-
-                default:
-                    break;
-
-            }
-
-        }
-
-
+//        if (cena.mouseHabilitado) {
+//            System.out.println("mouse X: "+(float)((e.getX()/5)-100)+" | mouse Y: "+(float)((e.getY()/5)-100));
+//            // obtendo valores tratados de x e y do clique na tela
+//            cena.mouseX = (float)((e.getX()/5)-100);
+//            cena.mouseY = (float)((e.getY()/5)-100)*-1;
+//
+//            if (cena.mouseX > cena.jogador.getObjSprite().getIntervaloDireita()[0][0]) { // alterna a movimentação da bola palos
+//                cena.jogador.getObjSprite().setMovendo(true);
+//                cena.jogador.getObjSprite().setDirecao(Direcao.DIREITA);
+//            }
+//            if (cena.mouseX < cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) { // alterna a movimentação da bola palos
+//                cena.jogador.getObjSprite().setMovendo(true);
+//                cena.jogador.getObjSprite().setDirecao(Direcao.ESQUERDA);
+//            }
+//            if ((float)((e.getX()/5)-100) >= cena.jogador.getObjSprite().getIntervaloDireita()[0][0] &&
+//                    e.getX() <= cena.jogador.getObjSprite().getIntervaloEsquerda()[0][1]) {
+//                cena.jogador.getObjSprite().setMovendo(false);
+//            }
+//        }
+//
     }
 
     @Override
@@ -80,7 +63,7 @@ public class Mouse implements MouseListener {
             cena.mouseX = (float) ((e.getX() / 5) - cena.largura);
             cena.mouseY = (float) ((e.getY() / 5) - cena.altura) * -1;
 
-            if (cena.jogador.isJogando() && !cena.jogador.isPausado()) {
+            if (cena.jogador.isJogando()) {
 
                 //System.out.println("mouse X: "+(float)((e.getX()/5)-100)+" | mouse Y: "+(float)e.getY());
 

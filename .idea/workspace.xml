@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Fazendo as vidas, textos e pontuação das fases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/BolinhaSprite.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;arrumando-pontas-soltas&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/letma/Desktop/facul/Sem_5/CG e RV/A3-Computacao-Grafica&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
@@ -59,7 +58,6 @@
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\letma\Desktop\facul\Sem_5\CG e RV\A3-Computacao-Grafica\imagens" />
       <recent name="C:\Users\bruno\OneDrive\Documentos\repositoriosGit\A3-Computacao-Grafica\src" />
     </key>

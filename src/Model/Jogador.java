@@ -8,7 +8,7 @@ public class Jogador {
     // atributos gerais
     protected String nome = "undefined";
     protected String senha;
-    protected int vidas=3,vidasMin=0,vidasMax=3;
+    protected int vidas=5,vidasMin=0,vidasMax=5;
     protected int pontos = 0, pontosMin=0, pontosMax=50000;
     protected int fase = 0;
     protected QuadradoSprite objSprite;
