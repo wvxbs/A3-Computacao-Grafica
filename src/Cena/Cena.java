@@ -427,6 +427,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
 
         if (jogador.getPontos() >= 100){
+            ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 7;
         }
     }
@@ -522,6 +523,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
 
         if (jogador.getPontos() >= 200){
+            ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 7;
         }
     }
@@ -615,6 +617,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
 
         if (jogador.getPontos() >= 300){
+            ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 5;
         }
     }
@@ -682,16 +685,19 @@ public class Cena implements GLEventListener {
             jogador.perderVida(1);
             switch (jogador.getVidas()){
                 case 0:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(1);
                     cor2.setModoCoracao(1);
                     cor3.setModoCoracao(1);
                     break;
                 case 1:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(0);
                     cor2.setModoCoracao(1);
                     cor3.setModoCoracao(1);
                     break;
                 case 2:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(0);
                     cor2.setModoCoracao(0);
                     cor3.setModoCoracao(1);
