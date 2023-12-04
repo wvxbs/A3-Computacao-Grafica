@@ -1,6 +1,7 @@
 package Model;
 
 import Cena.Direcao;
+import objetos.CoracaoSprite;
 import objetos.QuadradoSprite;
 
 public class Jogador {
@@ -9,7 +10,7 @@ public class Jogador {
     protected String nome = "undefined";
     protected String senha;
     protected int vidas=3,vidasMin=0,vidasMax=3;
-    protected int pontos = 0, pontosMin=0, pontosMax=50000;
+    protected int pontos = 0, pontosMin=1, pontosMax=50000;
     protected int fase = 0;
     protected QuadradoSprite objSprite;
     protected String skin;
@@ -114,7 +115,10 @@ public class Jogador {
             vidas = vidasMin;
             morto = true;
             pausado = false;
-        } else {vidas -= qntVidas;}
+            //chamar a tela de perdeu
+        } else {
+            vidas -= qntVidas;
+        }
     }
 
     public void ganharVida(int qntVidas){
