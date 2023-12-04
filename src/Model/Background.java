@@ -17,6 +17,9 @@ public class Background {
     public Background(QuadradoSprite objSprite, String skin) {
         this.objSprite = objSprite;
         this.skin = skin;
+    }
 
+    public void trocarSkin(String skin){
+        objSprite.setImageSrc(skin);
     }
 }

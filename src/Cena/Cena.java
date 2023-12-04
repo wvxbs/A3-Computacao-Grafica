@@ -16,7 +16,7 @@ public class Cena implements GLEventListener {
     private GLU glu;
     private GLUT glut;
 
-    int largura, altura;
+    int largura=1920, altura=1080;
 
     //atributos de jogo
     public int pontos=0;
@@ -29,7 +29,7 @@ public class Cena implements GLEventListener {
     public float ticksAtuais;
     public Jogador jogador;
     public Bolinha bolinha;
-    public Background background;
+    public Background backgroundMenu,backgroundf1, backgroundf2, backgroundf3;
     public Obstaculo obstaculo1, obsFredy, obsFox, obsChica, obsBunny;
     public boolean mouseHabilitado = false;
     public float mouseX=0;
@@ -53,12 +53,10 @@ public class Cena implements GLEventListener {
         limite = 1;
 
         gl.glEnable(GL2.GL_DEPTH_TEST);
-        //gl.glEnable(GL.GL_BLEND);
 
-        // criação de objetos que entrarão em cena
-        String face1 = "imagens/brick.jpg";
-        String face3 = "imagens/background.png";
-        String face5 = "imagens/bolinha2.png";
+        String face1 = "imagens/barra_guarda.png";
+        String face3 = "imagens/BackgorundMenuFrederico.png";
+        String face5 = "imagens/BolinhaChica.png";
         String face6 = "imagens/brick.jpg";
 
         String face7 = "imagens/bonnie.png";
@@ -150,7 +148,7 @@ public class Cena implements GLEventListener {
         // classes de controle
         jogador = new Jogador("Bruno","12345",3,0,1,q1,face1);
         bolinha = new Bolinha(b1,face5);
-        background = new Background(q3,face3);
+        backgroundMenu = new Background(q3,face3);
 
         // obstáculo fase 2
         obstaculo1 = new Obstaculo(q6,face1);
@@ -242,7 +240,7 @@ public class Cena implements GLEventListener {
         // desenhar tudo
 
         // background
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.getObjSprite().desenhar(gl);
 
         // botões
         //btn2.desenhar(gl);
@@ -269,7 +267,7 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.getObjSprite().desenhar(gl);
         //btn1.desenhar(gl);
         //btn2.desenhar(gl);
 
@@ -296,7 +294,7 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.getObjSprite().desenhar(gl);
         btn3.desenhar(gl);
 
         // texto do menu
@@ -318,7 +316,7 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.getObjSprite().desenhar(gl);
 
         btn2.desenhar(gl);
         btn3.desenhar(gl);
@@ -342,7 +340,7 @@ public class Cena implements GLEventListener {
         // cena
 
         // desenhar tudo
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.getObjSprite().desenhar(gl);
         btn2.desenhar(gl);
         btn3.desenhar(gl);
 
@@ -369,7 +367,8 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.trocarSkin("imagens/BackgroundFase.png");
+        backgroundMenu.getObjSprite().desenhar(gl);
 
         cor1.desenhar(gl);
         cor2.desenhar(gl);
@@ -386,39 +385,21 @@ public class Cena implements GLEventListener {
             colisaoBolinhaBarra(bolinha.getObjSprite(),jogador.getObjSprite());
             if (bolinha.getObjSprite().isMovendo()) bolinha.getObjSprite().mover(); // chamando o método de movimento
 
-            gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
-            desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
-                    (int) bolinha.getObjSprite().getIntervaloCima()[1][1] + 10,
-                    "alfa q2: " + bolinha.getObjSprite().getAlfa());
-
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
                 switch (jogador.getObjSprite().getDirecaoX()) {
                     case DIREITA:
-                        jogador.getObjSprite().setVelx(+1);
+                        jogador.getObjSprite().setVelx(+1.5f);
                         break;
 
                     case ESQUERDA:
-                        jogador.getObjSprite().setVelx(-1);
+                        jogador.getObjSprite().setVelx(-1.5f);
                         break;
 
                     default:
                         jogador.getObjSprite().setVelx(0);
                         break;
                 }
-//                switch (jogador.getObjSprite().getDirecaoY()) {
-//                    case CIMA:
-//                        jogador.getObjSprite().setVely(+1);
-//                        break;
-//
-//                    case BAIXO:
-//                        jogador.getObjSprite().setVely(-1);
-//                        break;
-//
-//                    default:
-//                        jogador.getObjSprite().setVely(0);
-//                        break;
-//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -441,10 +422,7 @@ public class Cena implements GLEventListener {
 
         // textos de debug
         gl.glColor3f(1,1,1);
-        desenhaTexto(gl,(int)mouseX,(int)(mouseY+5),"mouse X: "+mouseX,18);
-        desenhaTexto(gl,(int)mouseX,(int)(mouseY),"mouse Y: "+mouseY,18);
         desenhaTexto(gl,0,70,"FASE: "+jogador.getFase());
-        desenhaTexto(gl,-127,20,"direção bolinha: "+bolinha.getObjSprite().getDirecaoX());
 
         gl.glFlush();
 
@@ -465,7 +443,8 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-        background.getObjSprite().desenhar(gl);
+        backgroundMenu.trocarSkin("imagens/BackgroundFase2.png");
+        backgroundMenu.getObjSprite().desenhar(gl);
         obstaculo1.getObjSprite().desenhar(gl);
 
         cor1.desenhar(gl);
@@ -540,10 +519,6 @@ public class Cena implements GLEventListener {
 
         }
 
-        gl.glColor3f(1, 0, 0);
-        desenhaTexto(gl, 0, 90, "Pontos: " + pontos);
-        desenhaTexto(gl,0,90,"FASE: "+jogador.getFase());
-
         gl.glFlush();
 
         if (jogador.getPontos() >= 200){
@@ -563,7 +538,8 @@ public class Cena implements GLEventListener {
         // desenhar tudo
         jogador.getObjSprite().desenhar(gl);
         bolinha.getObjSprite().desenhar(gl);
-
+        backgroundMenu.trocarSkin("imagens/BackgroundFase2.png");
+        backgroundMenu.getObjSprite().desenhar(gl);
         obsFox.getObjSprite().desenhar(gl);
         obsFredy.getObjSprite().desenhar(gl);
         obsChica.getObjSprite().desenhar(gl);
@@ -600,12 +576,6 @@ public class Cena implements GLEventListener {
             obsChica.getObjSprite().mover();
             obsFox.getObjSprite().mover();
 
-
-            gl.glColor4f(1.0f, 1.0f, 1.0f, bolinha.getObjSprite().getAlfa());
-            desenhaTexto(gl, (int) (bolinha.getObjSprite().getIntervaloEsquerda()[0][0]),
-                    (int) bolinha.getObjSprite().getIntervaloCima()[1][1] + 10,
-                    "alfa q2: " + bolinha.getObjSprite().getAlfa());
-
             // movimentação q1
             if (jogador.getObjSprite().isMovendo()) {
                 switch (jogador.getObjSprite().getDirecaoX()) {
@@ -621,19 +591,6 @@ public class Cena implements GLEventListener {
                         jogador.getObjSprite().setVelx(0);
                         break;
                 }
-//                switch (jogador.getObjSprite().getDirecaoY()) {
-//                    case CIMA:
-//                        jogador.getObjSprite().setVely(+1);
-//                        break;
-//
-//                    case BAIXO:
-//                        jogador.getObjSprite().setVely(-1);
-//                        break;
-//
-//                    default:
-//                        jogador.getObjSprite().setVely(0);
-//                        break;
-//                }
                 colisaoBarraBordas(jogador.getObjSprite());
 
                 if (mouseHabilitado){
@@ -646,10 +603,6 @@ public class Cena implements GLEventListener {
                     else {jogador.getObjSprite().setMovendo(false);}
                 }
                 else {
-//                    if (!(nPosX > jogador.getObjSprite().getIntervaloEsquerda()[0][0] &&
-//                            nPosX2 < jogador.getObjSprite().getIntervaloDireita()[0][1] ))
-//                    {jogador.getObjSprite().mover();}
-//                    else {jogador.getObjSprite().setMovendo(false);}
                     jogador.getObjSprite().mover();
                 }
             }
@@ -692,6 +645,7 @@ public class Cena implements GLEventListener {
     }
 
     // colisões
+
     public void colisaoBolinhaBordas(QuadradoSprite bolinha){
         // definindo as bordas que interagirão com o quadrado q2
         float[][][] bordas = {
@@ -710,12 +664,6 @@ public class Cena implements GLEventListener {
         colisaoQ2baixo = bolinha.isColiding(bordas[1][0], bordas[1][1]);
         colisaoQ2direita = bolinha.isColiding(bordas[2][0], bordas[2][1]);;
         colisaoQ2esquerda = bolinha.isColiding(bordas[3][0], bordas[3][1]);
-
-        // feedback na tela
-        desenhaTexto(gl,-90,10,"colidiu Cima: "+colisaoQ2cima);
-        desenhaTexto(gl,-90,0,"colidiu baixo: "+colisaoQ2baixo);
-        desenhaTexto(gl,-90,-10,"q2 colidiu direita: "+colisaoQ2direita);
-        desenhaTexto(gl,-90,-20,"q2 colidiu esquerda: "+colisaoQ2esquerda);
 
         // definindo interação caso às condições sejam atendidas
         if (colisaoQ2cima || colisaoQ2baixo){bolinha.setVely(bolinha.getVely()*-1);}
@@ -826,19 +774,15 @@ public class Cena implements GLEventListener {
         // definindo interações
         if (colisaoYcima && bolinha.getDirecaoY() == Direcao.BAIXO){
             bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
-            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
         if (colisaoYbaixo && bolinha.getDirecaoY() == Direcao.CIMA){
             bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
-            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
         if (colisaoXdireita && bolinha.getDirecaoX() == Direcao.ESQUERDA){
             bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
-            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
         if (colisaoXesquerda && bolinha.getDirecaoX() == Direcao.DIREITA){
             bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
-            //bolinha.setTimerColisao(ticksAtuais+0.05f); // 0.11+0.02
         }
 
 

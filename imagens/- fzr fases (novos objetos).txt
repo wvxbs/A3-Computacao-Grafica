@@ -100,5 +100,10 @@ regras do jogo
         - vai tocar a musica de fnaf de fundo
 
 
--> ideias
+------------------------------------------
+todo
+arrumar textos na tela
+fazer o personagem morrer
+música e efeitos sonoros
+
 
