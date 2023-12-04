@@ -185,7 +185,7 @@ public class Cena implements GLEventListener {
 
         // configurando som
         reproduzirEfeitoSonoro = new ReproduzirEfeitoSonoro();
-        ReproduzirEfeitoSonoroEmLoop("Royal Days");
+        ReproduzirEfeitoSonoroEmLoop("Rave On");
 
         mouseHabilitado = true;
     }
