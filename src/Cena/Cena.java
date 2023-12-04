@@ -754,7 +754,7 @@ public class Cena implements GLEventListener {
                 ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 3) {
                 jogador.perderPontos(5);
-                ReproduzirEfeitoSonoro("health");
+                ReproduzirEfeitoSonoro("coin");
             }
         }
 
@@ -782,15 +782,19 @@ public class Cena implements GLEventListener {
 
         // definindo interações
         if (colisaoYcima && bolinha.getDirecaoY() == Direcao.BAIXO){
+            ReproduzirEfeitoSonoro("tiktok-end-outro");
             bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
         }
         if (colisaoYbaixo && bolinha.getDirecaoY() == Direcao.CIMA){
+            ReproduzirEfeitoSonoro("tiktok-end-outro");
             bolinha.setVely(bolinha.getVely()*-1);jogador.perderPontos(20);
         }
         if (colisaoXdireita && bolinha.getDirecaoX() == Direcao.ESQUERDA){
+            ReproduzirEfeitoSonoro("tiktok-end-outro");
             bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
         }
         if (colisaoXesquerda && bolinha.getDirecaoX() == Direcao.DIREITA){
+            ReproduzirEfeitoSonoro("tiktok-end-outro");
             bolinha.setVelx(bolinha.getVelx()*-1);jogador.perderPontos(20);
         }
 
