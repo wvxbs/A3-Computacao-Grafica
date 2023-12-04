@@ -742,10 +742,13 @@ public class Cena implements GLEventListener {
             //jogador.ganharPontos(10);
             if (jogador.getFase() == 1){
                 jogador.ganharPontos(20);
+                ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 2){
                 jogador.ganharPontos(10);
+                ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 3) {
                 jogador.perderPontos(5);
+                ReproduzirEfeitoSonoro("health");
             }
         }
 
