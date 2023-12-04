@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Adicionando o segundo botão e mais textos">
-      <change beforePath="$PROJECT_DIR$/src/Cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cena/Cena.java" afterDir="false" />
+    <list default="true" id="d9f124c1-4d99-4b1a-b7c2-63cd2767ac48" name="Changes" comment="Fazendo as vidas, textos e pontuação das fases">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

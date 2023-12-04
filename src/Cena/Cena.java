@@ -56,16 +56,17 @@ public class Cena implements GLEventListener {
         //gl.glEnable(GL.GL_BLEND);
 
         // criação de objetos que entrarão em cena
-        String face1 = "imagens/rosa-claro.jpg";
-        String face5 = "imagens/BolaCupcake.png";
-        String face6 = "imagens/BolaCupcake.png";
+
+        String face1 = "imagens/brick.jpg";
+        String face3 = "imagens/background.png";
+        String face5 = "imagens/bolinha2.png";
+        String face6 = "imagens/brick.jpg";
 
         String face7 = "imagens/bonnie.png";
         String face8 = "imagens/chica.png";
         String face9 = "imagens/freddy.png";
         String face10 = "imagens/foxy.png";
 
-        String facebkg1 = "imagens/BackgorundMenuFrederico.png";
 
         String faceBtn1 = "imagens/btnPlay.png";
         String faceBtn2 = "imagens/btnContinue.png";
@@ -87,7 +88,7 @@ public class Cena implements GLEventListener {
 
         q1 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq1,corq1,face1,false); // barra
         b1 = new BolinhaSprite(1,filtro,wrap,modo, limite,tamb1,tamb1[0],corq1,face5,false); // bolinha
-        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamqMenu,corq1,facebkg1,false); // background
+        q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamqMenu,corq1,face3,false); // background
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,face6,false); // obstáculo 1
 
         q7 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face7,false); //
@@ -143,7 +144,7 @@ public class Cena implements GLEventListener {
         // classes de controle
         jogador = new Jogador("Bruno","12345",3,0,1,q1,face1);
         bolinha = new Bolinha(b1,face5);
-        background = new Background(q3,facebkg1);
+        background = new Background(q3,face3);
 
         // obstáculo fase 2
         obstaculo1 = new Obstaculo(q6,face1);
