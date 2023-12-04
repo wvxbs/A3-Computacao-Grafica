@@ -16,7 +16,7 @@ public class Cena implements GLEventListener {
     private GLU glu;
     private GLUT glut;
 
-    int largura, altura;
+    int largura=1920, altura=1080;
 
     //atributos de jogo
     public int iter_telas =0; // segue o mesmo índice q as fases
@@ -76,8 +76,10 @@ public class Cena implements GLEventListener {
 
         float[] tamq1 = {30,5}; // tamanho da barra
         float[] tamb1 = {3f,3f}; // tamanho do raio da bolinha
+
         float[] tamq3 = {200,200}; // tamanho do background
         float[] tamqMenu = {largura/5,altura/5}; // tamanho do background mn
+
         float[] tamq6 = {20,20}; // tamanho do obstáculo da fase 2
         float[] tamq7 = {10,10}; // tamanho do obstáculo da fase 2
         float[] tambtn1 = {25,15}; // tamanho do botão 1
