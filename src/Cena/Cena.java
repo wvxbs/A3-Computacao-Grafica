@@ -549,7 +549,7 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
         if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
-        if (jogador.getPontos() >= 200){
+        if (jogador.getPontos() >= 150){
             ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 7;
         }
@@ -667,7 +667,7 @@ public class Cena implements GLEventListener {
 
         gl.glFlush();
         if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
-        if (jogador.getPontos() >= 300){
+        if (jogador.getPontos() >= 200){
             ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 5;
         }
@@ -775,13 +775,13 @@ public class Cena implements GLEventListener {
             bolinha.setVely(rand.nextFloat(0.9f, 1.7f));
             //jogador.ganharPontos(10);
             if (jogador.getFase() == 1){
-                jogador.ganharPontos(20);
+                jogador.ganharPontos(30);
                 ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 2){
-                jogador.ganharPontos(10);
+                jogador.ganharPontos(20);
                 ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 3) {
-                jogador.perderPontos(5);
+                jogador.perderPontos(10);
                 ReproduzirEfeitoSonoro("coin");
             }
         }

@@ -15,3 +15,7 @@ F
 src/Cena/Keyboard.java,5\f\5f34a4856c5b08be4783c8d3c86ce96f47a8508f
 C
 src/Cena/Mouse.java,6\c\6cfba876b78a4449a79ad99a9c7bf5c792dccd09
+b
+2src/EfeitosSonoros/GerarListaDeEfeitosSonoros.java,d\9\d9c00e10dc0b0a8ebbd1f674ce798514ae8adcaa
+^
+.src/EfeitosSonoros/ReproduzirEfeitoSonoro.java,a\8\a869c6966d09bcbedd55847ddf77d5ef286351e4
