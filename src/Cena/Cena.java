@@ -421,7 +421,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
 
         if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
-        if (jogador.getPontos() >= 100){iter_telas = 7;}
+        if (jogador.getPontos() >= 100){iter_telas = 7;ReproduzirEfeitoSonoro("jet-set-radio-success");}
     }
 
     public void fase2(GLAutoDrawable drawable){
@@ -496,6 +496,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
         if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
         if (jogador.getPontos() >= 200){
+            ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 7;
         }
     }
@@ -589,6 +590,7 @@ public class Cena implements GLEventListener {
         gl.glFlush();
         if (jogador.getPontos() < 0 || jogador.getVidas() == 0) {iter_telas = 6;}
         if (jogador.getPontos() >= 300){
+            ReproduzirEfeitoSonoro("jet-set-radio-success");
             iter_telas = 5;
         }
     }
@@ -656,16 +658,19 @@ public class Cena implements GLEventListener {
             jogador.perderVida(1);
             switch (jogador.getVidas()){
                 case 0:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(1);
                     cor2.setModoCoracao(1);
                     cor3.setModoCoracao(1);
                     break;
                 case 1:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(0);
                     cor2.setModoCoracao(1);
                     cor3.setModoCoracao(1);
                     break;
                 case 2:
+                    ReproduzirEfeitoSonoro("health");
                     cor1.setModoCoracao(0);
                     cor2.setModoCoracao(0);
                     cor3.setModoCoracao(1);
@@ -716,10 +721,13 @@ public class Cena implements GLEventListener {
             //jogador.ganharPontos(10);
             if (jogador.getFase() == 1){
                 jogador.ganharPontos(20);
+                ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 2){
                 jogador.ganharPontos(10);
+                ReproduzirEfeitoSonoro("coin");
             } else if (jogador.getFase() == 3) {
                 jogador.perderPontos(5);
+                ReproduzirEfeitoSonoro("health");
             }
         }
 
