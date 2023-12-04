@@ -1,0 +1,16 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“8­§‚¦Ã1
+g
+java:S1659"EDeclare "vidasMin" and all following declarations on a separate line.(­ó©’ýÿÿÿÿ8µ§‚¦Ã1
+h
+java:S1659"FDeclare "pontosMin" and all following declarations on a separate line.(ÉÊÐÖøÿÿÿÿ8µ§‚¦Ã1
+f
+java:S1659"DDeclare "pausado" and all following declarations on a separate line.(À»ÞÆüÿÿÿÿ8µ§‚¦Ã1
+j
+java:S1659"HDeclare "ganhouFase2" and all following declarations on a separate line.(Âìù§ýÿÿÿÿ8µ§‚¦Ã1
+O
+java:S1135\"2Complete the task associated to this TODO comment.(ÐáÑ˜8¾§‚¦Ã1
+T
+java:S1135`"2Complete the task associated to this TODO comment.(öÝñ©úÿÿÿÿ8¿§‚¦Ã1
+T
+java:S1128"2Remove this unused import 'objetos.CoracaoSprite'.(Žì×«ùÿÿÿÿ8Á§‚¦Ã1

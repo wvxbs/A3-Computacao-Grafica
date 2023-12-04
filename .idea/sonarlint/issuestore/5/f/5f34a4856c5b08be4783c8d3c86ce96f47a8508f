@@ -1,0 +1,14 @@
+
+_
+java:S62080"CMerge the previous cases into this one using comma-separated label.(ÜØå:8ƒ›ï¥Ã1
+e
+java:S6208Q"CMerge the previous cases into this one using comma-separated label.(âÈ¹˜þÿÿÿÿ8ƒ›ï¥Ã1
+L
+java:S1066["/Merge this if statement with the enclosing one.(ÖšÃ¦8ž­ê¥Ã1
+L
+java:S1066Œ"/Merge this if statement with the enclosing one.(Áßæ8…›ï¥Ã1
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÏŽ½ï
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 39 to the 15 allowed.(Ý¼õA8§Ïú”Ã1
+E	java:S106"+Replace this use of System.out by a logger.(ØØ¡Åùÿÿÿÿ
+]	java:S125"<This block of commented-out lines of code should be removed.(ÂóÌ€ùÿÿÿÿ8«Ïú”Ã1

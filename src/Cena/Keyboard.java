@@ -25,7 +25,7 @@ public class Keyboard implements KeyListener {
 
         switch (cena.iter_telas){
             case 0: // menu
-                if(e.getKeyChar() == 'p'){ // play
+                if(e.getKeyChar() == 'p'){ // playk
                     cena.jogador.setFase(1);
                     cena.iter_telas = cena.jogador.getFase();
                 }

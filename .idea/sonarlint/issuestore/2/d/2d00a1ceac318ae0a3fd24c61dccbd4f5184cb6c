@@ -1,0 +1,30 @@
+
+W
+java:S1659"ADeclare "posy" and all following declarations on a separate line.(ş¤ÒÉ
+W
+java:S1659"ADeclare "vely" and all following declarations on a separate line.(¿´Øş
+;
+java:S1659"&Declare "direcaoY" on a separate line.(½õ
+a
+java:S1659"KDeclare "intervaloBaixo" and all following declarations on a separate line.(Š¦ì¶
+\
+java:S1659"ADeclare "wrap" and all following declarations on a separate line.(³ÙŠßúÿÿÿÿ
+W	java:S107’"AConstructor has 9 parameters, which is greater than 7 authorized.(Ì‘İæ
+R	java:S125¬"<This block of commented-out lines of code should be removed.(‰Ë™½
+X
+java:S3252»"AUse static access with "com.jogamp.opengl.GL2ES3" for "GL_QUADS".(»ßŠ™
+W	java:S125É"<This block of commented-out lines of code should be removed.(âÿí‚øÿÿÿÿ
+W	java:S125Ñ"<This block of commented-out lines of code should be removed.(†ªÅøÿÿÿÿ
+R	java:S125Ü"<This block of commented-out lines of code should be removed.(‡ğ•Ù
+n
+java:S3776‹"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Âö‘ùÿÿÿÿ
+@
+java:S1659’"$Declare "toqueY" on a separate line.(ë½²Ûıÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(Œ¬£S
+Q	java:S125"<This block of commented-out lines of code should be removed.(Œ¬£S
+W	java:S125›"<This block of commented-out lines of code should be removed.(à›™Ğÿÿÿÿÿ
+W	java:S125¥"<This block of commented-out lines of code should be removed.(İ„ı¬ûÿÿÿÿ
+W
+java:S1126©"AReplace this if-then-else statement by a single return statement.(øÌt
+X
+java:S1126°"AReplace this if-then-else statement by a single return statement.(‰Ü Ò

@@ -104,10 +104,11 @@ public class Jogador {
     }
 
     public void recomecar(){
-        pontos = pontosMin;
+        pontos = 1;
         morto = false;
         pausado = false;
         jogando = true;
+        vidas = vidasMax;
     }
 
     public void perderVida(int qntVidas){

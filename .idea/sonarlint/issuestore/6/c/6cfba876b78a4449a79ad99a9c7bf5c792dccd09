@@ -1,0 +1,23 @@
+
+b
+java:S2184+"@Cast one of the operands of this integer division to a "double".(¬ß«Éşÿÿÿÿ8ÆÓú”Ã1
+b
+java:S2184,"@Cast one of the operands of this integer division to a "double".(®éÂåÿÿÿÿÿ8ÆÓú”Ã1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ï½ï8†ø–êÂ1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ä Ïúüÿÿÿÿ8‘œï¥Ã1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ö„˜şúÿÿÿÿ8“œï¥Ã1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•ßçùÿÿÿÿ8“œï¥Ã1
+£
+java:S1186 "€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(®î’×üÿÿÿÿ8“œï¥Ã1
+
+java:S1186$"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ãÆĞÂ8’¯ê¥Ã1
+
+java:S1186F"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(®—ËF8Šø–êÂ1
+
+java:S1186K"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š‘üö8Šø–êÂ1
+J
+java:S1905+"(Remove this unnecessary cast to "float".(¬ß«Éşÿÿÿÿ8×Óú”Ã1
+X	java:S1250"<This block of commented-out lines of code should be removed.(­²­š8è‘¬ƒÃ1

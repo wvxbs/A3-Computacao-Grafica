@@ -57,7 +57,7 @@ public class Cena implements GLEventListener {
         String face1 = "imagens/barra_guarda.png";
         String face3 = "imagens/BackgorundMenuFrederico.png";
         String face5 = "imagens/BolinhaChica.png";
-        String face6 = "imagens/brick.jpg";
+        String face6 = "imagens/BolaCupCake.png";
 
         String face7 = "imagens/bonnie.png";
         String face8 = "imagens/chica.png";
@@ -90,10 +90,10 @@ public class Cena implements GLEventListener {
         q3 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq3,corq1,face3,false); // background
         q6 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq6,corq1,face6,false); // obstáculo 1
 
-        q7 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
-        q8 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
-        q9 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
-        q10 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face1,false); // obstáculo 1
+        q7 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face7,false); // obstáculo 1
+        q8 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face8,false); // obstáculo 1
+        q9 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face9,false); // obstáculo 1
+        q10 = new QuadradoSprite(1,filtro,wrap,modo,limite,tamq7,corq1,face10,false); // obstáculo 1
 
         btn1 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn1,false);
         btn2 = new BotaoSprite(1,filtro,wrap,modo,limite,tambtn1,corq1,faceBtn2,false);
@@ -368,6 +368,32 @@ public class Cena implements GLEventListener {
         cor2.desenhar(gl);
         cor3.desenhar(gl);
 
+        switch (jogador.getVidas()){
+            case 0:
+
+                cor1.setModoCoracao(1);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 1:
+
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 2:
+
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(1);
+                break;
+            case 3:
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(0);
+                break;
+        };
+
         desenhaTexto(gl, -10,50, "Pontos: " + jogador.getPontos(),18);
         // movimentar tudo q precisa
 
@@ -395,6 +421,7 @@ public class Cena implements GLEventListener {
                         break;
                 }
                 colisaoBarraBordas(jogador.getObjSprite());
+
 
                 if (mouseHabilitado){
                     float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
@@ -444,6 +471,32 @@ public class Cena implements GLEventListener {
         cor2.desenhar(gl);
         cor3.desenhar(gl);
 
+        switch (jogador.getVidas()){
+            case 0:
+
+                cor1.setModoCoracao(1);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 1:
+
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 2:
+
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(1);
+                break;
+            case 3:
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(0);
+                break;
+        };
+
         desenhaTexto(gl, -10,50, "Pontos: " + jogador.getPontos(),18);
         // movimentar tudo q precisa
 
@@ -473,6 +526,7 @@ public class Cena implements GLEventListener {
                         break;
                 }
                 colisaoBarraBordas(jogador.getObjSprite());
+
 
                 if (mouseHabilitado){
                     float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
@@ -524,6 +578,29 @@ public class Cena implements GLEventListener {
         cor2.desenhar(gl);
         cor3.desenhar(gl);
 
+        switch (jogador.getVidas()){
+            case 0:
+                cor1.setModoCoracao(1);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 1:
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(1);
+                cor3.setModoCoracao(1);
+                break;
+            case 2:
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(1);
+                break;
+            case 3:
+                cor1.setModoCoracao(0);
+                cor2.setModoCoracao(0);
+                cor3.setModoCoracao(0);
+                break;
+        };
+
         desenhaTexto(gl, -10,50, "Pontos: " + jogador.getPontos(),18);
         // movimentar tudo q precisa
 
@@ -567,6 +644,7 @@ public class Cena implements GLEventListener {
                         break;
                 }
                 colisaoBarraBordas(jogador.getObjSprite());
+
 
                 if (mouseHabilitado){
                     float intervDx1 = jogador.getObjSprite().getIntervaloEsquerda()[0][0]+
@@ -656,31 +734,8 @@ public class Cena implements GLEventListener {
             }
 
             jogador.perderVida(1);
-            switch (jogador.getVidas()){
-                case 0:
-                    ReproduzirEfeitoSonoro("health");
-                    cor1.setModoCoracao(1);
-                    cor2.setModoCoracao(1);
-                    cor3.setModoCoracao(1);
-                    break;
-                case 1:
-                    ReproduzirEfeitoSonoro("health");
-                    cor1.setModoCoracao(0);
-                    cor2.setModoCoracao(1);
-                    cor3.setModoCoracao(1);
-                    break;
-                case 2:
-                    ReproduzirEfeitoSonoro("health");
-                    cor1.setModoCoracao(0);
-                    cor2.setModoCoracao(0);
-                    cor3.setModoCoracao(1);
-                    break;
-                case 3:
-                    cor1.setModoCoracao(0);
-                    cor2.setModoCoracao(0);
-                    cor3.setModoCoracao(0);
-                    break;
-            };
+            ReproduzirEfeitoSonoro("health");
+
         }
     }
 
